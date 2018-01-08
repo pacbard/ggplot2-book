@@ -1,6 +1,8 @@
-\chapter{Data transformation}\label{cha:dplyr}
+\hypertarget{cha:dplyr}{%
+\chapter{Data transformation}\label{cha:dplyr}}
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 Tidy data is important, but it's not the end of the road. Often you
 won't have quite the right variables, or your data might need a little
@@ -48,7 +50,8 @@ This chapter only scratches the surface of dplyr's capabilities but it
 should be enough to help you with visualisation problems. You can learn
 more by using the resources discussed at the end of the chapter.
 
-\section{Filter observations}\label{filter-observations}
+\hypertarget{filter-observations}{%
+\section{Filter observations}\label{filter-observations}}
 
 It's common to only want to explore one part of a dataset. A great data
 analysis strategy is to start with just one observation unit (one
@@ -70,7 +73,7 @@ the diamonds are related:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -87,19 +90,17 @@ incorrect values are those diamonds with zero dimensions. We can use
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(diamonds, x ==}\StringTok{ }\DecValTok{0} \NormalTok{|}\StringTok{ }\NormalTok{y ==}\StringTok{ }\DecValTok{0}\NormalTok{)}
-\CommentTok{#> Source: local data frame [8 x 10]}
-\CommentTok{#> }
-\CommentTok{#>    carat       cut  color clarity depth table price     x     y}
-\CommentTok{#>    (dbl)    (fctr) (fctr)  (fctr) (dbl) (dbl) (int) (dbl) (dbl)}
-\CommentTok{#> 1   1.07     Ideal      F     SI2  61.6    56  4954     0  6.62}
-\CommentTok{#> 2   1.00 Very Good      H     VS2  63.3    53  5139     0  0.00}
-\CommentTok{#> 3   1.14      Fair      G     VS1  57.5    67  6381     0  0.00}
-\CommentTok{#> 4   1.56     Ideal      G     VS2  62.2    54 12800     0  0.00}
-\CommentTok{#> 5   1.20   Premium      D    VVS1  62.1    59 15686     0  0.00}
-\CommentTok{#> 6   2.25   Premium      H     SI2  62.8    59 18034     0  0.00}
-\CommentTok{#> ..   ...       ...    ...     ...   ...   ...   ...   ...   ...}
-\CommentTok{#> Variables not shown: z (dbl)}
+\KeywordTok{filter}\NormalTok{(diamonds, x }\OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{|}\StringTok{ }\NormalTok{y }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\CommentTok{#> # A tibble: 8 x 10}
+\CommentTok{#>   carat cut       color clari~ depth table price     x     y     z}
+\CommentTok{#>   <dbl> <ord>     <ord> <ord>  <dbl> <dbl> <int> <dbl> <dbl> <dbl>}
+\CommentTok{#> 1  1.07 Ideal     F     SI2     61.6  56.0  4954     0  6.62     0}
+\CommentTok{#> 2  1.00 Very Good H     VS2     63.3  53.0  5139     0  0        0}
+\CommentTok{#> 3  1.14 Fair      G     VS1     57.5  67.0  6381     0  0        0}
+\CommentTok{#> 4  1.56 Ideal     G     VS2     62.2  54.0 12800     0  0        0}
+\CommentTok{#> 5  1.20 Premium   D     VVS1    62.1  59.0 15686     0  0        0}
+\CommentTok{#> 6  2.25 Premium   H     SI2     62.8  59.0 18034     0  0        0}
+\CommentTok{#> # ... with 2 more rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -125,9 +126,9 @@ which combines them.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{diamonds_ok <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(diamonds, x >}\StringTok{ }\DecValTok{0}\NormalTok{, y >}\StringTok{ }\DecValTok{0}\NormalTok{, y <}\StringTok{ }\DecValTok{20}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(diamonds_ok, }\KeywordTok{aes}\NormalTok{(x, y)) +}
-\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{() +}
+\NormalTok{diamonds_ok <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(diamonds, x }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{, y }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{, y }\OperatorTok{<}\StringTok{ }\DecValTok{20}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(diamonds_ok, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{() }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_abline}\NormalTok{(}\DataTypeTok{slope =} \DecValTok{1}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{1}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -155,7 +156,8 @@ We'll solve both of these problem in the next section by adding a new
 variable that's a transformation of x and y. But before we continue on
 to that, let's talk more about the details of \texttt{filter()}.
 
-\subsection{Useful tools}\label{useful-tools}
+\hypertarget{useful-tools}{%
+\subsection{Useful tools}\label{useful-tools}}
 
 The first argument to \texttt{filter()} is a data frame. The second and
 subsequent arguments must be logical vectors: \texttt{filter()} selects
@@ -235,7 +237,8 @@ You'll learn how to do that in the next section.
 
 The rules for \texttt{NA} are a bit trickier, so I'll explain them next.
 
-\subsection{Missing values}\label{missing-values}
+\hypertarget{missing-values}{%
+\subsection{Missing values}\label{missing-values}}
 
 \texttt{NA}, R's missing value indicator, can be frustrating to work
 with. R's underlying philosophy is to force you to recognise that you
@@ -254,11 +257,11 @@ that turn an unknown value into a known value.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\OtherTok{NA}\NormalTok{, }\DecValTok{2}\NormalTok{)}
-\NormalTok{x ==}\StringTok{ }\DecValTok{1}
+\NormalTok{x }\OperatorTok{==}\StringTok{ }\DecValTok{1}
 \CommentTok{#> [1]  TRUE    NA FALSE}
-\NormalTok{x >}\StringTok{ }\DecValTok{2}
+\NormalTok{x }\OperatorTok{>}\StringTok{ }\DecValTok{2}
 \CommentTok{#> [1] FALSE    NA FALSE}
-\NormalTok{x +}\StringTok{ }\DecValTok{10}
+\NormalTok{x }\OperatorTok{+}\StringTok{ }\DecValTok{10}
 \CommentTok{#> [1] 11 NA 12}
 \end{Highlighting}
 \end{Shaded}
@@ -268,9 +271,9 @@ using \texttt{==}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{x ==}\StringTok{ }\OtherTok{NA}
+\NormalTok{x }\OperatorTok{==}\StringTok{ }\OtherTok{NA}
 \CommentTok{#> [1] NA NA NA}
-\NormalTok{x !=}\StringTok{ }\OtherTok{NA}
+\NormalTok{x }\OperatorTok{!=}\StringTok{ }\OtherTok{NA}
 \CommentTok{#> [1] NA NA NA}
 \end{Highlighting}
 \end{Shaded}
@@ -293,7 +296,8 @@ want to include missing values, be explicit:
 R, you'll sometimes need to convert missing values into \texttt{FALSE}.
 You can do that with \texttt{x\ \textgreater{}\ 10\ \&\ !is.na(x)}
 
-\subsection{Exercises}\label{exercises}
+\hypertarget{exercises}{%
+\subsection{Exercises}\label{exercises}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -316,14 +320,14 @@ You can do that with \texttt{x\ \textgreater{}\ 10\ \&\ !is.na(x)}
 \item
   Fill in the question marks in this table:
 
-  \begin{longtable}[c]{@{}llll@{}}
+  \begin{longtable}[]{@{}llll@{}}
   \toprule
   Expression & \texttt{TRUE} & \texttt{FALSE} &
   \texttt{NA}\tabularnewline
   \midrule
   \endhead
-  \texttt{x} & x &\tabularnewline
-  ? & & x\tabularnewline
+  \texttt{x} & x & &\tabularnewline
+  ? & & x &\tabularnewline
   \texttt{is.na(x)} & & & x\tabularnewline
   \texttt{!is.na(x)} & ? & ? & ?\tabularnewline
   ? & x & & x\tabularnewline
@@ -345,7 +349,8 @@ You can do that with \texttt{x\ \textgreater{}\ 10\ \&\ !is.na(x)}
   not equal 0? What do you expect \texttt{NA\ \^{}\ 0} to equal? Why?
 \end{enumerate}
 
-\section{Create new variables}\label{mutate}
+\hypertarget{mutate}{%
+\section{Create new variables}\label{mutate}}
 
 To better explore the relationship between \texttt{x} and \texttt{y},
 it's useful to ``rotate'' the plot so that the data is flat, not
@@ -364,24 +369,23 @@ their name, you don't need to also include the name of the dataset.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{diamonds_ok2 <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(diamonds_ok,}
-  \DataTypeTok{sym =} \NormalTok{x -}\StringTok{ }\NormalTok{y,}
-  \DataTypeTok{size =} \KeywordTok{sqrt}\NormalTok{(x ^}\StringTok{ }\DecValTok{2} \NormalTok{+}\StringTok{ }\NormalTok{y ^}\StringTok{ }\DecValTok{2}\NormalTok{)}
+  \DataTypeTok{sym =}\NormalTok{ x }\OperatorTok{-}\StringTok{ }\NormalTok{y,}
+  \DataTypeTok{size =} \KeywordTok{sqrt}\NormalTok{(x }\OperatorTok{^}\StringTok{ }\DecValTok{2} \OperatorTok{+}\StringTok{ }\NormalTok{y }\OperatorTok{^}\StringTok{ }\DecValTok{2}\NormalTok{)}
 \NormalTok{)}
 \NormalTok{diamonds_ok2}
-\CommentTok{#> Source: local data frame [53,930 x 12]}
-\CommentTok{#> }
-\CommentTok{#>    carat       cut  color clarity depth table price     x     y}
-\CommentTok{#>    (dbl)    (fctr) (fctr)  (fctr) (dbl) (dbl) (int) (dbl) (dbl)}
-\CommentTok{#> 1   0.23     Ideal      E     SI2  61.5    55   326  3.95  3.98}
-\CommentTok{#> 2   0.21   Premium      E     SI1  59.8    61   326  3.89  3.84}
-\CommentTok{#> 3   0.23      Good      E     VS1  56.9    65   327  4.05  4.07}
-\CommentTok{#> 4   0.29   Premium      I     VS2  62.4    58   334  4.20  4.23}
-\CommentTok{#> 5   0.31      Good      J     SI2  63.3    58   335  4.34  4.35}
-\CommentTok{#> 6   0.24 Very Good      J    VVS2  62.8    57   336  3.94  3.96}
-\CommentTok{#> ..   ...       ...    ...     ...   ...   ...   ...   ...   ...}
-\CommentTok{#> Variables not shown: z (dbl), sym (dbl), size (dbl)}
+\CommentTok{#> # A tibble: 53,930 x 12}
+\CommentTok{#>   carat cut       color clari~ depth table price     x     y     z}
+\CommentTok{#>   <dbl> <ord>     <ord> <ord>  <dbl> <dbl> <int> <dbl> <dbl> <dbl>}
+\CommentTok{#> 1 0.230 Ideal     E     SI2     61.5  55.0   326  3.95  3.98  2.43}
+\CommentTok{#> 2 0.210 Premium   E     SI1     59.8  61.0   326  3.89  3.84  2.31}
+\CommentTok{#> 3 0.230 Good      E     VS1     56.9  65.0   327  4.05  4.07  2.31}
+\CommentTok{#> 4 0.290 Premium   I     VS2     62.4  58.0   334  4.20  4.23  2.63}
+\CommentTok{#> 5 0.310 Good      J     SI2     63.3  58.0   335  4.34  4.35  2.75}
+\CommentTok{#> 6 0.240 Very Good J     VVS2    62.8  57.0   336  3.94  3.96  2.48}
+\CommentTok{#> # ... with 5.392e+04 more rows, and 2 more variables: sym <dbl>,}
+\CommentTok{#> #   size <dbl>}
 
-\KeywordTok{ggplot}\NormalTok{(diamonds_ok2, }\KeywordTok{aes}\NormalTok{(size, sym)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds_ok2, }\KeywordTok{aes}\NormalTok{(size, sym)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{stat_bin2d}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -402,11 +406,11 @@ results with a histogram.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(diamonds_ok2, }\KeywordTok{aes}\NormalTok{(}\KeywordTok{abs}\NormalTok{(sym))) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds_ok2, }\KeywordTok{aes}\NormalTok{(}\KeywordTok{abs}\NormalTok{(sym))) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{binwidth =} \FloatTok{0.10}\NormalTok{)}
 
-\NormalTok{diamonds_ok3 <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(diamonds_ok2, }\KeywordTok{abs}\NormalTok{(sym) <}\StringTok{ }\FloatTok{0.20}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(diamonds_ok3, }\KeywordTok{aes}\NormalTok{(}\KeywordTok{abs}\NormalTok{(sym))) +}\StringTok{ }
+\NormalTok{diamonds_ok3 <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(diamonds_ok2, }\KeywordTok{abs}\NormalTok{(sym) }\OperatorTok{<}\StringTok{ }\FloatTok{0.20}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(diamonds_ok3, }\KeywordTok{aes}\NormalTok{(}\KeywordTok{abs}\NormalTok{(sym))) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{binwidth =} \FloatTok{0.01}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -420,7 +424,8 @@ That's an interesting histogram! While most diamonds are close to being
 symmetric there are very few that are perfectly symmetric (i.e.
 \texttt{x\ ==\ y}).
 
-\subsection{Useful tools}\label{useful-tools-1}
+\hypertarget{useful-tools-1}{%
+\subsection{Useful tools}\label{useful-tools-1}}
 
 Typically, transformations will be suggested by your domain knowledge.
 However, there are a few transformations that are useful in a
@@ -466,7 +471,8 @@ There are also a few useful ways to transform pairs of variables:
   (\texttt{atan2(y,\ x)}).
 \end{itemize}
 
-\subsection{Exercises}\label{exercises-1}
+\hypertarget{exercises-1}{%
+\subsection{Exercises}\label{exercises-1}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -500,7 +506,8 @@ There are also a few useful ways to transform pairs of variables:
   \(x < y\).
 \end{enumerate}
 
-\section{Group-wise summaries}\label{sec:summarise}
+\hypertarget{sec:summarise}{%
+\section{Group-wise summaries}\label{sec:summarise}}
 
 Many insightful visualisations require that you reduce the full dataset
 down to a meaningful summary. ggplot2 provides a number of geoms that
@@ -528,20 +535,19 @@ clarity, then summarise:
 \NormalTok{by_clarity <-}\StringTok{ }\KeywordTok{group_by}\NormalTok{(diamonds, clarity)}
 \NormalTok{sum_clarity <-}\StringTok{ }\KeywordTok{summarise}\NormalTok{(by_clarity, }\DataTypeTok{price =} \KeywordTok{mean}\NormalTok{(price))}
 \NormalTok{sum_clarity}
-\CommentTok{#> Source: local data frame [8 x 2]}
-\CommentTok{#> }
-\CommentTok{#>    clarity price}
-\CommentTok{#>     (fctr) (dbl)}
-\CommentTok{#> 1       I1  3924}
-\CommentTok{#> 2      SI2  5063}
-\CommentTok{#> 3      SI1  3996}
-\CommentTok{#> 4      VS2  3925}
-\CommentTok{#> 5      VS1  3839}
-\CommentTok{#> 6     VVS2  3284}
-\CommentTok{#> ..     ...   ...}
+\CommentTok{#> # A tibble: 8 x 2}
+\CommentTok{#>   clarity price}
+\CommentTok{#>   <ord>   <dbl>}
+\CommentTok{#> 1 I1       3924}
+\CommentTok{#> 2 SI2      5063}
+\CommentTok{#> 3 SI1      3996}
+\CommentTok{#> 4 VS2      3925}
+\CommentTok{#> 5 VS1      3839}
+\CommentTok{#> 6 VVS2     3284}
+\CommentTok{#> # ... with 2 more rows}
 
-\KeywordTok{ggplot}\NormalTok{(sum_clarity, }\KeywordTok{aes}\NormalTok{(clarity, price)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \DecValTok{1}\NormalTok{), }\DataTypeTok{colour =} \StringTok{"grey80"}\NormalTok{) +}
+\KeywordTok{ggplot}\NormalTok{(sum_clarity, }\KeywordTok{aes}\NormalTok{(clarity, price)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \DecValTok{1}\NormalTok{), }\DataTypeTok{colour =} \StringTok{"grey80"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -564,22 +570,21 @@ observations in each group.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{cut_depth <-}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\KeywordTok{group_by}\NormalTok{(diamonds, cut, depth), }\DataTypeTok{n =} \KeywordTok{n}\NormalTok{())}
-\NormalTok{cut_depth <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(cut_depth, depth >}\StringTok{ }\DecValTok{55}\NormalTok{, depth <}\StringTok{ }\DecValTok{70}\NormalTok{)}
+\NormalTok{cut_depth <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(cut_depth, depth }\OperatorTok{>}\StringTok{ }\DecValTok{55}\NormalTok{, depth }\OperatorTok{<}\StringTok{ }\DecValTok{70}\NormalTok{)}
 \NormalTok{cut_depth}
-\CommentTok{#> Source: local data frame [455 x 3]}
-\CommentTok{#> Groups: cut [5]}
-\CommentTok{#> }
-\CommentTok{#>       cut depth     n}
-\CommentTok{#>    (fctr) (dbl) (int)}
-\CommentTok{#> 1    Fair  55.1     3}
-\CommentTok{#> 2    Fair  55.2     6}
-\CommentTok{#> 3    Fair  55.3     5}
-\CommentTok{#> 4    Fair  55.4     2}
-\CommentTok{#> 5    Fair  55.5     3}
-\CommentTok{#> 6    Fair  55.6     4}
-\CommentTok{#> ..    ...   ...   ...}
+\CommentTok{#> # A tibble: 455 x 3}
+\CommentTok{#> # Groups: cut [5]}
+\CommentTok{#>   cut   depth     n}
+\CommentTok{#>   <ord> <dbl> <int>}
+\CommentTok{#> 1 Fair   55.1     3}
+\CommentTok{#> 2 Fair   55.2     6}
+\CommentTok{#> 3 Fair   55.3     5}
+\CommentTok{#> 4 Fair   55.4     2}
+\CommentTok{#> 5 Fair   55.5     3}
+\CommentTok{#> 6 Fair   55.6     4}
+\CommentTok{#> # ... with 449 more rows}
 
-\KeywordTok{ggplot}\NormalTok{(cut_depth, }\KeywordTok{aes}\NormalTok{(depth, n, }\DataTypeTok{colour =} \NormalTok{cut)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(cut_depth, }\KeywordTok{aes}\NormalTok{(depth, n, }\DataTypeTok{colour =}\NormalTok{ cut)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -596,8 +601,8 @@ cut.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{cut_depth <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(cut_depth, }\DataTypeTok{prop =} \NormalTok{n /}\StringTok{ }\KeywordTok{sum}\NormalTok{(n))}
-\KeywordTok{ggplot}\NormalTok{(cut_depth, }\KeywordTok{aes}\NormalTok{(depth, prop, }\DataTypeTok{colour =} \NormalTok{cut)) +}\StringTok{ }
+\NormalTok{cut_depth <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(cut_depth, }\DataTypeTok{prop =}\NormalTok{ n }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(n))}
+\KeywordTok{ggplot}\NormalTok{(cut_depth, }\KeywordTok{aes}\NormalTok{(depth, prop, }\DataTypeTok{colour =}\NormalTok{ cut)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -607,7 +612,8 @@ cut.
   \includegraphics[width=0.65\linewidth]{_figures/data-manip/freqpoly-scaled-1}
 \end{figure}
 
-\subsection{Useful tools}\label{useful-tools-2}
+\hypertarget{useful-tools-2}{%
+\subsection{Useful tools}\label{useful-tools-2}}
 
 \texttt{summarise()} needs to be used with functions that take a vector
 of \(n\) values and always return a single value. Those functions
@@ -639,13 +645,12 @@ or equal to 4, and the proportion of diamonds that cost less than
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{summarise}\NormalTok{(diamonds, }
-  \DataTypeTok{n_big =} \KeywordTok{sum}\NormalTok{(carat >=}\StringTok{ }\DecValTok{4}\NormalTok{), }
-  \DataTypeTok{prop_cheap =} \KeywordTok{mean}\NormalTok{(price <}\StringTok{ }\DecValTok{1000}\NormalTok{)}
+  \DataTypeTok{n_big =} \KeywordTok{sum}\NormalTok{(carat }\OperatorTok{>=}\StringTok{ }\DecValTok{4}\NormalTok{), }
+  \DataTypeTok{prop_cheap =} \KeywordTok{mean}\NormalTok{(price }\OperatorTok{<}\StringTok{ }\DecValTok{1000}\NormalTok{)}
 \NormalTok{)}
-\CommentTok{#> Source: local data frame [1 x 2]}
-\CommentTok{#> }
+\CommentTok{#> # A tibble: 1 x 2}
 \CommentTok{#>   n_big prop_cheap}
-\CommentTok{#>   (int)      (dbl)}
+\CommentTok{#>   <int>      <dbl>}
 \CommentTok{#> 1     6      0.269}
 \end{Highlighting}
 \end{Shaded}
@@ -656,8 +661,9 @@ values prior to summiarisation. This is a convenient shortcut: rather
 than removing the missing values then summarising, you can do it in one
 step.
 
+\hypertarget{statistical-considerations}{%
 \subsection{Statistical
-considerations}\label{statistical-considerations}
+considerations}\label{statistical-considerations}}
 
 When summarising with the mean or median, it's always a good idea to
 include a count and a measure of spread. This helps you calibrate your
@@ -673,30 +679,29 @@ that the mean is higher than the upper quartile for some of the groups!
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{by_clarity <-}\StringTok{ }\NormalTok{diamonds %>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(clarity) %>%}
+\NormalTok{by_clarity <-}\StringTok{ }\NormalTok{diamonds }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(clarity) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{summarise}\NormalTok{(}
     \DataTypeTok{n =} \KeywordTok{n}\NormalTok{(), }
     \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(price), }
     \DataTypeTok{lq =} \KeywordTok{quantile}\NormalTok{(price, }\FloatTok{0.25}\NormalTok{), }
     \DataTypeTok{uq =} \KeywordTok{quantile}\NormalTok{(price, }\FloatTok{0.75}\NormalTok{)}
-  \NormalTok{)}
+\NormalTok{  )}
 \NormalTok{by_clarity}
-\CommentTok{#> Source: local data frame [8 x 5]}
-\CommentTok{#> }
-\CommentTok{#>    clarity     n  mean    lq    uq}
-\CommentTok{#>     (fctr) (int) (dbl) (dbl) (dbl)}
-\CommentTok{#> 1       I1   741  3924  2080  5161}
-\CommentTok{#> 2      SI2  9194  5063  2264  5777}
-\CommentTok{#> 3      SI1 13065  3996  1089  5250}
-\CommentTok{#> 4      VS2 12258  3925   900  6024}
-\CommentTok{#> 5      VS1  8171  3839   876  6023}
-\CommentTok{#> 6     VVS2  5066  3284   794  3638}
-\CommentTok{#> ..     ...   ...   ...   ...   ...}
-\KeywordTok{ggplot}\NormalTok{(by_clarity, }\KeywordTok{aes}\NormalTok{(clarity, mean)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_linerange}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin =} \NormalTok{lq, }\DataTypeTok{ymax =} \NormalTok{uq)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \DecValTok{1}\NormalTok{), }\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{) +}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =} \NormalTok{n))}
+\CommentTok{#> # A tibble: 8 x 5}
+\CommentTok{#>   clarity     n  mean    lq    uq}
+\CommentTok{#>   <ord>   <int> <dbl> <dbl> <dbl>}
+\CommentTok{#> 1 I1        741  3924  2080  5161}
+\CommentTok{#> 2 SI2      9194  5063  2264  5777}
+\CommentTok{#> 3 SI1     13065  3996  1089  5250}
+\CommentTok{#> 4 VS2     12258  3925   900  6024}
+\CommentTok{#> 5 VS1      8171  3839   876  6023}
+\CommentTok{#> 6 VVS2     5066  3284   794  3638}
+\CommentTok{#> # ... with 2 more rows}
+\KeywordTok{ggplot}\NormalTok{(by_clarity, }\KeywordTok{aes}\NormalTok{(clarity, mean)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_linerange}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin =}\NormalTok{ lq, }\DataTypeTok{ymax =}\NormalTok{ uq)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \DecValTok{1}\NormalTok{), }\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =}\NormalTok{ n))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -713,12 +718,12 @@ according to this metric?
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{data}\NormalTok{(Batting, }\DataTypeTok{package =} \StringTok{"Lahman"}\NormalTok{)}
-\NormalTok{batters <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(Batting, AB >}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\NormalTok{batters <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(Batting, AB }\OperatorTok{>}\StringTok{ }\DecValTok{0}\NormalTok{)}
 \NormalTok{per_player <-}\StringTok{ }\KeywordTok{group_by}\NormalTok{(batters, playerID)}
 \NormalTok{ba <-}\StringTok{ }\KeywordTok{summarise}\NormalTok{(per_player, }
-  \DataTypeTok{ba =} \KeywordTok{sum}\NormalTok{(H, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) /}\StringTok{ }\KeywordTok{sum}\NormalTok{(AB, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+  \DataTypeTok{ba =} \KeywordTok{sum}\NormalTok{(H, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(AB, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
 \NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(ba, }\KeywordTok{aes}\NormalTok{(ba)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(ba, }\KeywordTok{aes}\NormalTok{(ba)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{binwidth =} \FloatTok{0.01}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -736,12 +741,13 @@ at bats:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{ba <-}\StringTok{ }\KeywordTok{summarise}\NormalTok{(per_player, }
-  \DataTypeTok{ba =} \KeywordTok{sum}\NormalTok{(H, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) /}\StringTok{ }\KeywordTok{sum}\NormalTok{(AB, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+  \DataTypeTok{ba =} \KeywordTok{sum}\NormalTok{(H, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(AB, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
   \DataTypeTok{ab =} \KeywordTok{sum}\NormalTok{(AB, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
 \NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(ba, }\KeywordTok{aes}\NormalTok{(ab, ba)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{(}\DataTypeTok{bins =} \DecValTok{100}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(ba, }\KeywordTok{aes}\NormalTok{(ab, ba)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{(}\DataTypeTok{bins =} \DecValTok{100}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{()}
+\CommentTok{#> `geom_smooth()` using method = 'gam'}
 \end{Highlighting}
 \end{Shaded}
 
@@ -757,9 +763,10 @@ getting rid of the players with less than 10 at bats.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{filter}\NormalTok{(ba, ab >=}\StringTok{ }\DecValTok{10}\NormalTok{), }\KeywordTok{aes}\NormalTok{(ab, ba)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{filter}\NormalTok{(ba, ab }\OperatorTok{>=}\StringTok{ }\DecValTok{10}\NormalTok{), }\KeywordTok{aes}\NormalTok{(ab, ba)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{()}
+\CommentTok{#> `geom_smooth()` using method = 'gam'}
 \end{Highlighting}
 \end{Shaded}
 
@@ -771,7 +778,8 @@ getting rid of the players with less than 10 at bats.
 You'll often see a similar pattern whenever you plot number of
 observations vs.~an average. Be aware!
 
-\subsection{Exercises}\label{exercises-2}
+\hypertarget{exercises-2}{%
+\subsection{Exercises}\label{exercises-2}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -794,7 +802,8 @@ observations vs.~an average. Be aware!
   number of at bats increases. Why?
 \end{enumerate}
 
-\section{Transformation pipelines}\label{transformation-pipelines}
+\hypertarget{transformation-pipelines}{%
+\section{Transformation pipelines}\label{transformation-pipelines}}
 
 Most real analyses require you to string together multiple
 \texttt{mutate()}s, \texttt{filter()}s, \texttt{group\_by()}s , and
@@ -806,8 +815,8 @@ polygon by hand with a combination of all four verbs: \indexc{\%>\%}
 \CommentTok{# By using intermediate values}
 \NormalTok{cut_depth <-}\StringTok{ }\KeywordTok{group_by}\NormalTok{(diamonds, cut, depth)}
 \NormalTok{cut_depth <-}\StringTok{ }\KeywordTok{summarise}\NormalTok{(cut_depth, }\DataTypeTok{n =} \KeywordTok{n}\NormalTok{())}
-\NormalTok{cut_depth <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(cut_depth, depth >}\StringTok{ }\DecValTok{55}\NormalTok{, depth <}\StringTok{ }\DecValTok{70}\NormalTok{)}
-\NormalTok{cut_depth <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(cut_depth, }\DataTypeTok{prop =} \NormalTok{n /}\StringTok{ }\KeywordTok{sum}\NormalTok{(n))}
+\NormalTok{cut_depth <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(cut_depth, depth }\OperatorTok{>}\StringTok{ }\DecValTok{55}\NormalTok{, depth }\OperatorTok{<}\StringTok{ }\DecValTok{70}\NormalTok{)}
+\NormalTok{cut_depth <-}\StringTok{ }\KeywordTok{mutate}\NormalTok{(cut_depth, }\DataTypeTok{prop =}\NormalTok{ n }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(n))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -822,16 +831,16 @@ one sequence of function calls:
   \KeywordTok{filter}\NormalTok{(}
     \KeywordTok{summarise}\NormalTok{(}
       \KeywordTok{group_by}\NormalTok{(}
-        \NormalTok{diamonds, }
-        \NormalTok{cut, }
-        \NormalTok{depth}
-      \NormalTok{), }
+\NormalTok{        diamonds, }
+\NormalTok{        cut, }
+\NormalTok{        depth}
+\NormalTok{      ), }
       \DataTypeTok{n =} \KeywordTok{n}\NormalTok{()}
-    \NormalTok{), }
-    \NormalTok{depth >}\StringTok{ }\DecValTok{55}\NormalTok{, }
-    \NormalTok{depth <}\StringTok{ }\DecValTok{70}
-  \NormalTok{), }
-  \DataTypeTok{prop =} \NormalTok{n /}\StringTok{ }\KeywordTok{sum}\NormalTok{(n)}
+\NormalTok{    ), }
+\NormalTok{    depth }\OperatorTok{>}\StringTok{ }\DecValTok{55}\NormalTok{, }
+\NormalTok{    depth }\OperatorTok{<}\StringTok{ }\DecValTok{70}
+\NormalTok{  ), }
+  \DataTypeTok{prop =}\NormalTok{ n }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(n)}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -844,11 +853,11 @@ sequence of operations as:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{cut_depth <-}\StringTok{ }\NormalTok{diamonds %>%}\StringTok{ }
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(cut, depth) %>%}\StringTok{ }
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n =} \KeywordTok{n}\NormalTok{()) %>%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(depth >}\StringTok{ }\DecValTok{55}\NormalTok{, depth <}\StringTok{ }\DecValTok{70}\NormalTok{) %>%}\StringTok{ }
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{prop =} \NormalTok{n /}\StringTok{ }\KeywordTok{sum}\NormalTok{(n))}
+\NormalTok{cut_depth <-}\StringTok{ }\NormalTok{diamonds }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(cut, depth) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(depth }\OperatorTok{>}\StringTok{ }\DecValTok{55}\NormalTok{, depth }\OperatorTok{<}\StringTok{ }\DecValTok{70}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{prop =}\NormalTok{ n }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(n))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -870,15 +879,16 @@ right hand side (RHS). Each of these pairs of calls is equivalent:
 \begin{Highlighting}[]
 \KeywordTok{f}\NormalTok{(x, y)}
 \CommentTok{# is the same as}
-\NormalTok{x %>%}\StringTok{ }\KeywordTok{f}\NormalTok{(y)}
+\NormalTok{x }\OperatorTok{%>%}\StringTok{ }\KeywordTok{f}\NormalTok{(y)}
 
 \KeywordTok{g}\NormalTok{(}\KeywordTok{f}\NormalTok{(x, y), z)}
 \CommentTok{# is the same as}
-\NormalTok{x %>%}\StringTok{ }\KeywordTok{f}\NormalTok{(y) %>%}\StringTok{ }\KeywordTok{g}\NormalTok{(z)}
+\NormalTok{x }\OperatorTok{%>%}\StringTok{ }\KeywordTok{f}\NormalTok{(y) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{g}\NormalTok{(z)}
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Exercises}\label{exercises-3}
+\hypertarget{exercises-3}{%
+\subsection{Exercises}\label{exercises-3}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -891,10 +901,10 @@ right hand side (RHS). Each of these pairs of calls is equivalent:
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(magrittr)}
 \NormalTok{x <-}\StringTok{ }\KeywordTok{runif}\NormalTok{(}\DecValTok{100}\NormalTok{)}
-\NormalTok{x %>%}
-\StringTok{  }\KeywordTok{subtract}\NormalTok{(}\KeywordTok{mean}\NormalTok{(.)) %>%}
-\StringTok{  }\KeywordTok{raise_to_power}\NormalTok{(}\DecValTok{2}\NormalTok{) %>%}
-\StringTok{  }\KeywordTok{mean}\NormalTok{() %>%}
+\NormalTok{x }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{subtract}\NormalTok{(}\KeywordTok{mean}\NormalTok{(.)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{raise_to_power}\NormalTok{(}\DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mean}\NormalTok{() }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{sqrt}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -903,7 +913,8 @@ right hand side (RHS). Each of these pairs of calls is equivalent:
   consistently good performance over the course of their career?
 \end{enumerate}
 
-\section{Learning more}\label{learning-more}
+\hypertarget{learning-more}{%
+\section{Learning more}\label{learning-more}}
 
 dplyr provides a number of other verbs that are less useful for
 visualisation, but important to know about in general:
@@ -939,11 +950,12 @@ Finally, RStudio provides a handy dplyr cheatsheet that will help jog
 your memory when you're wondering which function to use. Get it from
 \url{http://rstudio.com/cheatsheets}.
 
-\section*{References}\label{references}
+\hypertarget{references}{%
+\section*{References}\label{references}}
 \addcontentsline{toc}{section}{References}
 
 \hypertarget{refs}{}
-\hypertarget{ref-tornqvist:1985}{}
+\leavevmode\hypertarget{ref-tornqvist:1985}{}%
 Törnqvist, Leo, Pentti Vartia, and Yrjö O Vartia. 1985. ``How Should
-Relative Changes Be Measured?'' \emph{The American Statistician} 39 (1):
-43--46.
+Relative Changes Be Measured?'' \emph{The American Statistician} 39
+(1):43--46.

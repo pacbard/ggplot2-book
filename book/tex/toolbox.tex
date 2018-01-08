@@ -1,6 +1,8 @@
-\chapter{Toolbox}\label{cha:toolbox}
+\hypertarget{cha:toolbox}{%
+\chapter{Toolbox}\label{cha:toolbox}}
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 The layered structure of ggplot2 encourages you to design and construct
 graphics in a structured manner. You've learned the basics in the
@@ -94,7 +96,7 @@ techniques for visualising larger datasets:
 \item
   Dealing with overplotting in scatterplots, a challenge with large
   datasets,\\
-   \protect\hyperlink{sec:overplotting}{link to section}.
+  \protect\hyperlink{sec:overplotting}{link to section}.
 \item
   Displaying statistical summaries instead of the raw data,
   \protect\hyperlink{sec:summary}{link to section}.
@@ -104,7 +106,8 @@ The chapter concludes in \protect\hyperlink{sec:elsewhere}{other
 packages} with some pointers to other useful packages built on top of
 ggplot2.
 
-\hypertarget{sec:basics}{\section{Basic plot types}\label{sec:basics}}
+\hypertarget{sec:basics}{%
+\section{Basic plot types}\label{sec:basics}}
 
 These geoms are the fundamental building blocks of ggplot2. They are
 useful in their own right, but are also used to construct more complex
@@ -174,13 +177,13 @@ range of the data, and so push the axes out.
   \DataTypeTok{y =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{), }
   \DataTypeTok{label =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"b"}\NormalTok{,}\StringTok{"c"}\NormalTok{)}
 \NormalTok{)}
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{label =} \NormalTok{label)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{) +}\StringTok{ }\CommentTok{# Hide axis label}
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{label =}\NormalTok{ label)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{) }\OperatorTok{+}\StringTok{ }\CommentTok{# Hide axis label}
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{12}\NormalTok{)) }\CommentTok{# Shrink plot title}
-\NormalTok{p +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"point"}\NormalTok{)}
-\NormalTok{p +}\StringTok{ }\KeywordTok{geom_text}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"text"}\NormalTok{)}
-\NormalTok{p +}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{) +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"bar"}\NormalTok{)}
-\NormalTok{p +}\StringTok{ }\KeywordTok{geom_tile}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"raster"}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"point"}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_text}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"text"}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"bar"}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_tile}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"raster"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -193,10 +196,10 @@ range of the data, and so push the axes out.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{p +}\StringTok{ }\KeywordTok{geom_line}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"line"}\NormalTok{)}
-\NormalTok{p +}\StringTok{ }\KeywordTok{geom_area}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"area"}\NormalTok{)}
-\NormalTok{p +}\StringTok{ }\KeywordTok{geom_path}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"path"}\NormalTok{)}
-\NormalTok{p +}\StringTok{ }\KeywordTok{geom_polygon}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"polygon"}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_line}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"line"}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_area}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"area"}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_path}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"path"}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_polygon}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"polygon"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -207,7 +210,8 @@ range of the data, and so push the axes out.
   \includegraphics[width=0.25\linewidth]{_figures/toolbox/unnamed-chunk-2-4}
 \end{figure}
 
-\subsection{Exercises}\label{exercises}
+\hypertarget{exercises}{%
+\subsection{Exercises}\label{exercises}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -237,7 +241,8 @@ range of the data, and so push the axes out.
   about \texttt{geom\_boxplot()} and \texttt{geom\_violin()}?
 \end{enumerate}
 
-\hypertarget{sec:labelling}{\section{Labels}\label{sec:labelling}}
+\hypertarget{sec:labelling}{%
+\section{Labels}\label{sec:labelling}}
 
 \index{Labels} \index{Text} \indexf{geom\_text}
 
@@ -257,9 +262,9 @@ are so many ways to control the appearance of a text:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{3}\NormalTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{family =} \KeywordTok{c}\NormalTok{(}\StringTok{"sans"}\NormalTok{, }\StringTok{"serif"}\NormalTok{, }\StringTok{"mono"}\NormalTok{))}
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =} \NormalTok{family, }\DataTypeTok{family =} \NormalTok{family))}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{3}\OperatorTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{family =} \KeywordTok{c}\NormalTok{(}\StringTok{"sans"}\NormalTok{, }\StringTok{"serif"}\NormalTok{, }\StringTok{"mono"}\NormalTok{))}
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{ family, }\DataTypeTok{family =}\NormalTok{ family))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -291,9 +296,9 @@ are so many ways to control the appearance of a text:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{3}\NormalTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{face =} \KeywordTok{c}\NormalTok{(}\StringTok{"plain"}\NormalTok{, }\StringTok{"bold"}\NormalTok{, }\StringTok{"italic"}\NormalTok{))}
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =} \NormalTok{face, }\DataTypeTok{fontface =} \NormalTok{face))}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{3}\OperatorTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{face =} \KeywordTok{c}\NormalTok{(}\StringTok{"plain"}\NormalTok{, }\StringTok{"bold"}\NormalTok{, }\StringTok{"italic"}\NormalTok{))}
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{ face, }\DataTypeTok{fontface =}\NormalTok{ face))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -316,12 +321,12 @@ are so many ways to control the appearance of a text:
   \DataTypeTok{text =} \KeywordTok{c}\NormalTok{(}
     \StringTok{"bottom-left"}\NormalTok{, }\StringTok{"bottom-right"}\NormalTok{, }
     \StringTok{"top-left"}\NormalTok{, }\StringTok{"top-right"}\NormalTok{, }\StringTok{"center"}
-  \NormalTok{)}
+\NormalTok{  )}
 \NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}
-\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =} \NormalTok{text))}
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}
-\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =} \NormalTok{text), }\DataTypeTok{vjust =} \StringTok{"inward"}\NormalTok{, }\DataTypeTok{hjust =} \StringTok{"inward"}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{ text))}
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{ text), }\DataTypeTok{vjust =} \StringTok{"inward"}\NormalTok{, }\DataTypeTok{hjust =} \StringTok{"inward"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -356,9 +361,9 @@ all labels:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{trt =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{), }\DataTypeTok{resp =} \KeywordTok{c}\NormalTok{(}\FloatTok{1.2}\NormalTok{, }\FloatTok{3.4}\NormalTok{, }\FloatTok{2.5}\NormalTok{))}
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(resp, trt)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =} \KeywordTok{paste0}\NormalTok{(}\StringTok{"("}\NormalTok{, resp, }\StringTok{")"}\NormalTok{)), }\DataTypeTok{nudge_y =} \NormalTok{-}\FloatTok{0.25}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(resp, trt)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =} \KeywordTok{paste0}\NormalTok{(}\StringTok{"("}\NormalTok{, resp, }\StringTok{")"}\NormalTok{)), }\DataTypeTok{nudge_y =} \FloatTok{-0.25}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{1}\NormalTok{, }\FloatTok{3.6}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -378,11 +383,11 @@ all labels:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =} \NormalTok{model)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{ model)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{8}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =} \NormalTok{model), }\DataTypeTok{check_overlap =} \OtherTok{TRUE}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{ model), }\DataTypeTok{check_overlap =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{8}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -405,9 +410,9 @@ labels to plots with busy backgrounds: \indexf{geom\_label}
   \DataTypeTok{label =} \KeywordTok{c}\NormalTok{(}\StringTok{"peak one"}\NormalTok{, }\StringTok{"peak two"}\NormalTok{)}
 \NormalTok{)}
 
-\KeywordTok{ggplot}\NormalTok{(faithfuld, }\KeywordTok{aes}\NormalTok{(waiting, eruptions)) +}
-\StringTok{  }\KeywordTok{geom_tile}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{density)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_label}\NormalTok{(}\DataTypeTok{data =} \NormalTok{label, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =} \NormalTok{label))}
+\KeywordTok{ggplot}\NormalTok{(faithfuld, }\KeywordTok{aes}\NormalTok{(waiting, eruptions)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_tile}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ density)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_label}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ label, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{ label))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -445,12 +450,12 @@ easier: \index{directlabels}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \NormalTok{class)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
 
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \NormalTok{class)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{show.legend =} \OtherTok{FALSE}\NormalTok{) +}
-\StringTok{  }\NormalTok{directlabels::}\KeywordTok{geom_dl}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =} \NormalTok{class), }\DataTypeTok{method =} \StringTok{"smart.grid"}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{show.legend =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\NormalTok{directlabels}\OperatorTok{::}\KeywordTok{geom_dl}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{ class), }\DataTypeTok{method =} \StringTok{"smart.grid"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -465,7 +470,8 @@ methods that are more useful for frequency polygons and line plots. See
 the directlabels website,
 \url{http://directlabels.r-forge.r-project.org}, for other techniques.
 
-\hypertarget{sec:annotations}{\section{Annotations}\label{sec:annotations}}
+\hypertarget{sec:annotations}{%
+\section{Annotations}\label{sec:annotations}}
 
 Annotations add metadata to your plot. But metadata is just data, so you
 can use: \index{Annotation} \index{Metadata}
@@ -503,7 +509,7 @@ To show off the basic idea, we'll draw a time series of unemployment:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(date, unemploy)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(date, unemploy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -520,25 +526,25 @@ bottom (or left and right) limits of the plot. \indexc{Inf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{presidential <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(presidential, start >}\StringTok{ }\NormalTok{economics$date[}\DecValTok{1}\NormalTok{])}
+\NormalTok{presidential <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(presidential, start }\OperatorTok{>}\StringTok{ }\NormalTok{economics}\OperatorTok{$}\NormalTok{date[}\DecValTok{1}\NormalTok{])}
 
-\KeywordTok{ggplot}\NormalTok{(economics) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(economics) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_rect}\NormalTok{(}
-    \KeywordTok{aes}\NormalTok{(}\DataTypeTok{xmin =} \NormalTok{start, }\DataTypeTok{xmax =} \NormalTok{end, }\DataTypeTok{fill =} \NormalTok{party), }
-    \DataTypeTok{ymin =} \NormalTok{-}\OtherTok{Inf}\NormalTok{, }\DataTypeTok{ymax =} \OtherTok{Inf}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }
-    \DataTypeTok{data =} \NormalTok{presidential}
-  \NormalTok{) +}\StringTok{ }
+    \KeywordTok{aes}\NormalTok{(}\DataTypeTok{xmin =}\NormalTok{ start, }\DataTypeTok{xmax =}\NormalTok{ end, }\DataTypeTok{fill =}\NormalTok{ party), }
+    \DataTypeTok{ymin =} \OperatorTok{-}\OtherTok{Inf}\NormalTok{, }\DataTypeTok{ymax =} \OtherTok{Inf}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }
+    \DataTypeTok{data =}\NormalTok{ presidential}
+\NormalTok{  ) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_vline}\NormalTok{(}
     \KeywordTok{aes}\NormalTok{(}\DataTypeTok{xintercept =} \KeywordTok{as.numeric}\NormalTok{(start)), }
-    \DataTypeTok{data =} \NormalTok{presidential,}
+    \DataTypeTok{data =}\NormalTok{ presidential,}
     \DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.5}
-  \NormalTok{) +}\StringTok{ }
+\NormalTok{  ) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_text}\NormalTok{(}
-    \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{start, }\DataTypeTok{y =} \DecValTok{2500}\NormalTok{, }\DataTypeTok{label =} \NormalTok{name), }
-    \DataTypeTok{data =} \NormalTok{presidential, }
+    \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ start, }\DataTypeTok{y =} \DecValTok{2500}\NormalTok{, }\DataTypeTok{label =}\NormalTok{ name), }
+    \DataTypeTok{data =}\NormalTok{ presidential, }
     \DataTypeTok{size =} \DecValTok{3}\NormalTok{, }\DataTypeTok{vjust =} \DecValTok{0}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{0}\NormalTok{, }\DataTypeTok{nudge_x =} \DecValTok{50}
-  \NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(date, unemploy)) +}\StringTok{ }
+\NormalTok{  ) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(date, unemploy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"red"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -552,18 +558,18 @@ it's a bit fiddly because you have to create a one row data frame:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{yrng <-}\StringTok{ }\KeywordTok{range}\NormalTok{(economics$unemploy)}
-\NormalTok{xrng <-}\StringTok{ }\KeywordTok{range}\NormalTok{(economics$date)}
+\NormalTok{yrng <-}\StringTok{ }\KeywordTok{range}\NormalTok{(economics}\OperatorTok{$}\NormalTok{unemploy)}
+\NormalTok{xrng <-}\StringTok{ }\KeywordTok{range}\NormalTok{(economics}\OperatorTok{$}\NormalTok{date)}
 \NormalTok{caption <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(}\KeywordTok{strwrap}\NormalTok{(}\StringTok{"Unemployment rates in the US have }
 \StringTok{  varied a lot over the years"}\NormalTok{, }\DecValTok{40}\NormalTok{), }\DataTypeTok{collapse =} \StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
 
-\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(date, unemploy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(date, unemploy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_text}\NormalTok{(}
-    \KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{label =} \NormalTok{caption), }
-    \DataTypeTok{data =} \KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \NormalTok{xrng[}\DecValTok{1}\NormalTok{], }\DataTypeTok{y =} \NormalTok{yrng[}\DecValTok{2}\NormalTok{], }\DataTypeTok{caption =} \NormalTok{caption), }
+    \KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{label =}\NormalTok{ caption), }
+    \DataTypeTok{data =} \KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ xrng[}\DecValTok{1}\NormalTok{], }\DataTypeTok{y =}\NormalTok{ yrng[}\DecValTok{2}\NormalTok{], }\DataTypeTok{caption =}\NormalTok{ caption), }
     \DataTypeTok{hjust =} \DecValTok{0}\NormalTok{, }\DataTypeTok{vjust =} \DecValTok{1}\NormalTok{, }\DataTypeTok{size =} \DecValTok{4}
-  \NormalTok{)}
+\NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
 
@@ -572,11 +578,11 @@ the data frame for you: \indexf{annotate}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(date, unemploy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \NormalTok{xrng[}\DecValTok{1}\NormalTok{], }\DataTypeTok{y =} \NormalTok{yrng[}\DecValTok{2}\NormalTok{], }\DataTypeTok{label =} \NormalTok{caption,}
+\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(date, unemploy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{x =}\NormalTok{ xrng[}\DecValTok{1}\NormalTok{], }\DataTypeTok{y =}\NormalTok{ yrng[}\DecValTok{2}\NormalTok{], }\DataTypeTok{label =}\NormalTok{ caption,}
     \DataTypeTok{hjust =} \DecValTok{0}\NormalTok{, }\DataTypeTok{vjust =} \DecValTok{1}\NormalTok{, }\DataTypeTok{size =} \DecValTok{4}
-  \NormalTok{)}
+\NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
 
@@ -590,9 +596,9 @@ to see the subtle differences if we add a reference line.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(}\KeywordTok{log10}\NormalTok{(carat), }\KeywordTok{log10}\NormalTok{(price))) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(~cut, }\DataTypeTok{nrow =} \DecValTok{1}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(}\KeywordTok{log10}\NormalTok{(carat), }\KeywordTok{log10}\NormalTok{(price))) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{cut, }\DataTypeTok{nrow =} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -603,12 +609,12 @@ to see the subtle differences if we add a reference line.
 \begin{Shaded}
 \begin{Highlighting}[]
 
-\NormalTok{mod_coef <-}\StringTok{ }\KeywordTok{coef}\NormalTok{(}\KeywordTok{lm}\NormalTok{(}\KeywordTok{log10}\NormalTok{(price) ~}\StringTok{ }\KeywordTok{log10}\NormalTok{(carat), }\DataTypeTok{data =} \NormalTok{diamonds))}
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(}\KeywordTok{log10}\NormalTok{(carat), }\KeywordTok{log10}\NormalTok{(price))) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_abline}\NormalTok{(}\DataTypeTok{intercept =} \NormalTok{mod_coef[}\DecValTok{1}\NormalTok{], }\DataTypeTok{slope =} \NormalTok{mod_coef[}\DecValTok{2}\NormalTok{], }
-    \DataTypeTok{colour =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{1}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(~cut, }\DataTypeTok{nrow =} \DecValTok{1}\NormalTok{)}
+\NormalTok{mod_coef <-}\StringTok{ }\KeywordTok{coef}\NormalTok{(}\KeywordTok{lm}\NormalTok{(}\KeywordTok{log10}\NormalTok{(price) }\OperatorTok{~}\StringTok{ }\KeywordTok{log10}\NormalTok{(carat), }\DataTypeTok{data =}\NormalTok{ diamonds))}
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(}\KeywordTok{log10}\NormalTok{(carat), }\KeywordTok{log10}\NormalTok{(price))) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_abline}\NormalTok{(}\DataTypeTok{intercept =}\NormalTok{ mod_coef[}\DecValTok{1}\NormalTok{], }\DataTypeTok{slope =}\NormalTok{ mod_coef[}\DecValTok{2}\NormalTok{], }
+    \DataTypeTok{colour =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{cut, }\DataTypeTok{nrow =} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -616,8 +622,8 @@ to see the subtle differences if we add a reference line.
   \includegraphics[width=1\linewidth]{_figures/toolbox/unnamed-chunk-6-2}
 \end{figure}
 
-\hypertarget{sec:grouping}{\section{Collective
-geoms}\label{sec:grouping}}
+\hypertarget{sec:grouping}{%
+\section{Collective geoms}\label{sec:grouping}}
 
 Geoms can be roughly divided into individual and collective geoms. An
 \textbf{individual} geom draws a distinct graphical object for each
@@ -659,8 +665,9 @@ as ordered factors. \index{nlme} \index{Data!Oxboys@\texttt{Oxboys}}
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{multiple-groups-one-aesthetic}{%
 \subsection{Multiple groups, one
-aesthetic}\label{multiple-groups-one-aesthetic}
+aesthetic}\label{multiple-groups-one-aesthetic}}
 
 In many situations, you want to separate your data into groups, but
 render them in the same way. In other words, you want to be able to
@@ -672,8 +679,8 @@ shows the growth trajectory for each boy (each \texttt{Subject}):
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(age, height, }\DataTypeTok{group =} \NormalTok{Subject)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(age, height, }\DataTypeTok{group =}\NormalTok{ Subject)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -688,8 +695,8 @@ characteristic sawtooth appearance:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(age, height)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(age, height)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -705,8 +712,9 @@ them, e.g.
 \texttt{aes(group\ =\ interaction(school\_id,\ student\_id))}.
 \indexf{interaction}
 
+\hypertarget{different-groups-on-different-layers}{%
 \subsection{Different groups on different
-layers}\label{different-groups-on-different-layers}
+layers}\label{different-groups-on-different-layers}}
 
 Sometimes we want to plot summaries that use different levels of
 aggregation: one layer might display individuals, while another displays
@@ -717,8 +725,8 @@ If we use the same grouping in both layers, we get one smooth per boy:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(age, height, }\DataTypeTok{group =} \NormalTok{Subject)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(age, height, }\DataTypeTok{group =}\NormalTok{ Subject)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -741,8 +749,8 @@ smooth:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(age, height)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{Subject)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(age, height)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ Subject)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{2}\NormalTok{, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -752,8 +760,9 @@ smooth:
   \includegraphics[width=0.6\linewidth]{_figures/toolbox/layer19-1}
 \end{figure}
 
+\hypertarget{overriding-the-default-grouping}{%
 \subsection{Overriding the default
-grouping}\label{overriding-the-default-grouping}
+grouping}\label{overriding-the-default-grouping}}
 
 Some plots have a discrete x scale, but you still want to draw lines
 connecting \emph{across} groups. This is the strategy used in
@@ -763,7 +772,7 @@ measurement occasion: \indexf{geom\_boxplot}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(Occasion, height)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(Occasion, height)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -781,8 +790,8 @@ each subject:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(Occasion, height)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{() +}
+\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(Occasion, height)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"#3366FF"}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -797,9 +806,9 @@ one line per boy:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(Occasion, height)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{() +}
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{Subject), }\DataTypeTok{colour =} \StringTok{"#3366FF"}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.5}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(Oxboys, }\KeywordTok{aes}\NormalTok{(Occasion, height)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ Subject), }\DataTypeTok{colour =} \StringTok{"#3366FF"}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -808,7 +817,8 @@ one line per boy:
   \includegraphics[width=0.6\linewidth]{_figures/toolbox/oxbox-line-1}
 \end{figure}
 
-\subsection{Matching aesthetics to graphic objects}\label{sub:matching}
+\hypertarget{sub:matching}{%
+\subsection{Matching aesthetics to graphic objects}\label{sub:matching}}
 
 A final important issue with collective geoms is how the aesthetics of
 the individual observations are mapped to the aesthetics of the complete
@@ -823,14 +833,14 @@ observation is not used:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{colour =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{))}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{colour =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{))}
 
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{colour =} \KeywordTok{factor}\NormalTok{(colour))) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \DecValTok{1}\NormalTok{), }\DataTypeTok{size =} \DecValTok{2}\NormalTok{) +}
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{colour =} \KeywordTok{factor}\NormalTok{(colour))) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \DecValTok{1}\NormalTok{), }\DataTypeTok{size =} \DecValTok{2}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \DecValTok{5}\NormalTok{)}
 
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{colour =} \NormalTok{colour)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \DecValTok{1}\NormalTok{), }\DataTypeTok{size =} \DecValTok{2}\NormalTok{) +}
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{colour =}\NormalTok{ colour)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \DecValTok{1}\NormalTok{), }\DataTypeTok{size =} \DecValTok{2}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \DecValTok{5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -850,13 +860,13 @@ the linear interpolation yourself:
 \begin{Highlighting}[]
 \NormalTok{xgrid <-}\StringTok{ }\KeywordTok{with}\NormalTok{(df, }\KeywordTok{seq}\NormalTok{(}\KeywordTok{min}\NormalTok{(x), }\KeywordTok{max}\NormalTok{(x), }\DataTypeTok{length =} \DecValTok{50}\NormalTok{))}
 \NormalTok{interp <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}
-  \DataTypeTok{x =} \NormalTok{xgrid,}
-  \DataTypeTok{y =} \KeywordTok{approx}\NormalTok{(df$x, df$y, }\DataTypeTok{xout =} \NormalTok{xgrid)$y,}
-  \DataTypeTok{colour =} \KeywordTok{approx}\NormalTok{(df$x, df$colour, }\DataTypeTok{xout =} \NormalTok{xgrid)$y  }
+  \DataTypeTok{x =}\NormalTok{ xgrid,}
+  \DataTypeTok{y =} \KeywordTok{approx}\NormalTok{(df}\OperatorTok{$}\NormalTok{x, df}\OperatorTok{$}\NormalTok{y, }\DataTypeTok{xout =}\NormalTok{ xgrid)}\OperatorTok{$}\NormalTok{y,}
+  \DataTypeTok{colour =} \KeywordTok{approx}\NormalTok{(df}\OperatorTok{$}\NormalTok{x, df}\OperatorTok{$}\NormalTok{colour, }\DataTypeTok{xout =}\NormalTok{ xgrid)}\OperatorTok{$}\NormalTok{y  }
 \NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(interp, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{colour =} \NormalTok{colour)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{size =} \DecValTok{2}\NormalTok{) +}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data =} \NormalTok{df, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(interp, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{colour =}\NormalTok{ colour)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{size =} \DecValTok{2}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -884,9 +894,9 @@ the original ungrouped data:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(class)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(class)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_bar}\NormalTok{()}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(class, }\DataTypeTok{fill =} \NormalTok{drv)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(class, }\DataTypeTok{fill =}\NormalTok{ drv)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_bar}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -905,9 +915,9 @@ overriding the grouping:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(class, }\DataTypeTok{fill =} \NormalTok{hwy)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(class, }\DataTypeTok{fill =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_bar}\NormalTok{()}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(class, }\DataTypeTok{fill =} \NormalTok{hwy, }\DataTypeTok{group =} \NormalTok{hwy)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(class, }\DataTypeTok{fill =}\NormalTok{ hwy, }\DataTypeTok{group =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_bar}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -921,7 +931,8 @@ The bars will be stacked in the order defined by the grouping variable.
 If you need fine control, you'll need to create a factor with levels
 ordered as needed.
 
-\subsection{Exercises}\label{exercises-1}
+\hypertarget{exercises-1}{%
+\subsection{Exercises}\label{exercises-1}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -935,7 +946,7 @@ ordered as needed.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, cty)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, cty)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -950,15 +961,15 @@ ordered as needed.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_bar}\NormalTok{()}
 
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, }\DataTypeTok{fill =} \NormalTok{hwy, }\DataTypeTok{group =} \NormalTok{hwy)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, }\DataTypeTok{fill =}\NormalTok{ hwy, }\DataTypeTok{group =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_bar}\NormalTok{()}
 
 \KeywordTok{library}\NormalTok{(dplyr)  }
-\NormalTok{mpg2 <-}\StringTok{ }\NormalTok{mpg %>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(hwy) %>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{id =} \KeywordTok{seq_along}\NormalTok{(hwy)) }
-\KeywordTok{ggplot}\NormalTok{(mpg2, }\KeywordTok{aes}\NormalTok{(drv, }\DataTypeTok{fill =} \NormalTok{hwy, }\DataTypeTok{group =} \NormalTok{id)) +}\StringTok{ }
+\NormalTok{mpg2 <-}\StringTok{ }\NormalTok{mpg }\OperatorTok{%>%}\StringTok{ }\KeywordTok{arrange}\NormalTok{(hwy) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{id =} \KeywordTok{seq_along}\NormalTok{(hwy)) }
+\KeywordTok{ggplot}\NormalTok{(mpg2, }\KeywordTok{aes}\NormalTok{(drv, }\DataTypeTok{fill =}\NormalTok{ hwy, }\DataTypeTok{group =}\NormalTok{ id)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_bar}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -973,14 +984,15 @@ ordered as needed.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(babynames)}
-\NormalTok{hadley <-}\StringTok{ }\NormalTok{dplyr::}\KeywordTok{filter}\NormalTok{(babynames, name ==}\StringTok{ "Hadley"}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(hadley, }\KeywordTok{aes}\NormalTok{(year, n)) +}\StringTok{ }
+\NormalTok{hadley <-}\StringTok{ }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{filter}\NormalTok{(babynames, name }\OperatorTok{==}\StringTok{ "Hadley"}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(hadley, }\KeywordTok{aes}\NormalTok{(year, n)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 \end{enumerate}
 
-\hypertarget{sec:surface}{\section{Surface plots}\label{sec:surface}}
+\hypertarget{sec:surface}{%
+\section{Surface plots}\label{sec:surface}}
 
 ggplot2 does not support true 3d surfaces. However, it does support many
 common tools for representing 3d surfaces in 2d: contours, coloured
@@ -990,11 +1002,11 @@ aesthetic used for the third dimension. \index{Surface plots}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(faithfuld, }\KeywordTok{aes}\NormalTok{(eruptions, waiting)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_contour}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{z =} \NormalTok{density, }\DataTypeTok{colour =} \NormalTok{..level..))}
+\KeywordTok{ggplot}\NormalTok{(faithfuld, }\KeywordTok{aes}\NormalTok{(eruptions, waiting)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_contour}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{z =}\NormalTok{ density, }\DataTypeTok{colour =}\NormalTok{ ..level..))}
 
-\KeywordTok{ggplot}\NormalTok{(faithfuld, }\KeywordTok{aes}\NormalTok{(eruptions, waiting)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_raster}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{density))}
+\KeywordTok{ggplot}\NormalTok{(faithfuld, }\KeywordTok{aes}\NormalTok{(eruptions, waiting)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_raster}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ density))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1007,8 +1019,8 @@ aesthetic used for the third dimension. \index{Surface plots}
 \begin{Highlighting}[]
 \CommentTok{# Bubble plots work better with fewer observations}
 \NormalTok{small <-}\StringTok{ }\NormalTok{faithfuld[}\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\KeywordTok{nrow}\NormalTok{(faithfuld), }\DataTypeTok{by =} \DecValTok{10}\NormalTok{), ]}
-\KeywordTok{ggplot}\NormalTok{(small, }\KeywordTok{aes}\NormalTok{(eruptions, waiting)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =} \NormalTok{density), }\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{/}\DecValTok{3}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(small, }\KeywordTok{aes}\NormalTok{(eruptions, waiting)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =}\NormalTok{ density), }\DataTypeTok{alpha =} \DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_size_area}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -1020,7 +1032,8 @@ aesthetic used for the third dimension. \index{Surface plots}
 For interactive 3d plots, including true 3d surfaces, see RGL,
 \url{http://rgl.neoscientists.org/about.shtml}.
 
-\hypertarget{sec:maps}{\section{Drawing maps}\label{sec:maps}}
+\hypertarget{sec:maps}{%
+\section{Drawing maps}\label{sec:maps}}
 
 \index{Maps!geoms} \index{Data!spatial}
 
@@ -1034,7 +1047,8 @@ look at.
 I'll illustrate each of the four types of map data with some maps of
 Michigan.
 
-\subsection{Vector boundaries}\label{vector-boundaries}
+\hypertarget{vector-boundaries}{%
+\subsection{Vector boundaries}\label{vector-boundaries}}
 
 Vector boundaries are defined by a data frame with one row for each
 ``corner'' of a geographical region like a country, state, or county. It
@@ -1062,8 +1076,8 @@ to start. \indexf{map\_data}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mi_counties <-}\StringTok{ }\KeywordTok{map_data}\NormalTok{(}\StringTok{"county"}\NormalTok{, }\StringTok{"michigan"}\NormalTok{) %>%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(}\DataTypeTok{lon =} \NormalTok{long, lat, group, }\DataTypeTok{id =} \NormalTok{subregion)}
+\NormalTok{mi_counties <-}\StringTok{ }\KeywordTok{map_data}\NormalTok{(}\StringTok{"county"}\NormalTok{, }\StringTok{"michigan"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\DataTypeTok{lon =}\NormalTok{ long, lat, group, }\DataTypeTok{id =}\NormalTok{ subregion)}
 \KeywordTok{head}\NormalTok{(mi_counties)}
 \CommentTok{#>     lon  lat group     id}
 \CommentTok{#> 1 -83.9 44.9     1 alcona}
@@ -1080,12 +1094,12 @@ You can visualise vector boundary data with \texttt{geom\_polygon()}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mi_counties, }\KeywordTok{aes}\NormalTok{(lon, lat)) +}
-\StringTok{  }\KeywordTok{geom_polygon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{group)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mi_counties, }\KeywordTok{aes}\NormalTok{(lon, lat)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_polygon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{coord_quickmap}\NormalTok{()}
 
-\KeywordTok{ggplot}\NormalTok{(mi_counties, }\KeywordTok{aes}\NormalTok{(lon, lat)) +}
-\StringTok{  }\KeywordTok{geom_polygon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{group), }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mi_counties, }\KeywordTok{aes}\NormalTok{(lon, lat)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_polygon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group), }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{coord_quickmap}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -1115,7 +1129,7 @@ Other useful sources of vector boundary data are:
 \item
   The rnaturalearth package bundles up the free, high-quality data from
   \url{http://naturalearthdata.com/}. It contains country borders, and
-  borders for the top-level region within each country (e.g. states in
+  borders for the top-level region within each country ( e.g.~states in
   the USA, regions in France, counties in the UK).
 \item
   The osmar package, \url{https://cran.r-project.org/package=osmar}
@@ -1144,8 +1158,8 @@ package. You can convert them into a data frame with \texttt{fortify()}:
 \CommentTok{#> 5 -87.5  35     5 FALSE     1  4   4.1}
 \CommentTok{#> 6 -87.3  35     6 FALSE     1  4   4.1}
 
-\KeywordTok{ggplot}\NormalTok{(c18df, }\KeywordTok{aes}\NormalTok{(long, lat)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_polygon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{group), }\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{, }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{) +}
+\KeywordTok{ggplot}\NormalTok{(c18df, }\KeywordTok{aes}\NormalTok{(long, lat)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_polygon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group), }\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{, }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{coord_quickmap}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -1154,7 +1168,8 @@ package. You can convert them into a data frame with \texttt{fortify()}:
   \includegraphics[width=0.5\linewidth]{_figures/toolbox/unnamed-chunk-15-1}
 \end{figure}
 
-\subsection{Point metadata}\label{point-metadata}
+\hypertarget{point-metadata}{%
+\subsection{Point metadata}\label{point-metadata}}
 
 Point metadata connects locations (defined by lat and lon) with other
 variables. For example, the code below extracts the biggest cities in MI
@@ -1162,23 +1177,22 @@ variables. For example, the code below extracts the biggest cities in MI
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mi_cities <-}\StringTok{ }\NormalTok{maps::us.cities %>%}\StringTok{ }
-\StringTok{  }\KeywordTok{tbl_df}\NormalTok{() %>%}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(country.etc ==}\StringTok{ "MI"}\NormalTok{) %>%}
-\StringTok{  }\KeywordTok{select}\NormalTok{(-country.etc, }\DataTypeTok{lon =} \NormalTok{long) %>%}
+\NormalTok{mi_cities <-}\StringTok{ }\NormalTok{maps}\OperatorTok{::}\NormalTok{us.cities }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{tbl_df}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(country.etc }\OperatorTok{==}\StringTok{ "MI"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{country.etc, }\DataTypeTok{lon =}\NormalTok{ long) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(pop))}
 \NormalTok{mi_cities}
-\CommentTok{#> Source: local data frame [36 x 5]}
-\CommentTok{#> }
-\CommentTok{#>                   name    pop   lat   lon capital}
-\CommentTok{#>                  (chr)  (int) (dbl) (dbl)   (int)}
-\CommentTok{#> 1           Detroit MI 871789  42.4 -83.1       0}
-\CommentTok{#> 2      Grand Rapids MI 193006  43.0 -85.7       0}
-\CommentTok{#> 3            Warren MI 132537  42.5 -83.0       0}
-\CommentTok{#> 4  Sterling Heights MI 127027  42.6 -83.0       0}
-\CommentTok{#> 5           Lansing MI 117236  42.7 -84.5       2}
-\CommentTok{#> 6             Flint MI 115691  43.0 -83.7       0}
-\CommentTok{#> ..                 ...    ...   ...   ...     ...}
+\CommentTok{#> # A tibble: 36 x 5}
+\CommentTok{#>   name                   pop   lat   lon capital}
+\CommentTok{#>   <chr>                <int> <dbl> <dbl>   <int>}
+\CommentTok{#> 1 Detroit MI          871789  42.4 -83.1       0}
+\CommentTok{#> 2 Grand Rapids MI     193006  43.0 -85.7       0}
+\CommentTok{#> 3 Warren MI           132537  42.5 -83.0       0}
+\CommentTok{#> 4 Sterling Heights MI 127027  42.6 -83.0       0}
+\CommentTok{#> 5 Lansing MI          117236  42.7 -84.6       2}
+\CommentTok{#> 6 Flint MI            115691  43.0 -83.7       0}
+\CommentTok{#> # ... with 30 more rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1188,15 +1202,15 @@ another layer to make it interpretable.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mi_cities, }\KeywordTok{aes}\NormalTok{(lon, lat)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =} \NormalTok{pop)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_size_area}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mi_cities, }\KeywordTok{aes}\NormalTok{(lon, lat)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =}\NormalTok{ pop)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_size_area}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{coord_quickmap}\NormalTok{()}
 
-\KeywordTok{ggplot}\NormalTok{(mi_cities, }\KeywordTok{aes}\NormalTok{(lon, lat)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_polygon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{group), mi_counties, }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{) +}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =} \NormalTok{pop), }\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_size_area}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mi_cities, }\KeywordTok{aes}\NormalTok{(lon, lat)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_polygon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ group), mi_counties, }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =}\NormalTok{ pop), }\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_size_area}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{coord_quickmap}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -1206,7 +1220,8 @@ another layer to make it interpretable.
   \includegraphics[width=0.5\linewidth]{_figures/toolbox/unnamed-chunk-17-2}
 \end{figure}
 
-\subsection{Raster images}\label{raster-images}
+\hypertarget{raster-images}{%
+\subsection{Raster images}\label{raster-images}}
 
 Instead of displaying context with vector boundaries, you might want to
 draw a traditional map underneath. This is called a raster image. The
@@ -1218,14 +1233,14 @@ file. \index{ggmap} \index{Raster data}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{if (}\KeywordTok{file.exists}\NormalTok{(}\StringTok{"mi_raster.rds"}\NormalTok{)) \{}
-  \NormalTok{mi_raster <-}\StringTok{ }\KeywordTok{readRDS}\NormalTok{(}\StringTok{"mi_raster.rds"}\NormalTok{)}
-\NormalTok{\} else \{}
-  \NormalTok{bbox <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}
-    \KeywordTok{min}\NormalTok{(mi_counties$lon), }\KeywordTok{min}\NormalTok{(mi_counties$lat), }
-    \KeywordTok{max}\NormalTok{(mi_counties$lon), }\KeywordTok{max}\NormalTok{(mi_counties$lat)}
-  \NormalTok{)}
-  \NormalTok{mi_raster <-}\StringTok{ }\NormalTok{ggmap::}\KeywordTok{get_openstreetmap}\NormalTok{(bbox, }\DataTypeTok{scale =} \DecValTok{8735660}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{ (}\KeywordTok{file.exists}\NormalTok{(}\StringTok{"mi_raster.rds"}\NormalTok{)) \{}
+\NormalTok{  mi_raster <-}\StringTok{ }\KeywordTok{readRDS}\NormalTok{(}\StringTok{"mi_raster.rds"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{  bbox <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}
+    \KeywordTok{min}\NormalTok{(mi_counties}\OperatorTok{$}\NormalTok{lon), }\KeywordTok{min}\NormalTok{(mi_counties}\OperatorTok{$}\NormalTok{lat), }
+    \KeywordTok{max}\NormalTok{(mi_counties}\OperatorTok{$}\NormalTok{lon), }\KeywordTok{max}\NormalTok{(mi_counties}\OperatorTok{$}\NormalTok{lat)}
+\NormalTok{  )}
+\NormalTok{  mi_raster <-}\StringTok{ }\NormalTok{ggmap}\OperatorTok{::}\KeywordTok{get_openstreetmap}\NormalTok{(bbox, }\DataTypeTok{scale =} \DecValTok{8735660}\NormalTok{)}
   \KeywordTok{saveRDS}\NormalTok{(mi_raster, }\StringTok{"mi_raster.rds"}\NormalTok{)}
 \NormalTok{\}}
 \end{Highlighting}
@@ -1238,10 +1253,10 @@ You can then plot it with:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ggmap::}\KeywordTok{ggmap}\NormalTok{(mi_raster)}
+\NormalTok{ggmap}\OperatorTok{::}\KeywordTok{ggmap}\NormalTok{(mi_raster)}
 
-\NormalTok{ggmap::}\KeywordTok{ggmap}\NormalTok{(mi_raster) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =} \NormalTok{pop), mi_cities, }\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{) +}\StringTok{ }
+\NormalTok{ggmap}\OperatorTok{::}\KeywordTok{ggmap}\NormalTok{(mi_raster) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =}\NormalTok{ pop), mi_cities, }\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_size_area}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -1251,15 +1266,16 @@ the form needed by ggplot2 with the following code:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(raster::}\KeywordTok{rasterToPoints}\NormalTok{(x))}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(raster}\OperatorTok{::}\KeywordTok{rasterToPoints}\NormalTok{(x))}
 \KeywordTok{names}\NormalTok{(df) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"lon"}\NormalTok{, }\StringTok{"lat"}\NormalTok{, }\StringTok{"x"}\NormalTok{)}
 
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(lon, lat)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_raster}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{x))}
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(lon, lat)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_raster}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ x))}
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Area metadata}\label{area-metadata}
+\hypertarget{area-metadata}{%
+\subsection{Area metadata}\label{area-metadata}}
 
 Sometimes metadata is associated not with a point, but with an area. For
 example, we can create \texttt{mi\_census} which provides census
@@ -1267,23 +1283,22 @@ information about each county in MI:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mi_census <-}\StringTok{ }\NormalTok{midwest %>%}
-\StringTok{  }\KeywordTok{tbl_df}\NormalTok{() %>%}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(state ==}\StringTok{ "MI"}\NormalTok{) %>%}\StringTok{ }
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{county =} \KeywordTok{tolower}\NormalTok{(county)) %>%}
+\NormalTok{mi_census <-}\StringTok{ }\NormalTok{midwest }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{tbl_df}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(state }\OperatorTok{==}\StringTok{ "MI"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{county =} \KeywordTok{tolower}\NormalTok{(county)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{select}\NormalTok{(county, area, poptotal, percwhite, percblack)}
 \NormalTok{mi_census}
-\CommentTok{#> Source: local data frame [83 x 5]}
-\CommentTok{#> }
-\CommentTok{#>     county  area poptotal percwhite percblack}
-\CommentTok{#>      (chr) (dbl)    (int)     (dbl)     (dbl)}
-\CommentTok{#> 1   alcona 0.041    10145      98.8     0.266}
-\CommentTok{#> 2    alger 0.051     8972      93.9     2.374}
-\CommentTok{#> 3  allegan 0.049    90509      95.9     1.600}
-\CommentTok{#> 4   alpena 0.034    30605      99.2     0.114}
-\CommentTok{#> 5   antrim 0.031    18185      98.4     0.126}
-\CommentTok{#> 6   arenac 0.021    14931      98.4     0.067}
-\CommentTok{#> ..     ...   ...      ...       ...       ...}
+\CommentTok{#> # A tibble: 83 x 5}
+\CommentTok{#>   county    area poptotal percwhite percblack}
+\CommentTok{#>   <chr>    <dbl>    <int>     <dbl>     <dbl>}
+\CommentTok{#> 1 alcona  0.0410    10145      98.8    0.266 }
+\CommentTok{#> 2 alger   0.0510     8972      93.9    2.37  }
+\CommentTok{#> 3 allegan 0.0490    90509      95.9    1.60  }
+\CommentTok{#> 4 alpena  0.0340    30605      99.2    0.114 }
+\CommentTok{#> 5 antrim  0.0310    18185      98.4    0.126 }
+\CommentTok{#> 6 arenac  0.0210    14931      98.4    0.0670}
+\CommentTok{#> # ... with 77 more rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1295,26 +1310,25 @@ combine the two datasets and create a choropleth map. \index{Choropleth}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{census_counties <-}\StringTok{ }\KeywordTok{left_join}\NormalTok{(mi_census, mi_counties, }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"county"} \NormalTok{=}\StringTok{ "id"}\NormalTok{))}
+\NormalTok{census_counties <-}\StringTok{ }\KeywordTok{left_join}\NormalTok{(mi_census, mi_counties, }\DataTypeTok{by =} \KeywordTok{c}\NormalTok{(}\StringTok{"county"}\NormalTok{ =}\StringTok{ "id"}\NormalTok{))}
 \NormalTok{census_counties}
-\CommentTok{#> Source: local data frame [1,472 x 8]}
-\CommentTok{#> }
-\CommentTok{#>    county  area poptotal percwhite percblack   lon   lat group}
-\CommentTok{#>     (chr) (dbl)    (int)     (dbl)     (dbl) (dbl) (dbl) (dbl)}
-\CommentTok{#> 1  alcona 0.041    10145      98.8     0.266 -83.9  44.9     1}
-\CommentTok{#> 2  alcona 0.041    10145      98.8     0.266 -83.4  44.9     1}
-\CommentTok{#> 3  alcona 0.041    10145      98.8     0.266 -83.4  44.9     1}
-\CommentTok{#> 4  alcona 0.041    10145      98.8     0.266 -83.3  44.8     1}
-\CommentTok{#> 5  alcona 0.041    10145      98.8     0.266 -83.3  44.8     1}
-\CommentTok{#> 6  alcona 0.041    10145      98.8     0.266 -83.3  44.8     1}
-\CommentTok{#> ..    ...   ...      ...       ...       ...   ...   ...   ...}
+\CommentTok{#> # A tibble: 1,472 x 8}
+\CommentTok{#>   county   area poptotal percwhite percblack   lon   lat group}
+\CommentTok{#>   <chr>   <dbl>    <int>     <dbl>     <dbl> <dbl> <dbl> <dbl>}
+\CommentTok{#> 1 alcona 0.0410    10145      98.8     0.266 -83.9  44.9  1.00}
+\CommentTok{#> 2 alcona 0.0410    10145      98.8     0.266 -83.4  44.9  1.00}
+\CommentTok{#> 3 alcona 0.0410    10145      98.8     0.266 -83.4  44.9  1.00}
+\CommentTok{#> 4 alcona 0.0410    10145      98.8     0.266 -83.3  44.8  1.00}
+\CommentTok{#> 5 alcona 0.0410    10145      98.8     0.266 -83.3  44.8  1.00}
+\CommentTok{#> 6 alcona 0.0410    10145      98.8     0.266 -83.3  44.8  1.00}
+\CommentTok{#> # ... with 1,466 more rows}
 
-\KeywordTok{ggplot}\NormalTok{(census_counties, }\KeywordTok{aes}\NormalTok{(lon, lat, }\DataTypeTok{group =} \NormalTok{county)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_polygon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{poptotal)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(census_counties, }\KeywordTok{aes}\NormalTok{(lon, lat, }\DataTypeTok{group =}\NormalTok{ county)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_polygon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ poptotal)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{coord_quickmap}\NormalTok{()}
 
-\KeywordTok{ggplot}\NormalTok{(census_counties, }\KeywordTok{aes}\NormalTok{(lon, lat, }\DataTypeTok{group =} \NormalTok{county)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_polygon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{percwhite)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(census_counties, }\KeywordTok{aes}\NormalTok{(lon, lat, }\DataTypeTok{group =}\NormalTok{ county)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_polygon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ percwhite)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{coord_quickmap}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -1324,8 +1338,8 @@ combine the two datasets and create a choropleth map. \index{Choropleth}
   \includegraphics[width=0.5\linewidth]{_figures/toolbox/unnamed-chunk-22-2}
 \end{figure}
 
-\hypertarget{sec:uncertainty}{\section{Revealing
-uncertainty}\label{sec:uncertainty}}
+\hypertarget{sec:uncertainty}{%
+\section{Revealing uncertainty}\label{sec:uncertainty}}
 
 If you have information about the uncertainty present in your data,
 whether it be from a model or from distributional assumptions, it's a
@@ -1360,12 +1374,12 @@ to determine the range of the y values. If you want the opposite, see
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{y <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{18}\NormalTok{, }\DecValTok{11}\NormalTok{, }\DecValTok{16}\NormalTok{)}
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \NormalTok{y, }\DataTypeTok{se =} \KeywordTok{c}\NormalTok{(}\FloatTok{1.2}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{1.0}\NormalTok{))}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ y, }\DataTypeTok{se =} \KeywordTok{c}\NormalTok{(}\FloatTok{1.2}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{1.0}\NormalTok{))}
 
-\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{ymin =} \NormalTok{y -}\StringTok{ }\NormalTok{se, }\DataTypeTok{ymax =} \NormalTok{y +}\StringTok{ }\NormalTok{se))}
-\NormalTok{base +}\StringTok{ }\KeywordTok{geom_crossbar}\NormalTok{()}
-\NormalTok{base +}\StringTok{ }\KeywordTok{geom_pointrange}\NormalTok{()}
-\NormalTok{base +}\StringTok{ }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{)}
+\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{ymin =}\NormalTok{ y }\OperatorTok{-}\StringTok{ }\NormalTok{se, }\DataTypeTok{ymax =}\NormalTok{ y }\OperatorTok{+}\StringTok{ }\NormalTok{se))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_crossbar}\NormalTok{()}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_pointrange}\NormalTok{()}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1377,9 +1391,9 @@ to determine the range of the y values. If you want the opposite, see
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base +}\StringTok{ }\KeywordTok{geom_errorbar}\NormalTok{()}
-\NormalTok{base +}\StringTok{ }\KeywordTok{geom_linerange}\NormalTok{()}
-\NormalTok{base +}\StringTok{ }\KeywordTok{geom_ribbon}\NormalTok{()}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_errorbar}\NormalTok{()}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_linerange}\NormalTok{()}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_ribbon}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1397,8 +1411,8 @@ described below, otherwise you will have to do it yourself.
 advice on extracting confidence intervals from more sophisticated
 models.
 
-\hypertarget{sec:weighting}{\section{Weighted
-data}\label{sec:weighting}}
+\hypertarget{sec:weighting}{%
+\section{Weighted data}\label{sec:weighting}}
 
 When you have aggregated data where each row in the dataset represents
 multiple observations, you need some way to take into account the
@@ -1430,12 +1444,12 @@ Firstly, for simple geoms like lines and points, use the size aesthetic:
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Unweighted}
-\KeywordTok{ggplot}\NormalTok{(midwest, }\KeywordTok{aes}\NormalTok{(percwhite, percbelowpoverty)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(midwest, }\KeywordTok{aes}\NormalTok{(percwhite, percbelowpoverty)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
 
 \CommentTok{# Weight by population}
-\KeywordTok{ggplot}\NormalTok{(midwest, }\KeywordTok{aes}\NormalTok{(percwhite, percbelowpoverty)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =} \NormalTok{poptotal /}\StringTok{ }\FloatTok{1e6}\NormalTok{)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(midwest, }\KeywordTok{aes}\NormalTok{(percwhite, percbelowpoverty)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =}\NormalTok{ poptotal }\OperatorTok{/}\StringTok{ }\FloatTok{1e6}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_size_area}\NormalTok{(}\StringTok{"Population}\CharTok{\textbackslash{}n}\StringTok{(millions)"}\NormalTok{, }\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -1458,14 +1472,14 @@ between percent white and percent below the poverty line.
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Unweighted}
-\KeywordTok{ggplot}\NormalTok{(midwest, }\KeywordTok{aes}\NormalTok{(percwhite, percbelowpoverty)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \NormalTok{lm, }\DataTypeTok{size =} \DecValTok{1}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(midwest, }\KeywordTok{aes}\NormalTok{(percwhite, percbelowpoverty)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =}\NormalTok{ lm, }\DataTypeTok{size =} \DecValTok{1}\NormalTok{)}
 
 \CommentTok{# Weighted by population}
-\KeywordTok{ggplot}\NormalTok{(midwest, }\KeywordTok{aes}\NormalTok{(percwhite, percbelowpoverty)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =} \NormalTok{poptotal /}\StringTok{ }\FloatTok{1e6}\NormalTok{)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{weight =} \NormalTok{poptotal), }\DataTypeTok{method =} \NormalTok{lm, }\DataTypeTok{size =} \DecValTok{1}\NormalTok{) +}
+\KeywordTok{ggplot}\NormalTok{(midwest, }\KeywordTok{aes}\NormalTok{(percwhite, percbelowpoverty)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{size =}\NormalTok{ poptotal }\OperatorTok{/}\StringTok{ }\FloatTok{1e6}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{weight =}\NormalTok{ poptotal), }\DataTypeTok{method =}\NormalTok{ lm, }\DataTypeTok{size =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_size_area}\NormalTok{(}\DataTypeTok{guide =} \StringTok{"none"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1483,13 +1497,14 @@ poverty line: \index{Histogram!weighted}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(midwest, }\KeywordTok{aes}\NormalTok{(percbelowpoverty)) +}
-\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{binwidth =} \DecValTok{1}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(midwest, }\KeywordTok{aes}\NormalTok{(percbelowpoverty)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{binwidth =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Counties"}\NormalTok{)}
 
-\KeywordTok{ggplot}\NormalTok{(midwest, }\KeywordTok{aes}\NormalTok{(percbelowpoverty)) +}
-\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{weight =} \NormalTok{poptotal), }\DataTypeTok{binwidth =} \DecValTok{1}\NormalTok{) +}
+\KeywordTok{ggplot}\NormalTok{(midwest, }\KeywordTok{aes}\NormalTok{(percbelowpoverty)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{weight =}\NormalTok{ poptotal), }\DataTypeTok{binwidth =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Population (1000s)"}\NormalTok{)}
+\CommentTok{#> Warning: Ignoring unknown aesthetics: weight}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1498,7 +1513,8 @@ poverty line: \index{Histogram!weighted}
   \includegraphics[width=0.5\linewidth]{_figures/toolbox/weight-hist-2}
 \end{figure}
 
-\hypertarget{sec:diamonds}{\section{Diamonds data}\label{sec:diamonds}}
+\hypertarget{sec:diamonds}{%
+\section{Diamonds data}\label{sec:diamonds}}
 
 To demonstrate tools for large datasets, we'll use the built in
 \texttt{diamonds} dataset, which consists of price and quality
@@ -1507,18 +1523,16 @@ information for \textasciitilde{}54,000 diamonds:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{diamonds}
-\CommentTok{#> Source: local data frame [53,940 x 10]}
-\CommentTok{#> }
-\CommentTok{#>    carat       cut  color clarity depth table price     x     y}
-\CommentTok{#>    (dbl)    (fctr) (fctr)  (fctr) (dbl) (dbl) (int) (dbl) (dbl)}
-\CommentTok{#> 1   0.23     Ideal      E     SI2  61.5    55   326  3.95  3.98}
-\CommentTok{#> 2   0.21   Premium      E     SI1  59.8    61   326  3.89  3.84}
-\CommentTok{#> 3   0.23      Good      E     VS1  56.9    65   327  4.05  4.07}
-\CommentTok{#> 4   0.29   Premium      I     VS2  62.4    58   334  4.20  4.23}
-\CommentTok{#> 5   0.31      Good      J     SI2  63.3    58   335  4.34  4.35}
-\CommentTok{#> 6   0.24 Very Good      J    VVS2  62.8    57   336  3.94  3.96}
-\CommentTok{#> ..   ...       ...    ...     ...   ...   ...   ...   ...   ...}
-\CommentTok{#> Variables not shown: z (dbl)}
+\CommentTok{#> # A tibble: 53,940 x 10}
+\CommentTok{#>   carat cut       color clari~ depth table price     x     y     z}
+\CommentTok{#>   <dbl> <ord>     <ord> <ord>  <dbl> <dbl> <int> <dbl> <dbl> <dbl>}
+\CommentTok{#> 1 0.230 Ideal     E     SI2     61.5  55.0   326  3.95  3.98  2.43}
+\CommentTok{#> 2 0.210 Premium   E     SI1     59.8  61.0   326  3.89  3.84  2.31}
+\CommentTok{#> 3 0.230 Good      E     VS1     56.9  65.0   327  4.05  4.07  2.31}
+\CommentTok{#> 4 0.290 Premium   I     VS2     62.4  58.0   334  4.20  4.23  2.63}
+\CommentTok{#> 5 0.310 Good      J     SI2     63.3  58.0   335  4.34  4.35  2.75}
+\CommentTok{#> 6 0.240 Very Good J     VVS2    62.8  57.0   336  3.94  3.96  2.48}
+\CommentTok{#> # ... with 5.393e+04 more rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1538,8 +1552,8 @@ The dataset has not been well cleaned, so as well as demonstrating
 interesting facts about diamonds, it also shows some data quality
 problems.
 
-\hypertarget{sec:distributions}{\section{Displaying
-distributions}\label{sec:distributions}}
+\hypertarget{sec:distributions}{%
+\section{Displaying distributions}\label{sec:distributions}}
 
 There are a number of geoms that can be used to display distributions,
 depending on the dimensionality of the distribution, whether it is
@@ -1551,12 +1565,12 @@ histogram, \texttt{geom\_histogram()}: \indexf{geom\_histogram}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(depth)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(depth)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_histogram}\NormalTok{()}
 \CommentTok{#> `stat_bin()` using `bins = 30`. Pick better value with}
 \CommentTok{#> `binwidth`.}
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(depth)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{binwidth =} \FloatTok{0.1}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(depth)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{binwidth =} \FloatTok{0.1}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{55}\NormalTok{, }\DecValTok{70}\NormalTok{)}
 \CommentTok{#> Warning: Removed 45 rows containing non-finite values (stat_bin).}
 \end{Highlighting}
@@ -1603,14 +1617,14 @@ you can see the strongest patterns. \indexf{position\_fill}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(depth)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_freqpoly}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{cut), }\DataTypeTok{binwidth =} \FloatTok{0.1}\NormalTok{, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) +}
-\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{58}\NormalTok{, }\DecValTok{68}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(depth)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_freqpoly}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ cut), }\DataTypeTok{binwidth =} \FloatTok{0.1}\NormalTok{, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{58}\NormalTok{, }\DecValTok{68}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(depth)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{cut), }\DataTypeTok{binwidth =} \FloatTok{0.1}\NormalTok{, }\DataTypeTok{position =} \StringTok{"fill"}\NormalTok{,}
-    \DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) +}
-\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{58}\NormalTok{, }\DecValTok{68}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(depth)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ cut), }\DataTypeTok{binwidth =} \FloatTok{0.1}\NormalTok{, }\DataTypeTok{position =} \StringTok{"fill"}\NormalTok{,}
+    \DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{58}\NormalTok{, }\DecValTok{68}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1641,13 +1655,13 @@ make the density more or less smooth. \index{Density plot}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(depth)) +}
-\StringTok{  }\KeywordTok{geom_density}\NormalTok{(}\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{58}\NormalTok{, }\DecValTok{68}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(depth)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_density}\NormalTok{(}\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{58}\NormalTok{, }\DecValTok{68}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(depth, }\DataTypeTok{fill =} \NormalTok{cut, }\DataTypeTok{colour =} \NormalTok{cut)) +}
-\StringTok{  }\KeywordTok{geom_density}\NormalTok{(}\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{58}\NormalTok{, }\DecValTok{68}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(depth, }\DataTypeTok{fill =}\NormalTok{ cut, }\DataTypeTok{colour =}\NormalTok{ cut)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_density}\NormalTok{(}\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{58}\NormalTok{, }\DecValTok{68}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1679,10 +1693,10 @@ sacrifice quality for quantity. Here are three options:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(clarity, depth)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(clarity, depth)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{()}
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(carat, depth)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \KeywordTok{cut_width}\NormalTok{(carat, }\FloatTok{0.1}\NormalTok{))) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(carat, depth)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \KeywordTok{cut_width}\NormalTok{(carat, }\FloatTok{0.1}\NormalTok{))) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{xlim}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\FloatTok{2.05}\NormalTok{)}
 \CommentTok{#> Warning: Removed 997 rows containing non-finite values}
 \CommentTok{#> (stat_boxplot).}
@@ -1701,10 +1715,10 @@ sacrifice quality for quantity. Here are three options:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(clarity, depth)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(clarity, depth)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_violin}\NormalTok{()}
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(carat, depth)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_violin}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \KeywordTok{cut_width}\NormalTok{(carat, }\FloatTok{0.1}\NormalTok{))) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(carat, depth)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_violin}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \KeywordTok{cut_width}\NormalTok{(carat, }\FloatTok{0.1}\NormalTok{))) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{xlim}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\FloatTok{2.05}\NormalTok{)}
 \CommentTok{#> Warning: Removed 997 rows containing non-finite values}
 \CommentTok{#> (stat_ydensity).}
@@ -1722,7 +1736,8 @@ sacrifice quality for quantity. Here are three options:
   \indexf{geom\_dotplot} \index{Dot plot}
 \end{itemize}
 
-\subsection{Exercises}\label{exercises-2}
+\hypertarget{exercises-2}{%
+\subsection{Exercises}\label{exercises-2}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1742,8 +1757,8 @@ sacrifice quality for quantity. Here are three options:
   \texttt{geom\_density()}.)
 \end{enumerate}
 
-\hypertarget{sec:overplotting}{\section{Dealing with
-overplotting}\label{sec:overplotting}}
+\hypertarget{sec:overplotting}{%
+\section{Dealing with overplotting}\label{sec:overplotting}}
 
 The scatterplot is a very important tool for assessing the relationship
 between two continuous variables. However, when the data is large,
@@ -1767,10 +1782,10 @@ for smaller datasets:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{rnorm}\NormalTok{(}\DecValTok{2000}\NormalTok{), }\DataTypeTok{y =} \KeywordTok{rnorm}\NormalTok{(}\DecValTok{2000}\NormalTok{))}
-\NormalTok{norm <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) +}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\OtherTok{NULL}\NormalTok{)}
-\NormalTok{norm +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
-\NormalTok{norm +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{shape =} \DecValTok{1}\NormalTok{) }\CommentTok{# Hollow circles}
-\NormalTok{norm +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{shape =} \StringTok{"."}\NormalTok{) }\CommentTok{# Pixel sized}
+\NormalTok{norm <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\OtherTok{NULL}\NormalTok{)}
+\NormalTok{norm }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\NormalTok{norm }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{shape =} \DecValTok{1}\NormalTok{) }\CommentTok{# Hollow circles}
+\NormalTok{norm }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{shape =} \StringTok{"."}\NormalTok{) }\CommentTok{# Pixel sized}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1790,9 +1805,9 @@ for smaller datasets:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{norm +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1} \NormalTok{/}\StringTok{ }\DecValTok{3}\NormalTok{)}
-\NormalTok{norm +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1} \NormalTok{/}\StringTok{ }\DecValTok{5}\NormalTok{)}
-\NormalTok{norm +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1} \NormalTok{/}\StringTok{ }\DecValTok{10}\NormalTok{)}
+\NormalTok{norm }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{3}\NormalTok{)}
+\NormalTok{norm }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{5}\NormalTok{)}
+\NormalTok{norm }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{10}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1819,9 +1834,9 @@ problem, which gives rise to two more approaches:
   Bin the points and count the number in each bin, then visualise that
   count (the 2d generalisation of the histogram),
   \texttt{geom\_bin2d()}. Breaking the plot into many small squares can
-  produce distracting visual artefacts. (D. B. Carr et al. 1987)
-  suggests using hexagons instead, and this is implemented in
-  \texttt{geom\_hex()}, using the \textbf{hexbin} package (D. Carr,
+  produce distracting visual artefacts. (Carr et al. 1987) suggests
+  using hexagons instead, and this is implemented in
+  \texttt{geom\_hex()}, using the \textbf{hexbin} package (Carr,
   Lewin-Koh, and Mächler 2014). \index{hexbin}
 
   The code below compares square and hexagonal bins, using parameters
@@ -1831,8 +1846,8 @@ problem, which gives rise to two more approaches:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{norm +}\StringTok{ }\KeywordTok{geom_bin2d}\NormalTok{()}
-\NormalTok{norm +}\StringTok{ }\KeywordTok{geom_bin2d}\NormalTok{(}\DataTypeTok{bins =} \DecValTok{10}\NormalTok{)}
+\NormalTok{norm }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_bin2d}\NormalTok{()}
+\NormalTok{norm }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_bin2d}\NormalTok{(}\DataTypeTok{bins =} \DecValTok{10}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1843,8 +1858,8 @@ problem, which gives rise to two more approaches:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{norm +}\StringTok{ }\KeywordTok{geom_hex}\NormalTok{()}
-\NormalTok{norm +}\StringTok{ }\KeywordTok{geom_hex}\NormalTok{(}\DataTypeTok{bins =} \DecValTok{10}\NormalTok{)}
+\NormalTok{norm }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_hex}\NormalTok{()}
+\NormalTok{norm }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_hex}\NormalTok{(}\DataTypeTok{bins =} \DecValTok{10}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1867,8 +1882,8 @@ to help guide the eye to the true shape of the pattern within the data.
 For example, you could add a smooth line showing the centre of the data
 with \texttt{geom\_smooth()} or use one of the summaries below.
 
-\hypertarget{sec:summary}{\section{Statistical
-summaries}\label{sec:summary}}
+\hypertarget{sec:summary}{%
+\section{Statistical summaries}\label{sec:summary}}
 
 \indexf{stat\_summary\_bin} \indexf{stat\_summary\_2d}
 \index{Stats!summary}
@@ -1889,11 +1904,11 @@ each bin; the second shows how we can compute the average price.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(color)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(color)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_bar}\NormalTok{()}
 
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(color, price)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"summary_bin"}\NormalTok{, }\DataTypeTok{fun.y =} \NormalTok{mean)}
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(color, price)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"summary_bin"}\NormalTok{, }\DataTypeTok{fun.y =}\NormalTok{ mean)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1904,15 +1919,15 @@ each bin; the second shows how we can compute the average price.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(table, depth)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{(}\DataTypeTok{binwidth =} \DecValTok{1}\NormalTok{, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{70}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(table, depth)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{(}\DataTypeTok{binwidth =} \DecValTok{1}\NormalTok{, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{70}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{ylim}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{70}\NormalTok{)}
 
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(table, depth, }\DataTypeTok{z =} \NormalTok{price)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_raster}\NormalTok{(}\DataTypeTok{binwidth =} \DecValTok{1}\NormalTok{, }\DataTypeTok{stat =} \StringTok{"summary_2d"}\NormalTok{, }\DataTypeTok{fun =} \NormalTok{mean, }
-    \DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{70}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(table, depth, }\DataTypeTok{z =}\NormalTok{ price)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_raster}\NormalTok{(}\DataTypeTok{binwidth =} \DecValTok{1}\NormalTok{, }\DataTypeTok{stat =} \StringTok{"summary_2d"}\NormalTok{, }\DataTypeTok{fun =}\NormalTok{ mean, }
+    \DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{70}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{ylim}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{70}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1937,8 +1952,8 @@ to do the summaries yourself. See
 \protect\hyperlink{sec:summarise}{group-wise summaries} for more
 details.
 
-\hypertarget{sec:elsewhere}{\section{Add-on
-packages}\label{sec:elsewhere}}
+\hypertarget{sec:elsewhere}{%
+\section{Add-on packages}\label{sec:elsewhere}}
 
 If the built-in tools in ggplot2 don't do what you need, you might want
 to use a special purpose tool built into one of the packages built on
@@ -1994,15 +2009,16 @@ book was published include:
 A great place to track new extensions is
 \url{http://www.ggplot2-exts.org}, by Daniel Emaasit.
 
-\section*{References}\label{references}
+\hypertarget{references}{%
+\section*{References}\label{references}}
 \addcontentsline{toc}{section}{References}
 
 \hypertarget{refs}{}
-\hypertarget{ref-carr:1987}{}
+\leavevmode\hypertarget{ref-carr:1987}{}%
 Carr, D. B., R. J. Littlefield, W. L. Nicholson, and J. S. Littlefield.
 1987. ``Scatterplot Matrix Techniques for Large N.'' \emph{Journal of
-the American Statistical Association} 82 (398): 424--36.
+the American Statistical Association} 82 (398):424--36.
 
-\hypertarget{ref-hexbin}{}
+\leavevmode\hypertarget{ref-hexbin}{}%
 Carr, Dan, Nicholas Lewin-Koh, and Martin Mächler. 2014. \emph{Hexbin:
 Hexagonal Binning Routines}.

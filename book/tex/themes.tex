@@ -1,6 +1,8 @@
-\chapter{Themes}\label{cha:polishing}
+\hypertarget{cha:polishing}{%
+\chapter{Themes}\label{cha:polishing}}
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 In this chapter you will learn how to use the ggplot2 theme system,
 which allows you to exercise fine control over the non-data elements of
@@ -47,8 +49,8 @@ For example, imagine you've made the following plot of your data.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy, }\DataTypeTok{color =} \KeywordTok{factor}\NormalTok{(cyl))) +}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{() +}\StringTok{ }
+\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy, }\DataTypeTok{color =} \KeywordTok{factor}\NormalTok{(cyl))) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_abline}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{2}\NormalTok{)}
 \NormalTok{base}
 \end{Highlighting}
@@ -82,13 +84,13 @@ Fortunately you know how to do that already because you've read
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{labelled <-}\StringTok{ }\NormalTok{base +}
+\NormalTok{labelled <-}\StringTok{ }\NormalTok{base }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}
     \DataTypeTok{x =} \StringTok{"City mileage/gallon"}\NormalTok{,}
     \DataTypeTok{y =} \StringTok{"Highway mileage/gallon"}\NormalTok{,}
     \DataTypeTok{colour =} \StringTok{"Cylinders"}\NormalTok{,}
     \DataTypeTok{title =} \StringTok{"Highway and city mileage are highly correlated"}
-  \NormalTok{) +}
+\NormalTok{  ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_colour_brewer}\NormalTok{(}\DataTypeTok{type =} \StringTok{"seq"}\NormalTok{, }\DataTypeTok{palette =} \StringTok{"Spectral"}\NormalTok{)}
 \NormalTok{labelled}
 \end{Highlighting}
@@ -120,8 +122,8 @@ those changes, as shown below:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{styled <-}\StringTok{ }\NormalTok{labelled +}
-\StringTok{  }\KeywordTok{theme_bw}\NormalTok{() +}\StringTok{ }
+\NormalTok{styled <-}\StringTok{ }\NormalTok{labelled }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme_bw}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}
     \DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{face =} \StringTok{"bold"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{12}\NormalTok{),}
     \DataTypeTok{legend.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{4}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"white"}\NormalTok{),}
@@ -130,7 +132,7 @@ those changes, as shown below:
     \DataTypeTok{axis.ticks =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey70"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{0.2}\NormalTok{),}
     \DataTypeTok{panel.grid.major =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey70"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{0.2}\NormalTok{),}
     \DataTypeTok{panel.grid.minor =} \KeywordTok{element_blank}\NormalTok{()}
-  \NormalTok{)}
+\NormalTok{  )}
 \NormalTok{styled}
 \end{Highlighting}
 \end{Shaded}
@@ -144,20 +146,21 @@ Finally, the journal wants the figure as a 600 dpi TIFF file. You'll
 learn the fine details of \texttt{ggsave()} in
 \protect\hyperlink{sec:saving}{saving your output}.
 
-\section{Complete themes}\label{sec:themes}
+\hypertarget{sec:themes}{%
+\section{Complete themes}\label{sec:themes}}
 
 ggplot2 comes with a number of built in themes. The most important is
 \texttt{theme\_grey()}, the signature ggplot2 theme with a light grey
 background and white gridlines. The theme is designed to put the data
 forward while supporting comparisons, following the advice of (Tufte
-2006; Brewer 1994; Carr 2002; Carr 1994; Carr and Sun 1999). We can
-still see the gridlines to aid in the judgement of position (Cleveland
-1993), but they have little visual impact and we can easily `tune' them
-out. The grey background gives the plot a similar typographic colour to
-the text, ensuring that the graphics fit in with the flow of a document
-without jumping out with a bright white background. Finally, the grey
-background creates a continuous field of colour which ensures that the
-plot is perceived as a single visual entity. \index{Themes!built-in}
+2006; Brewer 1994; Carr 2002, 1994; Carr and Sun 1999). We can still see
+the gridlines to aid in the judgement of position (Cleveland 1993), but
+they have little visual impact and we can easily `tune' them out. The
+grey background gives the plot a similar typographic colour to the text,
+ensuring that the graphics fit in with the flow of a document without
+jumping out with a bright white background. Finally, the grey background
+creates a continuous field of colour which ensures that the plot is
+perceived as a single visual entity. \index{Themes!built-in}
 \indexf{theme\_grey}
 
 There are seven other themes built in to ggplot2 1.1.0:
@@ -190,11 +193,11 @@ There are seven other themes built in to ggplot2 1.1.0:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{)}
-\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme_grey}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_grey()"}\NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme_bw}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_bw()"}\NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme_linedraw}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_linedraw()"}\NormalTok{)}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)}
+\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_grey}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_grey()"}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_bw}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_bw()"}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_linedraw}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_linedraw()"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -206,9 +209,9 @@ There are seven other themes built in to ggplot2 1.1.0:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme_light}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_light()"}\NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme_dark}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_dark()"}\NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme_minimal}\NormalTok{()  +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_minimal()"}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_light}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_light()"}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_dark}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_dark()"}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_minimal}\NormalTok{()  }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_minimal()"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -220,8 +223,8 @@ There are seven other themes built in to ggplot2 1.1.0:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme_classic}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_classic()"}\NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme_void}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_void()"}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_classic}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_classic()"}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_void}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_void()"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -248,9 +251,9 @@ favourites from ggthemes: \index{ggtheme}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(ggthemes)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme_tufte}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_tufte()"}\NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme_solarized}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_solarized()"}\NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme_excel}\NormalTok{() +}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_excel()"}\NormalTok{) }\CommentTok{# ;)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_tufte}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_tufte()"}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_solarized}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_solarized()"}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_excel}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"theme_excel()"}\NormalTok{) }\CommentTok{# ;)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -265,7 +268,8 @@ of control. To modify individual elements, you need to use
 \texttt{theme()} to override the default setting for an element with an
 element function.
 
-\subsection{Exercises}\label{exercises}
+\hypertarget{exercises}{%
+\subsection{Exercises}\label{exercises}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -279,7 +283,8 @@ element function.
   they most resemble? What are the main differences?
 \end{enumerate}
 
-\section{Modifying theme components}\label{modifying-theme-components}
+\hypertarget{modifying-theme-components}{%
+\section{Modifying theme components}\label{modifying-theme-components}}
 
 To modify an individual theme component you use code like
 \texttt{plot\ +\ theme(element.name\ =\ element\_function())}. In this
@@ -303,10 +308,10 @@ that control the appearance:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base_t <-}\StringTok{ }\NormalTok{base +}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"This is a ggplot"}\NormalTok{) +}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) +}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\OtherTok{NULL}\NormalTok{)}
-\NormalTok{base_t +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{16}\NormalTok{))}
-\NormalTok{base_t +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{face =} \StringTok{"bold"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{))}
-\NormalTok{base_t +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{))}
+\NormalTok{base_t <-}\StringTok{ }\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"This is a ggplot"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\OtherTok{NULL}\NormalTok{)}
+\NormalTok{base_t }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{16}\NormalTok{))}
+\NormalTok{base_t }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{face =} \StringTok{"bold"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{))}
+\NormalTok{base_t }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -325,9 +330,9 @@ that control the appearance:
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# The margins here look asymmetric because there are also plot margins}
-\NormalTok{base_t +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{margin =} \KeywordTok{margin}\NormalTok{()))}
-\NormalTok{base_t +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{margin =} \KeywordTok{margin}\NormalTok{(}\DataTypeTok{t =} \DecValTok{10}\NormalTok{, }\DataTypeTok{b =} \DecValTok{10}\NormalTok{)))}
-\NormalTok{base_t +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.title.y =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{margin =} \KeywordTok{margin}\NormalTok{(}\DataTypeTok{r =} \DecValTok{10}\NormalTok{)))}
+\NormalTok{base_t }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{margin =} \KeywordTok{margin}\NormalTok{()))}
+\NormalTok{base_t }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{margin =} \KeywordTok{margin}\NormalTok{(}\DataTypeTok{t =} \DecValTok{10}\NormalTok{, }\DataTypeTok{b =} \DecValTok{10}\NormalTok{)))}
+\NormalTok{base_t }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.title.y =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{margin =} \KeywordTok{margin}\NormalTok{(}\DataTypeTok{r =} \DecValTok{10}\NormalTok{)))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -343,36 +348,36 @@ that control the appearance:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.grid.major =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{))}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.grid.major =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{size =} \DecValTok{2}\NormalTok{))}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.grid.major =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{linetype =} \StringTok{"dotted"}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.grid.major =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"black"}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.grid.major =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{size =} \DecValTok{2}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.grid.major =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{linetype =} \StringTok{"dotted"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
   \begin{figure}[H]
-    \includegraphics[width=0.333\linewidth]{_figures/themes/element_line-1}%
-    \includegraphics[width=0.333\linewidth]{_figures/themes/element_line-2}%
-    \includegraphics[width=0.333\linewidth]{_figures/themes/element_line-3}
-  \end{figure}
+     \includegraphics[width=0.333\linewidth]{_figures/themes/element_line-1}%
+     \includegraphics[width=0.333\linewidth]{_figures/themes/element_line-2}%
+     \includegraphics[width=0.333\linewidth]{_figures/themes/element_line-3}
+   \end{figure}
 \item
   \texttt{element\_rect()} draws rectangles, mostly used for
   backgrounds, parameterised by \texttt{fill} colour and border
   \texttt{colour}, \texttt{size} and \texttt{linetype}.\\
-   \index{Background} \index{Themes!background} \indexf{theme\_rect}
+  \index{Background} \index{Themes!background} \indexf{theme\_rect}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"grey80"}\NormalTok{, }\DataTypeTok{colour =} \OtherTok{NA}\NormalTok{))}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{2}\NormalTok{))}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"linen"}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"grey80"}\NormalTok{, }\DataTypeTok{colour =} \OtherTok{NA}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{2}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"linen"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
   \begin{figure}[H]
-    \includegraphics[width=0.333\linewidth]{_figures/themes/element_rect-1}%
-    \includegraphics[width=0.333\linewidth]{_figures/themes/element_rect-2}%
-    \includegraphics[width=0.333\linewidth]{_figures/themes/element_rect-3}
-  \end{figure}
+      \includegraphics[width=0.333\linewidth]{_figures/themes/element_rect-1}%
+      \includegraphics[width=0.333\linewidth]{_figures/themes/element_rect-2}%
+      \includegraphics[width=0.333\linewidth]{_figures/themes/element_rect-3}
+    \end{figure}
 \item
   \texttt{element\_blank()} draws nothing. Use this if you don't want
   anything drawn, and no space allocated for that element. The following
@@ -387,8 +392,8 @@ that control the appearance:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{base}
-\KeywordTok{last_plot}\NormalTok{() +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.grid.minor =} \KeywordTok{element_blank}\NormalTok{())}
-\KeywordTok{last_plot}\NormalTok{() +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.grid.major =} \KeywordTok{element_blank}\NormalTok{())}
+\KeywordTok{last_plot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.grid.minor =} \KeywordTok{element_blank}\NormalTok{())}
+\KeywordTok{last_plot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.grid.major =} \KeywordTok{element_blank}\NormalTok{())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -400,12 +405,12 @@ that control the appearance:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{last_plot}\NormalTok{() +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.background =} \KeywordTok{element_blank}\NormalTok{())}
-\KeywordTok{last_plot}\NormalTok{() +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
+\KeywordTok{last_plot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.background =} \KeywordTok{element_blank}\NormalTok{())}
+\KeywordTok{last_plot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
   \DataTypeTok{axis.title.x =} \KeywordTok{element_blank}\NormalTok{(), }
   \DataTypeTok{axis.title.y =} \KeywordTok{element_blank}\NormalTok{()}
 \NormalTok{)}
-\KeywordTok{last_plot}\NormalTok{() +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.line =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{))}
+\KeywordTok{last_plot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.line =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -444,20 +449,22 @@ can easily restore the original parameters once you're done.
   \includegraphics[width=0.333\linewidth]{_figures/themes/theme-update-2}
 \end{figure}
 
-\section{Theme elements}\label{sec:theme-elements}
+\hypertarget{sec:theme-elements}{%
+\section{Theme elements}\label{sec:theme-elements}}
 
 There are around 40 unique elements that control the appearance of the
 plot. They can be roughly grouped into five categories: plot, axis,
 legend, panel and facet. The following sections describe each in turn.
 \index{Themes!elements}
 
-\subsection{Plot elements}\label{plot-elements}
+\hypertarget{plot-elements}{%
+\subsection{Plot elements}\label{plot-elements}}
 
 \index{Themes!plot}
 
 Some elements affect the plot as a whole:
 
-\begin{longtable}[c]{@{}lll@{}}
+\begin{longtable}[]{@{}lll@{}}
 \toprule
 Element & Setter & Description\tabularnewline
 \midrule
@@ -481,12 +488,12 @@ necessary if you want to draw a border around the plot.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{2}\NormalTok{))}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{2}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
   \DataTypeTok{plot.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{2}\NormalTok{),}
   \DataTypeTok{plot.margin =} \KeywordTok{margin}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
 \NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"lightblue"}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"lightblue"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -496,106 +503,31 @@ necessary if you want to draw a border around the plot.
   \includegraphics[width=0.333\linewidth]{_figures/themes/plot-3}
 \end{figure}
 
-\subsection{Axis elements}\label{sub:theme-axis}
+\hypertarget{sub:theme-axis}{%
+\subsection{Axis elements}\label{sub:theme-axis}}
 
 \index{Themes!axis} \index{Axis!styling}
 
 The axis elements control the apperance of the axes:
 
-\begin{longtable}[c]{@{}lll@{}}
+\begin{longtable}[]{@{}lll@{}}
 \toprule
-\begin{minipage}[b]{0.27\columnwidth}\raggedright\strut
-Element
-\strut\end{minipage} &
-\begin{minipage}[b]{0.25\columnwidth}\raggedright\strut
-Setter
-\strut\end{minipage} &
-\begin{minipage}[b]{0.35\columnwidth}\raggedright\strut
-Description
-\strut\end{minipage}\tabularnewline
+Element & Setter & Description\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-axis.line
-\strut\end{minipage} &
-\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
-\texttt{element\_line()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-line parallel to axis (hidden in default themes)
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-axis.text
-\strut\end{minipage} &
-\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
-\texttt{element\_text()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-tick labels
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-axis.text.x
-\strut\end{minipage} &
-\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
-\texttt{element\_text()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-x-axis tick labels
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-axis.text.y
-\strut\end{minipage} &
-\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
-\texttt{element\_text()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-y-axis tick labels
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-axis.title
-\strut\end{minipage} &
-\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
-\texttt{element\_text()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-axis titles
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-axis.title.x
-\strut\end{minipage} &
-\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
-\texttt{element\_text()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-x-axis title
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-axis.title.y
-\strut\end{minipage} &
-\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
-\texttt{element\_text()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-y-axis title
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-axis.ticks
-\strut\end{minipage} &
-\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
-\texttt{element\_line()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-axis tick marks
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-axis.ticks.length
-\strut\end{minipage} &
-\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
-\texttt{unit()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-length of tick marks
-\strut\end{minipage}\tabularnewline
+axis.line & \texttt{element\_line()} & line parallel to axis (hidden in
+default themes)\tabularnewline
+axis.text & \texttt{element\_text()} & tick labels\tabularnewline
+axis.text.x & \texttt{element\_text()} & x-axis tick
+labels\tabularnewline
+axis.text.y & \texttt{element\_text()} & y-axis tick
+labels\tabularnewline
+axis.title & \texttt{element\_text()} & axis titles\tabularnewline
+axis.title.x & \texttt{element\_text()} & x-axis title\tabularnewline
+axis.title.y & \texttt{element\_text()} & y-axis title\tabularnewline
+axis.ticks & \texttt{element\_line()} & axis tick marks\tabularnewline
+axis.ticks.length & \texttt{unit()} & length of tick
+marks\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -608,15 +540,15 @@ inherited from \texttt{axis.text}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{)}
-\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)}
+\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
 
 \CommentTok{# Accentuate the axes}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.line =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{1}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.line =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{1}\NormalTok{))}
 \CommentTok{# Style both x and y axis labels}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{color =} \StringTok{"blue"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{12}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{color =} \StringTok{"blue"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{12}\NormalTok{))}
 \CommentTok{# Useful for long labels}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \NormalTok{-}\DecValTok{90}\NormalTok{, }\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{-90}\NormalTok{, }\DataTypeTok{vjust =} \FloatTok{0.5}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -634,13 +566,13 @@ best and you should set \texttt{hjust\ =\ 0} and \texttt{vjust\ =\ 1}:
 \begin{Highlighting}[]
 \NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}
   \DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\StringTok{"label"}\NormalTok{, }\StringTok{"a long label"}\NormalTok{, }\StringTok{"an even longer label"}\NormalTok{), }
-  \DataTypeTok{y =} \DecValTok{1}\NormalTok{:}\DecValTok{3}
+  \DataTypeTok{y =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}
 \NormalTok{)}
-\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
 \NormalTok{base}
-\NormalTok{base +}\StringTok{ }
-\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \NormalTok{-}\DecValTok{30}\NormalTok{, }\DataTypeTok{vjust =} \DecValTok{1}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{0}\NormalTok{)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) +}\StringTok{ }
+\NormalTok{base }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{-30}\NormalTok{, }\DataTypeTok{vjust =} \DecValTok{1}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{ylab}\NormalTok{(}\OtherTok{NULL}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -650,7 +582,8 @@ best and you should set \texttt{hjust\ =\ 0} and \texttt{vjust\ =\ 1}:
   \includegraphics[width=0.5\linewidth]{_figures/themes/axis-labels-2}
 \end{figure}
 
-\subsection{Legend elements}\label{legend-elements}
+\hypertarget{legend-elements}{%
+\subsection{Legend elements}\label{legend-elements}}
 
 \index{Themes!legend} \index{Legend!styling}
 
@@ -658,109 +591,25 @@ The legend elements control the apperance of all legends. You can also
 modify the appearance of individual legends by modifying the same
 elements in \texttt{guide\_legend()} or \texttt{guide\_colourbar()}.
 
-\begin{longtable}[c]{@{}lll@{}}
+\begin{longtable}[]{@{}lll@{}}
 \toprule
-\begin{minipage}[b]{0.27\columnwidth}\raggedright\strut
-Element
-\strut\end{minipage} &
-\begin{minipage}[b]{0.35\columnwidth}\raggedright\strut
-Setter
-\strut\end{minipage} &
-\begin{minipage}[b]{0.58\columnwidth}\raggedright\strut
-Description
-\strut\end{minipage}\tabularnewline
+Element & Setter & Description\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-legend.background
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-\texttt{element\_rect()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.58\columnwidth}\raggedright\strut
-legend background
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-legend.key
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-\texttt{element\_rect()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.58\columnwidth}\raggedright\strut
-background of legend keys
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-legend.key.size
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-\texttt{unit()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.58\columnwidth}\raggedright\strut
-legend key size
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-legend.key.height
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-\texttt{unit()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.58\columnwidth}\raggedright\strut
-legend key height
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-legend.key.width
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-\texttt{unit()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.58\columnwidth}\raggedright\strut
-legend key width
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-legend.margin
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-\texttt{unit()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.58\columnwidth}\raggedright\strut
-legend margin
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-legend.text
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-\texttt{element\_text()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.58\columnwidth}\raggedright\strut
-legend labels
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-legend.text.align
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-0--1
-\strut\end{minipage} &
-\begin{minipage}[t]{0.58\columnwidth}\raggedright\strut
-legend label alignment (0 = right, 1 = left)
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-legend.title
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-\texttt{element\_text()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.58\columnwidth}\raggedright\strut
-legend name
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-legend.title.align
-\strut\end{minipage} &
-\begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
-0--1
-\strut\end{minipage} &
-\begin{minipage}[t]{0.58\columnwidth}\raggedright\strut
-legend name alignment (0 = right, 1 = left)
-\strut\end{minipage}\tabularnewline
+legend.background & \texttt{element\_rect()} & legend
+background\tabularnewline
+legend.key & \texttt{element\_rect()} & background of legend
+keys\tabularnewline
+legend.key.size & \texttt{unit()} & legend key size\tabularnewline
+legend.key.height & \texttt{unit()} & legend key height\tabularnewline
+legend.key.width & \texttt{unit()} & legend key width\tabularnewline
+legend.margin & \texttt{unit()} & legend margin\tabularnewline
+legend.text & \texttt{element\_text()} & legend labels\tabularnewline
+legend.text.align & 0--1 & legend label alignment (0 = right, 1 =
+left)\tabularnewline
+legend.title & \texttt{element\_text()} & legend name\tabularnewline
+legend.title.align & 0--1 & legend name alignment (0 = right, 1 =
+left)\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -768,22 +617,22 @@ These options are illustrated below:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{z =} \KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{), }\DataTypeTok{each =} \DecValTok{2}\NormalTok{))}
-\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{colour =} \NormalTok{z)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{z =} \KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{), }\DataTypeTok{each =} \DecValTok{2}\NormalTok{))}
+\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{colour =}\NormalTok{ z)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
 
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
   \DataTypeTok{legend.background =} \KeywordTok{element_rect}\NormalTok{(}
     \DataTypeTok{fill =} \StringTok{"lemonchiffon"}\NormalTok{, }
     \DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{, }
     \DataTypeTok{size =} \DecValTok{1}
-  \NormalTok{)}
+\NormalTok{  )}
 \NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
   \DataTypeTok{legend.key =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{color =} \StringTok{"grey50"}\NormalTok{),}
   \DataTypeTok{legend.key.width =} \KeywordTok{unit}\NormalTok{(}\FloatTok{0.9}\NormalTok{, }\StringTok{"cm"}\NormalTok{),}
   \DataTypeTok{legend.key.height =} \KeywordTok{unit}\NormalTok{(}\FloatTok{0.75}\NormalTok{, }\StringTok{"cm"}\NormalTok{)}
 \NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
   \DataTypeTok{legend.text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{15}\NormalTok{),}
   \DataTypeTok{legend.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{15}\NormalTok{, }\DataTypeTok{face =} \StringTok{"bold"}\NormalTok{)}
 \NormalTok{)}
@@ -802,13 +651,14 @@ the context of the plot (\texttt{legend.position},
 \texttt{legend.box}). They are described in
 \protect\hyperlink{sub:legend-layout}{legend layout}.
 
-\subsection{Panel elements}\label{panel-elements}
+\hypertarget{panel-elements}{%
+\subsection{Panel elements}\label{panel-elements}}
 
 \index{Themes!panel} \index{Aspect ratio}
 
 Panel elements control the appearance of the plotting panels:
 
-\begin{longtable}[c]{@{}lll@{}}
+\begin{longtable}[]{@{}lll@{}}
 \toprule
 Element & Setter & Description\tabularnewline
 \midrule
@@ -841,16 +691,16 @@ always need to assign \texttt{fill\ =\ NA} when overriding
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
 \CommentTok{# Modify background}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"lightblue"}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"lightblue"}\NormalTok{))}
 
 \CommentTok{# Tweak major grid lines}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
   \DataTypeTok{panel.grid.major =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{color =} \StringTok{"gray60"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{0.8}\NormalTok{)}
 \NormalTok{)}
 \CommentTok{# Just in one direction  }
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
   \DataTypeTok{panel.grid.major.x =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{color =} \StringTok{"gray60"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{0.8}\NormalTok{)}
 \NormalTok{)}
 \end{Highlighting}
@@ -867,13 +717,13 @@ not the overall plot:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base2 <-}\StringTok{ }\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{))}
+\NormalTok{base2 <-}\StringTok{ }\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{))}
 \CommentTok{# Wide screen}
-\NormalTok{base2 +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{aspect.ratio =} \DecValTok{9} \NormalTok{/}\StringTok{ }\DecValTok{16}\NormalTok{)}
+\NormalTok{base2 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{aspect.ratio =} \DecValTok{9} \OperatorTok{/}\StringTok{ }\DecValTok{16}\NormalTok{)}
 \CommentTok{# Long and skiny}
-\NormalTok{base2 +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{aspect.ratio =} \DecValTok{2} \NormalTok{/}\StringTok{ }\DecValTok{1}\NormalTok{)}
+\NormalTok{base2 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{aspect.ratio =} \DecValTok{2} \OperatorTok{/}\StringTok{ }\DecValTok{1}\NormalTok{)}
 \CommentTok{# Square}
-\NormalTok{base2 +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{aspect.ratio =} \DecValTok{1}\NormalTok{)}
+\NormalTok{base2 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{aspect.ratio =} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -883,88 +733,30 @@ not the overall plot:
   \includegraphics[width=0.333\linewidth]{_figures/themes/aspect-ratio-3}
 \end{figure}
 
-\subsection{Facetting elements}\label{facetting-elements}
+\hypertarget{facetting-elements}{%
+\subsection{Facetting elements}\label{facetting-elements}}
 
 \index{Themes!facets} \index{Facetting!styling}
 
 The following theme elements are associated with faceted ggplots:
 
-\begin{longtable}[c]{@{}lll@{}}
+\begin{longtable}[]{@{}lll@{}}
 \toprule
-\begin{minipage}[b]{0.27\columnwidth}\raggedright\strut
-Element
-\strut\end{minipage} &
-\begin{minipage}[b]{0.24\columnwidth}\raggedright\strut
-Setter
-\strut\end{minipage} &
-\begin{minipage}[b]{0.47\columnwidth}\raggedright\strut
-Description
-\strut\end{minipage}\tabularnewline
+Element & Setter & Description\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-strip.background
-\strut\end{minipage} &
-\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
-\texttt{element\_rect()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.47\columnwidth}\raggedright\strut
-background of panel strips
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-strip.text
-\strut\end{minipage} &
-\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
-\texttt{element\_text()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.47\columnwidth}\raggedright\strut
-strip text
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-strip.text.x
-\strut\end{minipage} &
-\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
-\texttt{element\_text()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.47\columnwidth}\raggedright\strut
-horizontal strip text
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-strip.text.y
-\strut\end{minipage} &
-\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
-\texttt{element\_text()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.47\columnwidth}\raggedright\strut
-vertical strip text
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-panel.margin
-\strut\end{minipage} &
-\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
-\texttt{unit()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.47\columnwidth}\raggedright\strut
-margin between facets
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-panel.margin.x
-\strut\end{minipage} &
-\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
-\texttt{unit()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.47\columnwidth}\raggedright\strut
-margin between facets (vertical)
-\strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
-panel.margin.y
-\strut\end{minipage} &
-\begin{minipage}[t]{0.24\columnwidth}\raggedright\strut
-\texttt{unit()}
-\strut\end{minipage} &
-\begin{minipage}[t]{0.47\columnwidth}\raggedright\strut
-margin between facets (horizontal)
-\strut\end{minipage}\tabularnewline
+strip.background & \texttt{element\_rect()} & background of panel
+strips\tabularnewline
+strip.text & \texttt{element\_text()} & strip text\tabularnewline
+strip.text.x & \texttt{element\_text()} & horizontal strip
+text\tabularnewline
+strip.text.y & \texttt{element\_text()} & vertical strip
+text\tabularnewline
+panel.margin & \texttt{unit()} & margin between facets\tabularnewline
+panel.margin.x & \texttt{unit()} & margin between facets
+(vertical)\tabularnewline
+panel.margin.y & \texttt{unit()} & margin between facets
+(horizontal)\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -974,12 +766,14 @@ Element \texttt{strip.text.x} affects both \texttt{facet\_wrap()} or
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{z =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"b"}\NormalTok{))}
-\NormalTok{base_f <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }\KeywordTok{facet_wrap}\NormalTok{(~z)}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{z =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"b"}\NormalTok{))}
+\NormalTok{base_f <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{z)}
 
 \NormalTok{base_f}
-\NormalTok{base_f +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.margin =} \KeywordTok{unit}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\StringTok{"in"}\NormalTok{))}
-\NormalTok{base_f +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
+\NormalTok{base_f }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.margin =} \KeywordTok{unit}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\StringTok{"in"}\NormalTok{))}
+\CommentTok{#> Warning: `panel.margin` is deprecated. Please use `panel.spacing`}
+\CommentTok{#> property instead}
+\NormalTok{base_f }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
   \DataTypeTok{strip.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"grey20"}\NormalTok{, }\DataTypeTok{color =} \StringTok{"grey80"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{1}\NormalTok{),}
   \DataTypeTok{strip.text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"white"}\NormalTok{)}
 \NormalTok{)}
@@ -992,7 +786,8 @@ Element \texttt{strip.text.x} affects both \texttt{facet\_wrap()} or
   \includegraphics[width=0.333\linewidth]{_figures/themes/facetting-3}
 \end{figure}
 
-\subsection{Exercises}\label{exercises-1}
+\hypertarget{exercises-1}{%
+\subsection{Exercises}\label{exercises-1}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1011,7 +806,8 @@ Element \texttt{strip.text.x} affects both \texttt{facet\_wrap()} or
   multiline title. Why doesn't \texttt{vjust} do anything?
 \end{enumerate}
 
-\hypertarget{sec:saving}{\section{Saving your output}\label{sec:saving}}
+\hypertarget{sec:saving}{%
+\section{Saving your output}\label{sec:saving}}
 
 When saving a plot to use in another program, you have two basic choices
 of output: raster or vector: \index{Exporting} \index{Saving output}
@@ -1062,7 +858,7 @@ close the device: \indexf{pdf}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{pdf}\NormalTok{(}\StringTok{"output.pdf"}\NormalTok{, }\DataTypeTok{width =} \DecValTok{6}\NormalTok{, }\DataTypeTok{height =} \DecValTok{6}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, cty)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, cty)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
 \KeywordTok{dev.off}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -1072,7 +868,7 @@ convenient shorthand with \texttt{ggsave()}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, cty)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, cty)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
 \KeywordTok{ggsave}\NormalTok{(}\StringTok{"output.pdf"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1102,35 +898,36 @@ you've drawn a plot. It has the following important arguments:
 
 See \texttt{?ggsave} for more details.
 
-\section*{References}\label{references}
+\hypertarget{references}{%
+\section*{References}\label{references}}
 \addcontentsline{toc}{section}{References}
 
 \hypertarget{refs}{}
-\hypertarget{ref-brewer:1994}{}
+\leavevmode\hypertarget{ref-brewer:1994}{}%
 Brewer, Cynthia A. 1994. ``Color Use Guidelines for Mapping and
 Visualization.'' In \emph{Visualization in Modern Cartography}, edited
 by A.M. MacEachren and D.R.F. Taylor, 123--47. Elsevier Science.
 
-\hypertarget{ref-carr:1994}{}
+\leavevmode\hypertarget{ref-carr:1994}{}%
 Carr, Dan. 1994. ``Using Gray in Plots.'' \emph{ASA Statistical
-Computing and Graphics Newsletter} 2 (5): 11--14.
+Computing and Graphics Newsletter} 2 (5):11--14.
 \url{http://www.galaxy.gmu.edu/~dcarr/lib/v5n2.pdf}.
 
-\hypertarget{ref-carr:2002}{}
+\leavevmode\hypertarget{ref-carr:2002}{}%
 ---------. 2002. ``Graphical Displays.'' In \emph{Encyclopedia of
 Environmetrics}, edited by Abdel H. El-Shaarawi and Walter W. Piegorsch,
 2:933--60. John Wiley \& Sons.
 \url{http://www.galaxy.gmu.edu/~dcarr/lib/EnvironmentalGraphics.pdf}.
 
-\hypertarget{ref-carr:1999}{}
+\leavevmode\hypertarget{ref-carr:1999}{}%
 Carr, Dan, and Ru Sun. 1999. ``Using Layering and Perceptual Grouping in
 Statistical Graphics.'' \emph{ASA Statistical Computing and Graphics
-Newsletter} 10 (1): 25--31.
+Newsletter} 10 (1):25--31.
 
-\hypertarget{ref-cleveland:1993a}{}
+\leavevmode\hypertarget{ref-cleveland:1993a}{}%
 Cleveland, William. 1993. ``A Model for Studying Display Methods of
 Statistical Graphics.'' \emph{Journal of Computational and Graphical
-Statistics} 2: 323--64. \url{http://stat.bell-labs.com/doc/93.4.ps}.
+Statistics} 2:323--64. \url{http://stat.bell-labs.com/doc/93.4.ps}.
 
-\hypertarget{ref-tufte:2006}{}
+\leavevmode\hypertarget{ref-tufte:2006}{}%
 Tufte, Edward R. 2006. \emph{Beautiful Evidence}. Graphics Press.

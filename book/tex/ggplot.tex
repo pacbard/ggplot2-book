@@ -1,6 +1,8 @@
-\chapter{Getting started with ggplot2}\label{cha:getting-started}
+\hypertarget{cha:getting-started}{%
+\chapter{Getting started with ggplot2}\label{cha:getting-started}}
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 The goal of this chapter is to teach you how to produce useful graphics
 with ggplot2 as quickly as possible. You'll learn the basics of
@@ -41,8 +43,8 @@ In this chapter you'll learn:
   \protect\hyperlink{qplot}{qplot}.
 \end{itemize}
 
-\hypertarget{sec:fuel-economy-data}{\section{Fuel economy
-data}\label{sec:fuel-economy-data}}
+\hypertarget{sec:fuel-economy-data}{%
+\section{Fuel economy data}\label{sec:fuel-economy-data}}
 
 In this chapter, we'll mostly use one data set that's bundled with
 ggplot2: \texttt{mpg}. It includes information about the fuel economy of
@@ -54,18 +56,16 @@ by loading ggplot2: \index{Data!mpg@\texttt{mpg}}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(ggplot2)}
 \NormalTok{mpg}
-\CommentTok{#> Source: local data frame [234 x 11]}
-\CommentTok{#> }
-\CommentTok{#>    manufacturer model displ  year   cyl      trans   drv   cty}
-\CommentTok{#>           (chr) (chr) (dbl) (int) (int)      (chr) (chr) (int)}
-\CommentTok{#> 1          audi    a4   1.8  1999     4   auto(l5)     f    18}
-\CommentTok{#> 2          audi    a4   1.8  1999     4 manual(m5)     f    21}
-\CommentTok{#> 3          audi    a4   2.0  2008     4 manual(m6)     f    20}
-\CommentTok{#> 4          audi    a4   2.0  2008     4   auto(av)     f    21}
-\CommentTok{#> 5          audi    a4   2.8  1999     6   auto(l5)     f    16}
-\CommentTok{#> 6          audi    a4   2.8  1999     6 manual(m5)     f    18}
-\CommentTok{#> ..          ...   ...   ...   ...   ...        ...   ...   ...}
-\CommentTok{#> Variables not shown: hwy (int), fl (chr), class (chr)}
+\CommentTok{#> # A tibble: 234 x 11}
+\CommentTok{#>   manufac~ model displ  year   cyl trans   drv     cty   hwy fl   }
+\CommentTok{#>   <chr>    <chr> <dbl> <int> <int> <chr>   <chr> <int> <int> <chr>}
+\CommentTok{#> 1 audi     a4     1.80  1999     4 auto(l~ f        18    29 p    }
+\CommentTok{#> 2 audi     a4     1.80  1999     4 manual~ f        21    29 p    }
+\CommentTok{#> 3 audi     a4     2.00  2008     4 manual~ f        20    31 p    }
+\CommentTok{#> 4 audi     a4     2.00  2008     4 auto(a~ f        21    30 p    }
+\CommentTok{#> 5 audi     a4     2.80  1999     6 auto(l~ f        16    26 p    }
+\CommentTok{#> 6 audi     a4     2.80  1999     6 manual~ f        18    26 p    }
+\CommentTok{#> # ... with 228 more rows, and 1 more variable: class <chr>}
 \end{Highlighting}
 \end{Shaded}
 
@@ -94,7 +94,8 @@ economy than others? Has fuel economy improved in the last ten years? We
 will try to answer some of these questions, and in the process learn how
 to create some basic plots with ggplot2.
 
-\subsection{Exercises}\label{exercises}
+\hypertarget{exercises}{%
+\subsection{Exercises}\label{exercises}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -115,8 +116,8 @@ to create some basic plots with ggplot2.
   ``a4 quattro'') from the model name?
 \end{enumerate}
 
-\hypertarget{sec:basic-use}{\section{Key
-components}\label{sec:basic-use}}
+\hypertarget{sec:basic-use}{%
+\section{Key components}\label{sec:basic-use}}
 
 Every ggplot2 plot has three key components:
 
@@ -136,7 +137,7 @@ Here's a simple example: \index{Scatterplot} \indexf{ggplot}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{displ, }\DataTypeTok{y =} \NormalTok{hwy)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -173,7 +174,7 @@ means that the following code is identical to the example above:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -191,7 +192,8 @@ fuel economy gets worse. There are also some interesting outliers: some
 cars with large engines get higher fuel economy than average. What sort
 of cars do you think they are?
 
-\subsection{Exercises}\label{exercises-1}
+\hypertarget{exercises-1}{%
+\subsection{Exercises}\label{exercises-1}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -225,8 +227,9 @@ of cars do you think they are?
   \end{enumerate}
 \end{enumerate}
 
-\hypertarget{aesthetics}{\section{Colour, size, shape and other
-aesthetic attributes}\label{aesthetics}}
+\hypertarget{aesthetics}{%
+\section{Colour, size, shape and other aesthetic
+attributes}\label{aesthetics}}
 
 To add additional variables to a plot, we can use other aesthetics like
 colour, shape, and size (NB: while I use British spelling throughout
@@ -258,7 +261,7 @@ scatterplot, we could map the class variable to colour:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, cty, }\DataTypeTok{colour =} \NormalTok{class)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, cty, }\DataTypeTok{colour =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -279,8 +282,8 @@ following two plots: \index{Aesthetics!setting}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{))}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{))}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -310,7 +313,8 @@ very complex plot that shows everything at once, see if you can create a
 series of simple plots that tell a story, leading the reader from
 ignorance to knowledge.
 
-\subsection{Exercises}\label{exercises-2}
+\hypertarget{exercises-2}{%
+\subsection{Exercises}\label{exercises-2}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -326,7 +330,8 @@ ignorance to knowledge.
   to engine size and class?
 \end{enumerate}
 
-\hypertarget{sec:qplot-facetting}{\section{Facetting}\label{sec:qplot-facetting}}
+\hypertarget{sec:qplot-facetting}{%
+\section{Facetting}\label{sec:qplot-facetting}}
 
 Another technique for displaying additional categorical variables on a
 plot is facetting. Facetting creates tables of graphics by splitting the
@@ -343,9 +348,9 @@ later. To facet a plot you simply add a facetting specification with
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(~class)}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{class)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -357,7 +362,8 @@ You might wonder when to use facetting and when to use aesthetics.
 You'll learn more about the relative advantages and disadvantages of
 each in \protect\hyperlink{sub:group-vs-facet}{grouping vs.~facetting}.
 
-\subsection{Exercises}\label{exercises-3}
+\hypertarget{exercises-3}{%
+\subsection{Exercises}\label{exercises-3}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -377,7 +383,8 @@ each in \protect\hyperlink{sub:group-vs-facet}{grouping vs.~facetting}.
   When might you use it?
 \end{enumerate}
 
-\hypertarget{sec:plot-geoms}{\section{Plot geoms}\label{sec:plot-geoms}}
+\hypertarget{sec:plot-geoms}{%
+\section{Plot geoms}\label{sec:plot-geoms}}
 
 You might guess that by substituting \texttt{geom\_point()} for a
 different geom function, you'd get a different type of plot. That's a
@@ -405,7 +412,8 @@ more in \protect\hyperlink{cha:toolbox}{the toolbox}.
   typically used to explore how things change over time.
 \end{itemize}
 
-\subsection{Adding a smoother to a plot}\label{sub:smooth}
+\hypertarget{sub:smooth}{%
+\subsection{Adding a smoother to a plot}\label{sub:smooth}}
 
 If you have a scatterplot with a lot of noise, it can be hard to see the
 dominant pattern. In this case it's useful to add a smoothed line to the
@@ -414,9 +422,10 @@ plot with \texttt{geom\_smooth()}: \index{Smoothing}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{()}
+\CommentTok{#> `geom_smooth()` using method = 'loess'}
 \end{Highlighting}
 \end{Shaded}
 
@@ -443,13 +452,15 @@ curve:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{span =} \FloatTok{0.2}\NormalTok{)}
+\CommentTok{#> `geom_smooth()` using method = 'loess'}
 
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{span =} \DecValTok{1}\NormalTok{)}
+\CommentTok{#> `geom_smooth()` using method = 'loess'}
 \end{Highlighting}
 \end{Shaded}
 
@@ -472,9 +483,9 @@ curve:
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(mgcv)}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"gam"}\NormalTok{, }\DataTypeTok{formula =} \NormalTok{y ~}\StringTok{ }\KeywordTok{s}\NormalTok{(x))}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"gam"}\NormalTok{, }\DataTypeTok{formula =}\NormalTok{ y }\OperatorTok{~}\StringTok{ }\KeywordTok{s}\NormalTok{(x))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -487,8 +498,8 @@ curve:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -503,7 +514,8 @@ curve:
   \index{MASS}
 \end{itemize}
 
-\subsection{Boxplots and jittered points}\label{sub:boxplot}
+\hypertarget{sub:boxplot}{%
+\subsection{Boxplots and jittered points}\label{sub:boxplot}}
 
 When a set of data includes a categorical variable and one or more
 continuous variables, you will probably be interested to know how the
@@ -513,7 +525,7 @@ varies within car class. We might start with a scatterplot like this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -547,9 +559,9 @@ These are illustrated below:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) +}\StringTok{ }\KeywordTok{geom_jitter}\NormalTok{()}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) +}\StringTok{ }\KeywordTok{geom_boxplot}\NormalTok{()}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) +}\StringTok{ }\KeywordTok{geom_violin}\NormalTok{()}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_jitter}\NormalTok{()}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_boxplot}\NormalTok{()}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_violin}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -571,7 +583,8 @@ over aesthetics as \texttt{geom\_point()}: \texttt{size},
 \texttt{geom\_violin()}, you can control the outline \texttt{colour} or
 the internal \texttt{fill} colour.
 
-\subsection{Histograms and frequency polygons}\label{sub:distribution}
+\hypertarget{sub:distribution}{%
+\subsection{Histograms and frequency polygons}\label{sub:distribution}}
 
 Histograms and frequency polygons show the distribution of a single
 numeric variable. They provide more information about the distribution
@@ -580,10 +593,10 @@ space. \index{Histogram} \indexf{geom\_histogram}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(hwy)) +}\StringTok{ }\KeywordTok{geom_histogram}\NormalTok{()}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(hwy)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_histogram}\NormalTok{()}
 \CommentTok{#> `stat_bin()` using `bins = 30`. Pick better value with}
 \CommentTok{#> `binwidth`.}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(hwy)) +}\StringTok{ }\KeywordTok{geom_freqpoly}\NormalTok{()}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(hwy)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_freqpoly}\NormalTok{()}
 \CommentTok{#> `stat_bin()` using `bins = 30`. Pick better value with}
 \CommentTok{#> `binwidth`.}
 \end{Highlighting}
@@ -609,9 +622,9 @@ story of your data.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(hwy)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(hwy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_freqpoly}\NormalTok{(}\DataTypeTok{binwidth =} \FloatTok{2.5}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(hwy)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(hwy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_freqpoly}\NormalTok{(}\DataTypeTok{binwidth =} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -638,11 +651,11 @@ each group.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, }\DataTypeTok{colour =} \NormalTok{drv)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, }\DataTypeTok{colour =}\NormalTok{ drv)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_freqpoly}\NormalTok{(}\DataTypeTok{binwidth =} \FloatTok{0.5}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, }\DataTypeTok{fill =} \NormalTok{drv)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{binwidth =} \FloatTok{0.5}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(~drv, }\DataTypeTok{ncol =} \DecValTok{1}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, }\DataTypeTok{fill =}\NormalTok{ drv)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{binwidth =} \FloatTok{0.5}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{drv, }\DataTypeTok{ncol =} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -651,7 +664,8 @@ each group.
   \includegraphics[width=0.5\linewidth]{_figures/ggplot/dist-fill-2}
 \end{figure}
 
-\subsection{Bar charts}\label{sub:bar}
+\hypertarget{sub:bar}{%
+\subsection{Bar charts}\label{sub:bar}}
 
 The discrete analogue of the histogram is the bar chart,
 \texttt{geom\_bar()}. It's easy to use: \index{Barchart}
@@ -659,7 +673,7 @@ The discrete analogue of the histogram is the bar chart,
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(manufacturer)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(manufacturer)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_bar}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -694,8 +708,8 @@ up less space than bars, and don't require that the y axis includes 0.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(drugs, }\KeywordTok{aes}\NormalTok{(drug, effect)) +}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(drugs, }\KeywordTok{aes}\NormalTok{(drug, effect)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\KeywordTok{ggplot}\NormalTok{(drugs, }\KeywordTok{aes}\NormalTok{(drug, effect)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(drugs, }\KeywordTok{aes}\NormalTok{(drug, effect)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -704,7 +718,8 @@ up less space than bars, and don't require that the y axis includes 0.
   \includegraphics[width=0.5\linewidth]{_figures/ggplot/unnamed-chunk-8-2}
 \end{figure}
 
-\subsection{Time series with line and path plots}\label{sub:line}
+\hypertarget{sub:line}{%
+\subsection{Time series with line and path plots}\label{sub:line}}
 
 Line and path plots are typically used for time series data. Line plots
 join the points from left to right, while path plots join them in the
@@ -728,9 +743,9 @@ is high. \indexf{geom\_line} \indexf{geom\_path}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(date, unemploy /}\StringTok{ }\NormalTok{pop)) +}
+\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(date, unemploy }\OperatorTok{/}\StringTok{ }\NormalTok{pop)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{()}
-\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(date, uempmed)) +}
+\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(date, uempmed)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -754,13 +769,13 @@ direction of time.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(unemploy /}\StringTok{ }\NormalTok{pop, uempmed)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_path}\NormalTok{() +}
+\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(unemploy }\OperatorTok{/}\StringTok{ }\NormalTok{pop, uempmed)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_path}\NormalTok{() }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
 
-\NormalTok{year <-}\StringTok{ }\NormalTok{function(x) }\KeywordTok{as.POSIXlt}\NormalTok{(x)$year +}\StringTok{ }\DecValTok{1900}
-\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(unemploy /}\StringTok{ }\NormalTok{pop, uempmed)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_path}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{) +}
+\NormalTok{year <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{as.POSIXlt}\NormalTok{(x)}\OperatorTok{$}\NormalTok{year }\OperatorTok{+}\StringTok{ }\DecValTok{1900}
+\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(unemploy }\OperatorTok{/}\StringTok{ }\NormalTok{pop, uempmed)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_path}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \KeywordTok{year}\NormalTok{(date)))}
 \end{Highlighting}
 \end{Shaded}
@@ -782,7 +797,8 @@ group membership of each observation. This is explained in more depth in
 \index{Longitudinal data|see{Data, longitudinal}}
 \index{Data!longitudinal}
 
-\subsection{Exercises}\label{exercises-4}
+\hypertarget{exercises-4}{%
+\subsection{Exercises}\label{exercises-4}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -824,7 +840,8 @@ group membership of each observation. This is explained in more depth in
   \texttt{cyl} and \texttt{trans}.
 \end{enumerate}
 
-\hypertarget{sec:axes}{\section{Modifying the axes}\label{sec:axes}}
+\hypertarget{sec:axes}{%
+\section{Modifying the axes}\label{sec:axes}}
 
 You'll learn the full range of options available in
 \protect\hyperlink{cha:scales}{scales}, but two families of useful
@@ -834,18 +851,18 @@ helpers let you make the most common modifications. \texttt{xlab()} and
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy)) +}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1} \NormalTok{/}\StringTok{ }\DecValTok{3}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{3}\NormalTok{)}
 
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy)) +}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1} \NormalTok{/}\StringTok{ }\DecValTok{3}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"city driving (mpg)"}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"city driving (mpg)"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"highway driving (mpg)"}\NormalTok{)}
 
 \CommentTok{# Remove the axis labels with NULL}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy)) +}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1} \NormalTok{/}\StringTok{ }\DecValTok{3}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{ylab}\NormalTok{(}\OtherTok{NULL}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -861,18 +878,18 @@ helpers let you make the most common modifications. \texttt{xlab()} and
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) +}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.25}\NormalTok{)}
 
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) +}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.25}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\StringTok{"f"}\NormalTok{, }\StringTok{"r"}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.25}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlim}\NormalTok{(}\StringTok{"f"}\NormalTok{, }\StringTok{"r"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{ylim}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{30}\NormalTok{)}
-\CommentTok{#> Warning: Removed 138 rows containing missing values (geom_point).}
+\CommentTok{#> Warning: Removed 139 rows containing missing values (geom_point).}
   
 \CommentTok{# For continuous scales, use NA to set only one limit}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) +}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.25}\NormalTok{, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(drv, hwy)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.25}\NormalTok{, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{ylim}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\DecValTok{30}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -886,14 +903,15 @@ helpers let you make the most common modifications. \texttt{xlab()} and
 Changing the axes limits sets values outside the range to \texttt{NA}.
 You can suppress the associated warning with \texttt{na.rm\ =\ TRUE}.
 
-\hypertarget{sec:output}{\section{Output}\label{sec:output}}
+\hypertarget{sec:output}{%
+\section{Output}\label{sec:output}}
 
 Most of the time you create a plot object and immediately plot it, but
 you can also save a plot to a variable and manipulate it:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \KeywordTok{factor}\NormalTok{(cyl))) +}
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \KeywordTok{factor}\NormalTok{(cyl))) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -936,7 +954,28 @@ Once you have a plot object, there are a few things you can do with it:
 \CommentTok{#> data: manufacturer, model, displ, year, cyl, trans, drv,}
 \CommentTok{#>   cty, hwy, fl, class [234x11]}
 \CommentTok{#> mapping:  x = displ, y = hwy, colour = factor(cyl)}
-\CommentTok{#> faceting: facet_null() }
+\CommentTok{#> faceting: <ggproto object: Class FacetNull, Facet>}
+\CommentTok{#>     compute_layout: function}
+\CommentTok{#>     draw_back: function}
+\CommentTok{#>     draw_front: function}
+\CommentTok{#>     draw_labels: function}
+\CommentTok{#>     draw_panels: function}
+\CommentTok{#>     finish_data: function}
+\CommentTok{#>     init_scales: function}
+\CommentTok{#>     map: function}
+\CommentTok{#>     map_data: function}
+\CommentTok{#>     params: list}
+\CommentTok{#>     render_back: function}
+\CommentTok{#>     render_front: function}
+\CommentTok{#>     render_panels: function}
+\CommentTok{#>     setup_data: function}
+\CommentTok{#>     setup_params: function}
+\CommentTok{#>     shrink: TRUE}
+\CommentTok{#>     train: function}
+\CommentTok{#>     train_positions: function}
+\CommentTok{#>     train_scales: function}
+\CommentTok{#>     vars: function}
+\CommentTok{#>     super:  <ggproto object: Class FacetNull, Facet>}
 \CommentTok{#> -----------------------------------}
 \CommentTok{#> geom_point: na.rm = FALSE}
 \CommentTok{#> stat_identity: na.rm = FALSE}
@@ -959,7 +998,8 @@ Once you have a plot object, there are a few things you can do with it:
 You'll learn more about how to manipulate these objects in
 \protect\hyperlink{cha:programming}{programming with ggplot2}.
 
-\hypertarget{qplot}{\section{Quick plots}\label{qplot}}
+\hypertarget{qplot}{%
+\section{Quick plots}\label{qplot}}
 
 In some cases, you will want to create a quick plot with a minimum of
 typing. In these cases you may prefer to use \texttt{qplot()} over
@@ -969,8 +1009,8 @@ provide a set of aesthetics and a data set: \indexf{qplot}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{qplot}\NormalTok{(displ, hwy, }\DataTypeTok{data =} \NormalTok{mpg)}
-\KeywordTok{qplot}\NormalTok{(displ, }\DataTypeTok{data =} \NormalTok{mpg)}
+\KeywordTok{qplot}\NormalTok{(displ, hwy, }\DataTypeTok{data =}\NormalTok{ mpg)}
+\KeywordTok{qplot}\NormalTok{(displ, }\DataTypeTok{data =}\NormalTok{ mpg)}
 \CommentTok{#> `stat_bin()` using `bins = 30`. Pick better value with}
 \CommentTok{#> `binwidth`.}
 \end{Highlighting}
@@ -993,8 +1033,8 @@ If you want to set an aesthetic to a constant, you need to use
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{qplot}\NormalTok{(displ, hwy, }\DataTypeTok{data =} \NormalTok{mpg, }\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{)}
-\KeywordTok{qplot}\NormalTok{(displ, hwy, }\DataTypeTok{data =} \NormalTok{mpg, }\DataTypeTok{colour =} \KeywordTok{I}\NormalTok{(}\StringTok{"blue"}\NormalTok{))}
+\KeywordTok{qplot}\NormalTok{(displ, hwy, }\DataTypeTok{data =}\NormalTok{ mpg, }\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{)}
+\KeywordTok{qplot}\NormalTok{(displ, hwy, }\DataTypeTok{data =}\NormalTok{ mpg, }\DataTypeTok{colour =} \KeywordTok{I}\NormalTok{(}\StringTok{"blue"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 

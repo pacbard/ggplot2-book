@@ -1,6 +1,8 @@
-\chapter{Mastering the grammar}\label{cha:mastery}
+\hypertarget{cha:mastery}{%
+\chapter{Mastering the grammar}\label{cha:mastery}}
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 In order to unlock the full power of ggplot2, you'll need to master the
 underlying grammar. By understanding the grammar, and how its components
@@ -35,8 +37,8 @@ these examples you will be introduced to all six components of the
 grammar, which are then defined more precisely in
 \protect\hyperlink{sec:components}{Components of the layered grammar}.
 
-\hypertarget{sec:simple-plot}{\section{Building a
-scatterplot}\label{sec:simple-plot}}
+\hypertarget{sec:simple-plot}{%
+\section{Building a scatterplot}\label{sec:simple-plot}}
 
 How are engine size and fuel economy related? We might create a
 scatterplot of engine displacement and highway mpg with points coloured
@@ -44,7 +46,7 @@ by number of cylinders:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \KeywordTok{factor}\NormalTok{(cyl))) +}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \KeywordTok{factor}\NormalTok{(cyl))) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -58,8 +60,9 @@ You can create plots like this easily, but what is going on underneath
 the surface? How does ggplot2 draw this plot?
 \index{Scatterplot!principles of}
 
+\hypertarget{mapping-aesthetics-to-data}{%
 \subsection{Mapping aesthetics to
-data}\label{mapping-aesthetics-to-data}
+data}\label{mapping-aesthetics-to-data}}
 
 What precisely is a scatterplot? You have seen many before and have
 probably even drawn some by hand. A scatterplot represents each
@@ -76,7 +79,7 @@ their (constant) default values. \index{Aesthetics!mapping}
 Once we have these mappings we can create a new dataset that records
 this information:
 
-\begin{longtable}[c]{@{}rrr@{}}
+\begin{longtable}[]{@{}rrr@{}}
 \toprule
 x & y & colour\tabularnewline
 \midrule
@@ -101,11 +104,11 @@ those examples makes sense for this data, but we could still draw them
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \KeywordTok{factor}\NormalTok{(cyl))) +}
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \KeywordTok{factor}\NormalTok{(cyl))) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \KeywordTok{factor}\NormalTok{(cyl))) +}
-\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{, }\DataTypeTok{position =} \StringTok{"identity"}\NormalTok{, }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \KeywordTok{factor}\NormalTok{(cyl))) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{, }\DataTypeTok{position =} \StringTok{"identity"}\NormalTok{, }\DataTypeTok{fill =} \OtherTok{NA}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -124,7 +127,7 @@ Points, lines and bars are all examples of geometric objects, or
 \textbf{geoms}. Geoms determine the ``type'' of the plot. Plots that use
 a single geom are often given a special name:
 
-\begin{longtable}[c]{@{}lll@{}}
+\begin{longtable}[]{@{}lll@{}}
 \toprule
 Named plot & Geom & Other features\tabularnewline
 \midrule
@@ -143,8 +146,8 @@ plot overlays a per group regression line on top of a scatterplot:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \KeywordTok{factor}\NormalTok{(cyl))) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \KeywordTok{factor}\NormalTok{(cyl))) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -158,7 +161,8 @@ What would you call this plot? Once you've mastered the grammar, you'll
 find that many of the plots that you produce are uniquely tailored to
 your problems and will no longer have special names. \index{Named plots}
 
-\subsection{Scaling}\label{scaling}
+\hypertarget{scaling}{%
+\subsection{Scaling}\label{scaling}}
 
 The values in the previous table have no meaning to the computer. We
 need to convert them from data units (e.g., litres, miles per gallon and
@@ -207,7 +211,7 @@ constant. We need these so that the aesthetics for each point are
 completely specified and R can draw the plot. The points will be filled
 circles (shape 19 in R) with a 1-mm diameter:
 
-\begin{longtable}[c]{@{}lllll@{}}
+\begin{longtable}[]{@{}lllll@{}}
 \toprule
 x & y & colour & size & shape\tabularnewline
 \midrule
@@ -231,18 +235,18 @@ which generate axes and legends so that we can read values from the
 graph; and \emph{plot annotations}, such as the background and plot
 title.
 
-\hypertarget{sec:complex-plot}{\section{Adding
-complexity}\label{sec:complex-plot}}
+\hypertarget{sec:complex-plot}{%
+\section{Adding complexity}\label{sec:complex-plot}}
 
 With a simple example under our belts, let's now turn to look at this
 slightly more complicated example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(~year)}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{year)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -316,8 +320,8 @@ schematically.
   \label{fig:schematic}
 \end{figure}
 
-\hypertarget{sec:components}{\section{Components of the layered
-grammar}\label{sec:components}}
+\hypertarget{sec:components}{%
+\section{Components of the layered grammar}\label{sec:components}}
 
 In the examples above, we have seen some of the components that make up
 a plot: data and aesthetic mappings, geometric objects (geoms),
@@ -348,7 +352,8 @@ The following sections describe each of the higher-level components more
 precisely, and point you to the parts of the book where they are
 documented.
 
-\subsection{Layers}\label{layers}
+\hypertarget{layers}{%
+\subsection{Layers}\label{layers}}
 
 \textbf{Layers} are responsible for creating the objects that we
 perceive on the plot. A layer is composed of five parts:
@@ -372,7 +377,8 @@ The properties of a layer are described in
 \protect\hyperlink{cha:layers}{layers} and their uses for data
 visualisation in \protect\hyperlink{cha:toolbox}{toolbox}.
 
-\subsection{Scales}\label{sub:scales}
+\hypertarget{sub:scales}{%
+\subsection{Scales}\label{sub:scales}}
 
 A \textbf{scale} controls the mapping from data to aesthetic attributes,
 and we need a scale for every aesthetic used on a plot. Each scale
@@ -401,7 +407,8 @@ desirable if we want to focus attention on a single aspect.
 
 For more details, see \protect\hyperlink{cha:scales}{scales chapter}.
 
-\subsection{Coordinate system}\label{sub:coordinate-systems}
+\hypertarget{sub:coordinate-systems}{%
+\subsection{Coordinate system}\label{sub:coordinate-systems}}
 
 A coordinate system, or \textbf{coord} for short, maps the position of
 objects onto the plane of the plot. Position is often specified by two
@@ -433,7 +440,8 @@ for more details.
   \label{fig:coord}
 \end{figure}
 
-\subsection{Facetting}\label{sub:intro-facetting}
+\hypertarget{sub:intro-facetting}{%
+\subsection{Facetting}\label{sub:intro-facetting}}
 
 There is also another thing that turns out to be sufficiently useful
 that we should include it in our general framework: facetting, a general
@@ -445,7 +453,8 @@ should be used to split up the data, and whether position scales should
 be free or constrained. Facetting is described in
 \protect\hyperlink{cha:position}{position}.
 
-\section{Exercises}\label{exercises}
+\hypertarget{exercises}{%
+\section{Exercises}\label{exercises}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -488,15 +497,16 @@ be free or constrained. Facetting is described in
   \end{enumerate}
 \end{enumerate}
 
-\section*{References}\label{references}
+\hypertarget{references}{%
+\section*{References}\label{references}}
 \addcontentsline{toc}{section}{References}
 
 \hypertarget{refs}{}
-\hypertarget{ref-wickham:2008}{}
+\leavevmode\hypertarget{ref-wickham:2008}{}%
 Wickham, Hadley. 2008. ``Practical Tools for Exploring Data and
 Models.'' PhD thesis, Iowa State University.
 \url{http://had.co.nz/thesis}.
 
-\hypertarget{ref-wilkinson:2006}{}
+\leavevmode\hypertarget{ref-wilkinson:2006}{}%
 Wilkinson, Leland. 2005. \emph{The Grammar of Graphics}. 2nd ed.
 Statistics and Computing. Springer.

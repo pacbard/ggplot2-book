@@ -1,6 +1,8 @@
-\chapter{Build a plot layer by layer}\label{cha:layers}
+\hypertarget{cha:layers}{%
+\chapter{Build a plot layer by layer}\label{cha:layers}}
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 One of the key ideas behind ggplot2 is that it allows you to easily
 iterate, building up a complex plot a layer at a time. Each layer can
@@ -15,7 +17,8 @@ the aesthetic mappings, the geom, stat, and position adjustments. The
 goal here is to give you the tools to build sophisticated plots tailored
 to the problem at hand.
 
-\section{Building a plot}\label{building-a-plot}
+\hypertarget{building-a-plot}{%
+\section{Building a plot}\label{building-a-plot}}
 
 So far, whenever we've created a plot with \texttt{ggplot()}, we've
 immediately added on a layer with a geom function. But it's important to
@@ -38,7 +41,7 @@ There's nothing to see yet, so we need to add a layer:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{p +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -52,7 +55,7 @@ There's nothing to see yet, so we need to add a layer:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{p +}\StringTok{ }\KeywordTok{layer}\NormalTok{(}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{layer}\NormalTok{(}
   \DataTypeTok{mapping =} \OtherTok{NULL}\NormalTok{, }
   \DataTypeTok{data =} \OtherTok{NULL}\NormalTok{,}
   \DataTypeTok{geom =} \StringTok{"point"}\NormalTok{, }
@@ -118,7 +121,8 @@ shortcut \texttt{geom\_} functions:
 \texttt{geom\_point(mapping,\ data,\ ...)} is exactly equivalent to
 \texttt{layer(mapping,\ data,\ geom\ =\ "point",\ ...)}.
 
-\hypertarget{sec:data}{\section{Data}\label{sec:data}}
+\hypertarget{sec:data}{%
+\section{Data}\label{sec:data}}
 
 Every layer must have some data associated with it, and that data must
 be in a tidy data frame. You'll learn about tidy data in
@@ -149,22 +153,21 @@ what \texttt{geom\_smooth()} does behind the scenes)
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mod <-}\StringTok{ }\KeywordTok{loess}\NormalTok{(hwy ~}\StringTok{ }\NormalTok{displ, }\DataTypeTok{data =} \NormalTok{mpg)}
-\NormalTok{grid <-}\StringTok{ }\KeywordTok{data_frame}\NormalTok{(}\DataTypeTok{displ =} \KeywordTok{seq}\NormalTok{(}\KeywordTok{min}\NormalTok{(mpg$displ), }\KeywordTok{max}\NormalTok{(mpg$displ), }\DataTypeTok{length =} \DecValTok{50}\NormalTok{))}
-\NormalTok{grid$hwy <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(mod, }\DataTypeTok{newdata =} \NormalTok{grid)}
+\NormalTok{mod <-}\StringTok{ }\KeywordTok{loess}\NormalTok{(hwy }\OperatorTok{~}\StringTok{ }\NormalTok{displ, }\DataTypeTok{data =}\NormalTok{ mpg)}
+\NormalTok{grid <-}\StringTok{ }\KeywordTok{data_frame}\NormalTok{(}\DataTypeTok{displ =} \KeywordTok{seq}\NormalTok{(}\KeywordTok{min}\NormalTok{(mpg}\OperatorTok{$}\NormalTok{displ), }\KeywordTok{max}\NormalTok{(mpg}\OperatorTok{$}\NormalTok{displ), }\DataTypeTok{length =} \DecValTok{50}\NormalTok{))}
+\NormalTok{grid}\OperatorTok{$}\NormalTok{hwy <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(mod, }\DataTypeTok{newdata =}\NormalTok{ grid)}
 
 \NormalTok{grid}
-\CommentTok{#> Source: local data frame [50 x 2]}
-\CommentTok{#> }
-\CommentTok{#>    displ   hwy}
-\CommentTok{#>    (dbl) (dbl)}
-\CommentTok{#> 1   1.60  33.1}
-\CommentTok{#> 2   1.71  32.2}
-\CommentTok{#> 3   1.82  31.3}
-\CommentTok{#> 4   1.93  30.4}
-\CommentTok{#> 5   2.04  29.6}
-\CommentTok{#> 6   2.15  28.8}
-\CommentTok{#> ..   ...   ...}
+\CommentTok{#> # A tibble: 50 x 2}
+\CommentTok{#>   displ   hwy}
+\CommentTok{#>   <dbl> <dbl>}
+\CommentTok{#> 1  1.60  33.1}
+\CommentTok{#> 2  1.71  32.2}
+\CommentTok{#> 3  1.82  31.3}
+\CommentTok{#> 4  1.93  30.4}
+\CommentTok{#> 5  2.04  29.6}
+\CommentTok{#> 6  2.15  28.8}
+\CommentTok{#> # ... with 44 more rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -173,20 +176,19 @@ their predicted values:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{std_resid <-}\StringTok{ }\KeywordTok{resid}\NormalTok{(mod) /}\StringTok{ }\NormalTok{mod$s}
-\NormalTok{outlier <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(mpg, }\KeywordTok{abs}\NormalTok{(std_resid) >}\StringTok{ }\DecValTok{2}\NormalTok{)}
+\NormalTok{std_resid <-}\StringTok{ }\KeywordTok{resid}\NormalTok{(mod) }\OperatorTok{/}\StringTok{ }\NormalTok{mod}\OperatorTok{$}\NormalTok{s}
+\NormalTok{outlier <-}\StringTok{ }\KeywordTok{filter}\NormalTok{(mpg, }\KeywordTok{abs}\NormalTok{(std_resid) }\OperatorTok{>}\StringTok{ }\DecValTok{2}\NormalTok{)}
 \NormalTok{outlier}
-\CommentTok{#> Source: local data frame [6 x 11]}
-\CommentTok{#> }
-\CommentTok{#>   manufacturer      model displ  year   cyl      trans   drv   cty}
-\CommentTok{#>          (chr)      (chr) (dbl) (int) (int)      (chr) (chr) (int)}
-\CommentTok{#> 1    chevrolet   corvette   5.7  1999     8 manual(m6)     r    16}
-\CommentTok{#> 2      pontiac grand prix   3.8  2008     6   auto(l4)     f    18}
-\CommentTok{#> 3      pontiac grand prix   5.3  2008     8   auto(s4)     f    16}
-\CommentTok{#> 4   volkswagen      jetta   1.9  1999     4 manual(m5)     f    33}
-\CommentTok{#> 5   volkswagen new beetle   1.9  1999     4 manual(m5)     f    35}
-\CommentTok{#> 6   volkswagen new beetle   1.9  1999     4   auto(l4)     f    29}
-\CommentTok{#> Variables not shown: hwy (int), fl (chr), class (chr)}
+\CommentTok{#> # A tibble: 6 x 11}
+\CommentTok{#>   manufac~ model  displ  year   cyl trans  drv     cty   hwy fl   }
+\CommentTok{#>   <chr>    <chr>  <dbl> <int> <int> <chr>  <chr> <int> <int> <chr>}
+\CommentTok{#> 1 chevrol~ corve~  5.70  1999     8 manua~ r        16    26 p    }
+\CommentTok{#> 2 pontiac  grand~  3.80  2008     6 auto(~ f        18    28 r    }
+\CommentTok{#> 3 pontiac  grand~  5.30  2008     8 auto(~ f        16    25 p    }
+\CommentTok{#> 4 volkswa~ jetta   1.90  1999     4 manua~ f        33    44 d    }
+\CommentTok{#> 5 volkswa~ new b~  1.90  1999     4 manua~ f        35    44 d    }
+\CommentTok{#> 6 volkswa~ new b~  1.90  1999     4 auto(~ f        29    41 d    }
+\CommentTok{#> # ... with 1 more variable: class <chr>}
 \end{Highlighting}
 \end{Shaded}
 
@@ -197,10 +199,10 @@ smoothed line, and labelling the outlying points:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{data =} \NormalTok{grid, }\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.5}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\DataTypeTok{data =} \NormalTok{outlier, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =} \NormalTok{model))}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ grid, }\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ outlier, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{ model))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -224,10 +226,10 @@ specifying a dataset for each layer:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data =} \NormalTok{mpg) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{data =} \NormalTok{grid) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\DataTypeTok{data =} \NormalTok{outlier, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =} \NormalTok{model))}
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ grid) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_text}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ outlier, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{label =}\NormalTok{ model))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -238,7 +240,8 @@ keystrokes). However, you may prefer it in cases where there isn't a
 clear primary dataset, or where the aesthetics also vary from layer to
 layer.
 
-\subsection{Exercises}\label{exercises}
+\hypertarget{exercises}{%
+\subsection{Exercises}\label{exercises}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -255,8 +258,8 @@ layer.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(dplyr)}
-\NormalTok{class <-}\StringTok{ }\NormalTok{mpg %>%}\StringTok{ }
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(class) %>%}\StringTok{ }
+\NormalTok{class <-}\StringTok{ }\NormalTok{mpg }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(class) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n =} \KeywordTok{n}\NormalTok{(), }\DataTypeTok{hwy =} \KeywordTok{mean}\NormalTok{(hwy))}
 \end{Highlighting}
 \end{Shaded}
@@ -269,7 +272,8 @@ layer.
   \end{figure}
 \end{enumerate}
 
-\hypertarget{sec:aes}{\section{Aesthetic mappings}\label{sec:aes}}
+\hypertarget{sec:aes}{%
+\section{Aesthetic mappings}\label{sec:aes}}
 
 The aesthetic mappings, defined with \texttt{aes()}, describe how
 variables are mapped to visual properties or \textbf{aesthetics}.
@@ -278,7 +282,7 @@ variables are mapped to visual properties or \textbf{aesthetics}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \NormalTok{displ, }\DataTypeTok{y =} \NormalTok{hwy, }\DataTypeTok{colour =} \NormalTok{class)}
+\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ displ, }\DataTypeTok{y =}\NormalTok{ hwy, }\DataTypeTok{colour =}\NormalTok{ class)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -292,7 +296,7 @@ makes this specification equivalent to the one above:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \NormalTok{class)}
+\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =}\NormalTok{ class)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -310,8 +314,9 @@ that the plot no longer contains everything it needs, and causes
 problems if ggplot2 changes the order of the rows, as it does when
 facetting. \indexc{\$}
 
+\hypertarget{sub:plots-and-layers}{%
 \subsection{Specifying the aesthetics in the plot vs.~in the
-layers}\label{sub:plots-and-layers}
+layers}\label{sub:plots-and-layers}}
 
 Aesthetic mappings can be supplied in the initial \texttt{ggplot()}
 call, in individual layers, or in some combination of both. All of these
@@ -320,20 +325,20 @@ calls create the same plot specification:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \NormalTok{class)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{class))}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \NormalTok{hwy, }\DataTypeTok{colour =} \NormalTok{class))}
-\KeywordTok{ggplot}\NormalTok{(mpg) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \NormalTok{class))}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ class))}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ hwy, }\DataTypeTok{colour =}\NormalTok{ class))}
+\KeywordTok{ggplot}\NormalTok{(mpg) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =}\NormalTok{ class))}
 \end{Highlighting}
 \end{Shaded}
 
 Within each layer, you can add, override, or remove mappings:
 
-\begin{longtable}[c]{@{}lll@{}}
+\begin{longtable}[]{@{}lll@{}}
 \toprule
 Operation & Layer aesthetics & Result\tabularnewline
 \midrule
@@ -353,14 +358,14 @@ interesting, but focus on quite different aspects of the data:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \NormalTok{class)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{) +}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{class)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -376,8 +381,8 @@ the best approach is immediately obvious, so if you've iterated your way
 to a complex graphic, it may be worthwhile to rewrite it to make the
 structure more clear.
 
-\hypertarget{sub:setting-mapping}{\subsection{Setting
-vs.~mapping}\label{sub:setting-mapping}}
+\hypertarget{sub:setting-mapping}{%
+\subsection{Setting vs.~mapping}\label{sub:setting-mapping}}
 
 Instead of mapping an aesthetic property to a variable, you can set it
 to a \emph{single} value by specifying it in the layer parameters. We
@@ -398,10 +403,10 @@ value this colour is pinkish.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"darkblue"}\NormalTok{) }
 
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"darkblue"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -415,8 +420,8 @@ A third approach is to map the value, but override the default scale:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"darkblue"}\NormalTok{)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(cty, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"darkblue"}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_colour_identity}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -436,10 +441,10 @@ you want to display multiple layers with varying parameters, you can
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"loess"}\NormalTok{), }\DataTypeTok{method =} \StringTok{"loess"}\NormalTok{, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"lm"}\NormalTok{), }\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{) +}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"loess"}\NormalTok{), }\DataTypeTok{method =} \StringTok{"loess"}\NormalTok{, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"lm"}\NormalTok{), }\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"Method"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -449,7 +454,8 @@ you want to display multiple layers with varying parameters, you can
   \includegraphics[width=0.65\linewidth]{_figures/layers/unnamed-chunk-9-1}
 \end{figure}
 
-\subsection{Exercises}\label{exercises-1}
+\hypertarget{exercises-1}{%
+\subsection{Exercises}\label{exercises-1}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -458,15 +464,15 @@ you want to display multiple layers with varying parameters, you can
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(mpg$disp, mpg$hwy))}
+\KeywordTok{ggplot}\NormalTok{(mpg) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(mpg}\OperatorTok{$}\NormalTok{disp, mpg}\OperatorTok{$}\NormalTok{hwy))}
 
-\KeywordTok{ggplot}\NormalTok{() +}\StringTok{ }
-\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \NormalTok{hwy, }\DataTypeTok{x =} \NormalTok{cty), }\DataTypeTok{data =} \NormalTok{mpg) +}
-\StringTok{ }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{data =} \NormalTok{mpg, }\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(cty, hwy))}
+\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ hwy, }\DataTypeTok{x =}\NormalTok{ cty), }\DataTypeTok{data =}\NormalTok{ mpg) }\OperatorTok{+}
+\StringTok{ }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ mpg, }\DataTypeTok{mapping =} \KeywordTok{aes}\NormalTok{(cty, hwy))}
 
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(carat, price)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\KeywordTok{log}\NormalTok{(brainwt), }\KeywordTok{log}\NormalTok{(bodywt)), }\DataTypeTok{data =} \NormalTok{msleep)}
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(carat, price)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\KeywordTok{log}\NormalTok{(brainwt), }\KeywordTok{log}\NormalTok{(bodywt)), }\DataTypeTok{data =}\NormalTok{ msleep)}
 \end{Highlighting}
 \end{Shaded}
 \item
@@ -475,8 +481,8 @@ you want to display multiple layers with varying parameters, you can
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg) +}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(class, cty)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(class, cty)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(trans, hwy))}
 \end{Highlighting}
 \end{Shaded}
@@ -486,7 +492,8 @@ you want to display multiple layers with varying parameters, you can
   if you do it in the opposite order?
 \end{enumerate}
 
-\section{Geoms}\label{sec:geom}
+\hypertarget{sec:geom}{%
+\section{Geoms}\label{sec:geom}}
 
 Geometric objects, or \textbf{geoms} for short, perform the actual
 rendering of the layer, controlling the type of plot that you create.
@@ -695,7 +702,8 @@ If alternative parameterisations are available, picking the right one
 for your data will usually make it much easier to draw the plot you
 want.
 
-\subsection{Exercises}\label{exercises-2}
+\hypertarget{exercises-2}{%
+\subsection{Exercises}\label{exercises-2}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -744,7 +752,8 @@ want.
   \end{itemize}
 \end{enumerate}
 
-\hypertarget{sec:stat}{\section{Stats}\label{sec:stat}}
+\hypertarget{sec:stat}{%
+\section{Stats}\label{sec:stat}}
 
 A statistical transformation, or \textbf{stat}, transforms the data,
 typically by summarising it in some manner. For example, a useful stat
@@ -809,12 +818,12 @@ There are two ways to use these functions. You can either add a
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(trans, cty)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(trans, cty)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"point"}\NormalTok{, }\DataTypeTok{fun.y =} \StringTok{"mean"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{4}\NormalTok{)}
 
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(trans, cty)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(trans, cty)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"summary"}\NormalTok{, }\DataTypeTok{fun.y =} \StringTok{"mean"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{4}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -827,7 +836,8 @@ There are two ways to use these functions. You can either add a
 I think it's best to use the second form because it makes it more clear
 that you're displaying a summary, not the raw data.
 
-\subsection{Generated variables}\label{generated-variables}
+\hypertarget{generated-variables}{%
+\subsection{Generated variables}\label{generated-variables}}
 
 Internally, a stat takes a data frame as input and returns a data frame
 as output, and so a stat can add new variables to the original dataset.
@@ -861,10 +871,10 @@ the y-axes on these two plots:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(price)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(price)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{binwidth =} \DecValTok{500}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(price)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \NormalTok{..density..), }\DataTypeTok{binwidth =} \DecValTok{500}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(price)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ ..density..), }\DataTypeTok{binwidth =} \DecValTok{500}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -881,12 +891,12 @@ if we standardise each group to take up the same area:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(price, }\DataTypeTok{colour =} \NormalTok{cut)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_freqpoly}\NormalTok{(}\DataTypeTok{binwidth =} \DecValTok{500}\NormalTok{) +}
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(price, }\DataTypeTok{colour =}\NormalTok{ cut)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_freqpoly}\NormalTok{(}\DataTypeTok{binwidth =} \DecValTok{500}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(price, }\DataTypeTok{colour =} \NormalTok{cut)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_freqpoly}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \NormalTok{..density..), }\DataTypeTok{binwidth =} \DecValTok{500}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(price, }\DataTypeTok{colour =}\NormalTok{ cut)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_freqpoly}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ ..density..), }\DataTypeTok{binwidth =} \DecValTok{500}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -900,7 +910,8 @@ The result of this plot is rather surprising: low quality diamonds seem
 to be more expensive on average. We'll come back to this result in
 \protect\hyperlink{sub:trend}{removing trend}.
 
-\subsection{Exercises}\label{exercises-3}
+\hypertarget{exercises-3}{%
+\subsection{Exercises}\label{exercises-3}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -911,12 +922,12 @@ to be more expensive on average. We'll come back to this result in
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mod <-}\StringTok{ }\KeywordTok{loess}\NormalTok{(hwy ~}\StringTok{ }\NormalTok{displ, }\DataTypeTok{data =} \NormalTok{mpg)}
+\NormalTok{mod <-}\StringTok{ }\KeywordTok{loess}\NormalTok{(hwy }\OperatorTok{~}\StringTok{ }\NormalTok{displ, }\DataTypeTok{data =}\NormalTok{ mpg)}
 \NormalTok{smoothed <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{displ =} \KeywordTok{seq}\NormalTok{(}\FloatTok{1.6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DataTypeTok{length =} \DecValTok{50}\NormalTok{))}
-\NormalTok{pred <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(mod, }\DataTypeTok{newdata =} \NormalTok{smoothed, }\DataTypeTok{se =} \OtherTok{TRUE}\NormalTok{) }
-\NormalTok{smoothed$hwy <-}\StringTok{ }\NormalTok{pred$fit}
-\NormalTok{smoothed$hwy_lwr <-}\StringTok{ }\NormalTok{pred$fit -}\StringTok{ }\FloatTok{1.96} \NormalTok{*}\StringTok{ }\NormalTok{pred$se.fit}
-\NormalTok{smoothed$hwy_upr <-}\StringTok{ }\NormalTok{pred$fit +}\StringTok{ }\FloatTok{1.96} \NormalTok{*}\StringTok{ }\NormalTok{pred$se.fit}
+\NormalTok{pred <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(mod, }\DataTypeTok{newdata =}\NormalTok{ smoothed, }\DataTypeTok{se =} \OtherTok{TRUE}\NormalTok{) }
+\NormalTok{smoothed}\OperatorTok{$}\NormalTok{hwy <-}\StringTok{ }\NormalTok{pred}\OperatorTok{$}\NormalTok{fit}
+\NormalTok{smoothed}\OperatorTok{$}\NormalTok{hwy_lwr <-}\StringTok{ }\NormalTok{pred}\OperatorTok{$}\NormalTok{fit }\OperatorTok{-}\StringTok{ }\FloatTok{1.96} \OperatorTok{*}\StringTok{ }\NormalTok{pred}\OperatorTok{$}\NormalTok{se.fit}
+\NormalTok{smoothed}\OperatorTok{$}\NormalTok{hwy_upr <-}\StringTok{ }\NormalTok{pred}\OperatorTok{$}\NormalTok{fit }\OperatorTok{+}\StringTok{ }\FloatTok{1.96} \OperatorTok{*}\StringTok{ }\NormalTok{pred}\OperatorTok{$}\NormalTok{se.fit}
 \end{Highlighting}
 \end{Shaded}
 \item
@@ -933,8 +944,8 @@ to be more expensive on average. We'll come back to this result in
   combination of \texttt{drv} and \texttt{trans}.
 \end{enumerate}
 
-\hypertarget{sec:position}{\section{Position
-adjustments}\label{sec:position}}
+\hypertarget{sec:position}{%
+\section{Position adjustments}\label{sec:position}}
 
 \index{Position adjustments}
 
@@ -960,13 +971,13 @@ within a layer. Three adjustments apply primarily to bars:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{dplot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(color, }\DataTypeTok{fill =} \NormalTok{cut)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) +}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
+\NormalTok{dplot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(color, }\DataTypeTok{fill =}\NormalTok{ cut)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 \CommentTok{# position stack is the default for bars, so `geom_bar()` }
 \CommentTok{# is equivalent to `geom_bar(position = "stack")`.}
-\NormalTok{dplot +}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{()}
-\NormalTok{dplot +}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{position =} \StringTok{"fill"}\NormalTok{)}
-\NormalTok{dplot +}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{position =} \StringTok{"dodge"}\NormalTok{)}
+\NormalTok{dplot }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{()}
+\NormalTok{dplot }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{position =} \StringTok{"fill"}\NormalTok{)}
+\NormalTok{dplot }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{position =} \StringTok{"dodge"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -983,11 +994,11 @@ are many geoms that don't need adjusting, like lines:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{dplot +}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{position =} \StringTok{"identity"}\NormalTok{, }\DataTypeTok{alpha =} \DecValTok{1} \NormalTok{/}\StringTok{ }\DecValTok{2}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{)}
+\NormalTok{dplot }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{position =} \StringTok{"identity"}\NormalTok{, }\DataTypeTok{alpha =} \DecValTok{1} \OperatorTok{/}\StringTok{ }\DecValTok{2}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{)}
 
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(color, }\DataTypeTok{colour =} \NormalTok{cut)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{cut), }\DataTypeTok{stat =} \StringTok{"count"}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) +}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(color, }\DataTypeTok{colour =}\NormalTok{ cut)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ cut), }\DataTypeTok{stat =} \StringTok{"count"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{ylab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1022,9 +1033,9 @@ additional arguments in the call:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \StringTok{"jitter"}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.05}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.5}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -1039,7 +1050,7 @@ shortcut:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.05}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1049,7 +1060,8 @@ Continuous data typically doesn't overlap exactly, and when it does
 often insufficient to fix the problem. For this reason, position
 adjustments are generally most useful for discrete data.
 
-\subsection{Exercises}\label{exercises-4}
+\hypertarget{exercises-4}{%
+\subsection{Exercises}\label{exercises-4}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}

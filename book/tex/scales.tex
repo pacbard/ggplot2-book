@@ -1,6 +1,8 @@
-\chapter{Scales, axes and legends}\label{cha:scales}
+\hypertarget{cha:scales}{%
+\chapter{Scales, axes and legends}\label{cha:scales}}
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 Scales control the mapping from data to aesthetics. They take your data
 and turn it into something that you can see, like size, colour, position
@@ -26,16 +28,16 @@ of the different types of scales available in ggplot2, which can be
 roughly divided into four categories: continuous position scales, colour
 scales, manual scales and identity scales.
 
-\hypertarget{sec:scale-usage}{\section{Modifying
-scales}\label{sec:scale-usage}}
+\hypertarget{sec:scale-usage}{%
+\section{Modifying scales}\label{sec:scale-usage}}
 
 A scale is required for every aesthetic used on the plot. When you
 write:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{class))}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ class))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -43,10 +45,10 @@ What actually happens is this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{class)) +}
-\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ class)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_colour_discrete}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -62,9 +64,9 @@ defaults, you'll need to add the scale yourself, like this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{class)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\StringTok{"A really awesome x axis label"}\NormalTok{) +}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\StringTok{"A really awesome x axis label"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\StringTok{"An amazingly great y axis label"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -76,15 +78,15 @@ following two specifications are equivalent: \indexc{+}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\StringTok{"Label 1"}\NormalTok{) +}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\StringTok{"Label 1"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\StringTok{"Label 2"}\NormalTok{)}
 \CommentTok{#> Scale for 'x' is already present. Adding another scale for 'x',}
 \CommentTok{#> which will replace the existing scale.}
 
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\StringTok{"Label 2"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -96,9 +98,9 @@ You can also use a different scale altogether:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{class)) +}
-\StringTok{  }\KeywordTok{scale_x_sqrt}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ class)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_sqrt}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_colour_brewer}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -120,7 +122,8 @@ be concrete, it's made up of three pieces separated by ``\_``:
   \texttt{brewer}).
 \end{enumerate}
 
-\subsection{Exercises}\label{exercises}
+\hypertarget{exercises}{%
+\subsection{Exercises}\label{exercises}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -133,24 +136,24 @@ be concrete, it's made up of three pieces separated by ``\_``:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\StringTok{"Highway mpg"}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{() +}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \NormalTok{hwy))}
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\StringTok{"Highway mpg"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ hwy))}
 
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \NormalTok{displ, }\DataTypeTok{x =} \NormalTok{class)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\StringTok{"Displacement (l)"}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}\StringTok{"Car type"}\NormalTok{) +}
-\StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}\StringTok{"Type of car"}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_colour_discrete}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{drv)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ displ, }\DataTypeTok{x =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\StringTok{"Displacement (l)"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}\StringTok{"Car type"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}\StringTok{"Type of car"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_colour_discrete}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ drv)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_colour_discrete}\NormalTok{(}\StringTok{"Drive}\CharTok{\textbackslash{}n}\StringTok{train"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \end{enumerate}
 
-\hypertarget{sec:guides}{\section{Guides: legends and
-axes}\label{sec:guides}}
+\hypertarget{sec:guides}{%
+\section{Guides: legends and axes}\label{sec:guides}}
 
 The component of a scale that you're most likely to want to modify is
 the \textbf{guide}, the axis or legend associated with the scale. Guides
@@ -179,7 +182,7 @@ correspondences between the two, as shown in table below and in Figure
   \label{fig:guides}
 \end{figure}
 
-\begin{longtable}[c]{@{}lll@{}}
+\begin{longtable}[]{@{}lll@{}}
 \toprule
 Axis & Legend & Argument name\tabularnewline
 \midrule
@@ -193,7 +196,8 @@ Tick label & Key label & \texttt{labels}\tabularnewline
 The following sections covers each of the \texttt{name}, \texttt{breaks}
 and \texttt{labels} arguments in more detail.
 
-\subsection{Scale title}\label{scale-title}
+\hypertarget{scale-title}{%
+\subsection{Scale title}\label{scale-title}}
 
 The first argument to the scale function, \texttt{name}, is the
 axes/legend title. You can supply text strings (using
@@ -203,10 +207,10 @@ in \texttt{quote()} (as described in \texttt{?plotmath}):
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{:}\DecValTok{2}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{, }\DataTypeTok{z =} \StringTok{"a"}\NormalTok{)}
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
-\NormalTok{p +}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\StringTok{"X axis"}\NormalTok{)}
-\NormalTok{p +}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\KeywordTok{quote}\NormalTok{(a +}\StringTok{ }\NormalTok{mathematical ^}\StringTok{ }\NormalTok{expression))}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{, }\DataTypeTok{z =} \StringTok{"a"}\NormalTok{)}
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\StringTok{"X axis"}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\KeywordTok{quote}\NormalTok{(a }\OperatorTok{+}\StringTok{ }\NormalTok{mathematical }\OperatorTok{^}\StringTok{ }\NormalTok{expression))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -221,11 +225,11 @@ helpers that save you some typing: \texttt{xlab()}, \texttt{ylab()} and
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{z))}
-\NormalTok{p +}\StringTok{ }
-\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"X axis"}\NormalTok{) +}\StringTok{ }
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ z))}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"X axis"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Y axis"}\NormalTok{)}
-\NormalTok{p +}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"X axis"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Y axis"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"Colour}\CharTok{\textbackslash{}n}\StringTok{legend"}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"X axis"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Y axis"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"Colour}\CharTok{\textbackslash{}n}\StringTok{legend"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -242,11 +246,11 @@ it easier to see the difference.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{plot.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"grey50"}\NormalTok{))}
-\NormalTok{p +}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{,  }\DataTypeTok{y =} \StringTok{""}\NormalTok{)}
-\NormalTok{p +}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{,  }\DataTypeTok{y =} \StringTok{""}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -255,7 +259,8 @@ it easier to see the difference.
   \includegraphics[width=0.5\linewidth]{_figures/scales/guide-names-remove-2}
 \end{figure}
 
-\subsection{Breaks and labels}\label{breaks-and-labels}
+\hypertarget{breaks-and-labels}{%
+\subsection{Breaks and labels}\label{breaks-and-labels}}
 
 The \texttt{breaks} argument controls which values appear as tick marks
 on axes and keys on legends. Each break has an associated label,
@@ -268,13 +273,13 @@ The following code shows some basic examples for both axes and legends.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{) *}\StringTok{ }\DecValTok{1000}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{)}
-\NormalTok{axs <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{) }\OperatorTok{*}\StringTok{ }\DecValTok{1000}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{)}
+\NormalTok{axs <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{)}
 \NormalTok{axs}
-\NormalTok{axs +}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{2000}\NormalTok{, }\DecValTok{4000}\NormalTok{))}
-\NormalTok{axs +}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{2000}\NormalTok{, }\DecValTok{4000}\NormalTok{), }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"2k"}\NormalTok{, }\StringTok{"4k"}\NormalTok{))}
+\NormalTok{axs }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{2000}\NormalTok{, }\DecValTok{4000}\NormalTok{))}
+\NormalTok{axs }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{2000}\NormalTok{, }\DecValTok{4000}\NormalTok{), }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"2k"}\NormalTok{, }\StringTok{"4k"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -286,12 +291,12 @@ The following code shows some basic examples for both axes and legends.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{leg <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(y, x, }\DataTypeTok{fill =} \NormalTok{x)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_tile}\NormalTok{() +}\StringTok{ }
+\NormalTok{leg <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(y, x, }\DataTypeTok{fill =}\NormalTok{ x)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_tile}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{)}
 \NormalTok{leg}
-\NormalTok{leg +}\StringTok{ }\KeywordTok{scale_fill_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{2000}\NormalTok{, }\DecValTok{4000}\NormalTok{))}
-\NormalTok{leg +}\StringTok{ }\KeywordTok{scale_fill_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{2000}\NormalTok{, }\DecValTok{4000}\NormalTok{), }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"2k"}\NormalTok{, }\StringTok{"4k"}\NormalTok{))}
+\NormalTok{leg }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{2000}\NormalTok{, }\DecValTok{4000}\NormalTok{))}
+\NormalTok{leg }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_continuous}\NormalTok{(}\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{2000}\NormalTok{, }\DecValTok{4000}\NormalTok{), }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"2k"}\NormalTok{, }\StringTok{"4k"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -306,11 +311,11 @@ named labels vector:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df2 <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{))}
-\KeywordTok{ggplot}\NormalTok{(df2, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
+\NormalTok{df2 <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{))}
+\KeywordTok{ggplot}\NormalTok{(df2, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
-\KeywordTok{ggplot}\NormalTok{(df2, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(df2, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_y_discrete}\NormalTok{(}\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\DataTypeTok{a =} \StringTok{"apple"}\NormalTok{, }\DataTypeTok{b =} \StringTok{"banana"}\NormalTok{, }\DataTypeTok{c =} \StringTok{"carrot"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -325,8 +330,8 @@ To suppress breaks (and for axes, grid lines) or labels, set them to
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{axs +}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{breaks =} \OtherTok{NULL}\NormalTok{)}
-\NormalTok{axs +}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{labels =} \OtherTok{NULL}\NormalTok{)}
+\NormalTok{axs }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{breaks =} \OtherTok{NULL}\NormalTok{)}
+\NormalTok{axs }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{labels =} \OtherTok{NULL}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -337,8 +342,8 @@ To suppress breaks (and for axes, grid lines) or labels, set them to
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{leg +}\StringTok{ }\KeywordTok{scale_fill_continuous}\NormalTok{(}\DataTypeTok{breaks =} \OtherTok{NULL}\NormalTok{)}
-\NormalTok{leg +}\StringTok{ }\KeywordTok{scale_fill_continuous}\NormalTok{(}\DataTypeTok{labels =} \OtherTok{NULL}\NormalTok{)}
+\NormalTok{leg }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_continuous}\NormalTok{(}\DataTypeTok{breaks =} \OtherTok{NULL}\NormalTok{)}
+\NormalTok{leg }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_continuous}\NormalTok{(}\DataTypeTok{labels =} \OtherTok{NULL}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -373,9 +378,9 @@ See the documentation of the scales package for more details.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{axs +}\StringTok{ }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{labels =} \NormalTok{scales::}\KeywordTok{percent_format}\NormalTok{())}
-\NormalTok{axs +}\StringTok{ }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{labels =} \NormalTok{scales::}\KeywordTok{dollar_format}\NormalTok{(}\StringTok{"$"}\NormalTok{))}
-\NormalTok{leg +}\StringTok{ }\KeywordTok{scale_fill_continuous}\NormalTok{(}\DataTypeTok{labels =} \NormalTok{scales::}\KeywordTok{unit_format}\NormalTok{(}\StringTok{"k"}\NormalTok{, }\FloatTok{1e-3}\NormalTok{))}
+\NormalTok{axs }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\KeywordTok{percent_format}\NormalTok{())}
+\NormalTok{axs }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\KeywordTok{dollar_format}\NormalTok{(}\StringTok{"$"}\NormalTok{))}
+\NormalTok{leg }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_continuous}\NormalTok{(}\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\KeywordTok{unit_format}\NormalTok{(}\StringTok{"k"}\NormalTok{, }\FloatTok{1e-3}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -393,13 +398,13 @@ log scales: \index{Minor breaks}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{3000}\NormalTok{), }\DataTypeTok{y =} \DecValTok{1}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_x_log10}\NormalTok{()}
 
-\NormalTok{mb <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{10} \NormalTok{%o%}\StringTok{ }\DecValTok{10} \NormalTok{^}\StringTok{ }\NormalTok{(}\DecValTok{0}\NormalTok{:}\DecValTok{4}\NormalTok{))}
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\NormalTok{mb <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10} \OperatorTok{%o%}\StringTok{ }\DecValTok{10} \OperatorTok{^}\StringTok{ }\NormalTok{(}\DecValTok{0}\OperatorTok{:}\DecValTok{4}\NormalTok{))}
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_x_log10}\NormalTok{(}\DataTypeTok{minor_breaks =} \KeywordTok{log10}\NormalTok{(mb))}
 \end{Highlighting}
 \end{Shaded}
@@ -413,7 +418,8 @@ Note the use of \texttt{\%o\%} to quickly generate the multiplication
 table, and that the minor breaks must be supplied on the transformed
 scale. \index{Log!ticks}
 
-\subsection{Exercises}\label{exercises-1}
+\hypertarget{exercises-1}{%
+\subsection{Exercises}\label{exercises-1}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -444,7 +450,8 @@ scale. \index{Log!ticks}
   axes vs.~legends.
 \end{enumerate}
 
-\hypertarget{sec:legends}{\section{Legends}\label{sec:legends}}
+\hypertarget{sec:legends}{%
+\section{Legends}\label{sec:legends}}
 
 While the most important parameters are shared between axes and legends,
 there are some extra options that only apply to legends. Legends are
@@ -468,8 +475,8 @@ more complicated than axes because: \index{Legend}
 The following sections describe the options that control these
 interactions.
 
-\hypertarget{sub-layers-legends}{\subsection{Layers and
-legends}\label{sub-layers-legends}}
+\hypertarget{sub-layers-legends}{%
+\subsection{Layers and legends}\label{sub-layers-legends}}
 
 A legend may need to draw symbols from multiple layers. For example, if
 you've mapped colour to both points and lines, the keys will show both
@@ -492,12 +499,12 @@ make points stand out:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(y, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \DecValTok{4}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"grey20"}\NormalTok{) +}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{z), }\DataTypeTok{size =} \DecValTok{2}\NormalTok{) }
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(y, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \DecValTok{4}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"grey20"}\NormalTok{, }\DataTypeTok{show.legend =} \OtherTok{TRUE}\NormalTok{) +}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{z), }\DataTypeTok{size =} \DecValTok{2}\NormalTok{) }
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(y, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \DecValTok{4}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"grey20"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ z), }\DataTypeTok{size =} \DecValTok{2}\NormalTok{) }
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(y, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \DecValTok{4}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"grey20"}\NormalTok{, }\DataTypeTok{show.legend =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ z), }\DataTypeTok{size =} \DecValTok{2}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -516,11 +523,11 @@ shortly. \indexf{override.aes}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{norm <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{), }\DataTypeTok{y =} \KeywordTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{))}
-\NormalTok{norm$z <-}\StringTok{ }\KeywordTok{cut}\NormalTok{(norm$x, }\DecValTok{3}\NormalTok{, }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{))}
-\KeywordTok{ggplot}\NormalTok{(norm, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{z), }\DataTypeTok{alpha =} \FloatTok{0.1}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(norm, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{z), }\DataTypeTok{alpha =} \FloatTok{0.1}\NormalTok{) +}\StringTok{ }
+\NormalTok{norm}\OperatorTok{$}\NormalTok{z <-}\StringTok{ }\KeywordTok{cut}\NormalTok{(norm}\OperatorTok{$}\NormalTok{x, }\DecValTok{3}\NormalTok{, }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{))}
+\KeywordTok{ggplot}\NormalTok{(norm, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ z), }\DataTypeTok{alpha =} \FloatTok{0.1}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(norm, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ z), }\DataTypeTok{alpha =} \FloatTok{0.1}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{colour =} \KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{override.aes =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{)))}
 \end{Highlighting}
 \end{Shaded}
@@ -539,9 +546,9 @@ the same variable, then only a single legend is necessary.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{z))}
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \NormalTok{z))}
-\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \NormalTok{z, }\DataTypeTok{colour =} \NormalTok{z))}
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ z))}
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =}\NormalTok{ z))}
+\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =}\NormalTok{ z, }\DataTypeTok{colour =}\NormalTok{ z))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -555,7 +562,8 @@ In order for legends to be merged, they must have the same
 \texttt{name}. So if you change the name of one of the scales, you'll
 need to change it for all of them.
 
-\subsection{Legend layout}\label{sub:legend-layout}
+\hypertarget{sub:legend-layout}{%
+\subsection{Legend layout}\label{sub:legend-layout}}
 
 A number of settings that affect the overall display of the legends are
 controlled through the theme system. You'll learn more about that in
@@ -570,15 +578,15 @@ setting \texttt{legend.position}, which takes values ``right'',
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{z =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{))}
-\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{z), }\DataTypeTok{size =} \DecValTok{3}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) +}\StringTok{ }
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{z =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{))}
+\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ z), }\DataTypeTok{size =} \DecValTok{3}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\OtherTok{NULL}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{ylab}\NormalTok{(}\OtherTok{NULL}\NormalTok{)}
 
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"right"}\NormalTok{) }\CommentTok{# the default }
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"bottom"}\NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"right"}\NormalTok{) }\CommentTok{# the default }
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"bottom"}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -618,12 +626,12 @@ it requires a lot of trial and error.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{z), }\DataTypeTok{size =} \DecValTok{3}\NormalTok{)}
+\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ z), }\DataTypeTok{size =} \DecValTok{3}\NormalTok{)}
 
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{legend.justification =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{))}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{), }\DataTypeTok{legend.justification =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{))}
-\NormalTok{base +}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{legend.justification =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{legend.justification =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{), }\DataTypeTok{legend.justification =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{legend.justification =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -636,7 +644,8 @@ it requires a lot of trial and error.
 There's also a margin around the legends, which you can suppress with
 \texttt{legend.margin\ =\ unit(0,\ "mm")}.
 
-\subsection{Guide functions}\label{guide-functions}
+\hypertarget{guide-functions}{%
+\subsection{Guide functions}\label{guide-functions}}
 
 The guide functions, \texttt{guide\_colourbar()} and
 \texttt{guide\_legend()}, offer additional control over the fine details
@@ -652,11 +661,11 @@ aesthetic.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{z =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{)}
-\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_raster}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{z))}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{z =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)}
+\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_raster}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ z))}
 \NormalTok{base }
-\NormalTok{base +}\StringTok{ }\KeywordTok{scale_fill_continuous}\NormalTok{(}\DataTypeTok{guide =} \KeywordTok{guide_legend}\NormalTok{())}
-\NormalTok{base +}\StringTok{ }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill =} \KeywordTok{guide_legend}\NormalTok{())}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_continuous}\NormalTok{(}\DataTypeTok{guide =} \KeywordTok{guide_legend}\NormalTok{())}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill =} \KeywordTok{guide_legend}\NormalTok{())}
 \end{Highlighting}
 \end{Shaded}
 
@@ -672,7 +681,8 @@ guide function control the fine level details of the text colour, size,
 font etc. You'll learn about those in the themes chapter. Here I'll
 focus on the most important arguments.
 
-\subsubsection{\texorpdfstring{\texttt{guide\_legend()}}{guide\_legend()}}\label{guideux5flegend}
+\hypertarget{guide_legend}{%
+\subsubsection{\texorpdfstring{\texttt{guide\_legend()}}{guide\_legend()}}\label{guide_legend}}
 
 The legend guide displays individual keys in a table. The most useful
 options are: \index{Legend!guide}
@@ -685,12 +695,12 @@ options are: \index{Legend!guide}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{z =} \NormalTok{letters[}\DecValTok{1}\NormalTok{:}\DecValTok{4}\NormalTok{])}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{z =}\NormalTok{ letters[}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{])}
 \CommentTok{# Base plot}
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_raster}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{z))}
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_raster}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ z))}
 \NormalTok{p}
-\NormalTok{p +}\StringTok{ }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill =} \KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{ncol =} \DecValTok{2}\NormalTok{))}
-\NormalTok{p +}\StringTok{ }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill =} \KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{ncol =} \DecValTok{2}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{))}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill =} \KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{ncol =} \DecValTok{2}\NormalTok{))}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill =} \KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{ncol =} \DecValTok{2}\NormalTok{, }\DataTypeTok{byrow =} \OtherTok{TRUE}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -706,9 +716,9 @@ options are: \index{Legend!guide}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(}\DecValTok{1}\NormalTok{, y)) +}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{z))}
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(}\DecValTok{1}\NormalTok{, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ z))}
 \NormalTok{p}
-\NormalTok{p +}\StringTok{ }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill =} \KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{reverse =} \OtherTok{TRUE}\NormalTok{))}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill =} \KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{reverse =} \OtherTok{TRUE}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -727,7 +737,8 @@ options are: \index{Legend!guide}
   These are grid units, e.g. \texttt{unit(1,\ "cm")}.
 \end{itemize}
 
-\subsubsection{\texorpdfstring{\texttt{guide\_colourbar}}{guide\_colourbar}}\label{guideux5fcolourbar}
+\hypertarget{guide_colourbar}{%
+\subsubsection{\texorpdfstring{\texttt{guide\_colourbar}}{guide\_colourbar}}\label{guide_colourbar}}
 
 The colour bar guide is designed for continuous ranges of colors---as
 its name implies, it outputs a rectangle over which the color gradient
@@ -751,12 +762,12 @@ These options are illustrated below:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{z =} \DecValTok{4}\NormalTok{:}\DecValTok{1}\NormalTok{)}
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_tile}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{z))}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{z =} \DecValTok{4}\OperatorTok{:}\DecValTok{1}\NormalTok{)}
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_tile}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ z))}
 
 \NormalTok{p}
-\NormalTok{p +}\StringTok{ }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill =} \KeywordTok{guide_colorbar}\NormalTok{(}\DataTypeTok{reverse =} \OtherTok{TRUE}\NormalTok{))}
-\NormalTok{p +}\StringTok{ }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill =} \KeywordTok{guide_colorbar}\NormalTok{(}\DataTypeTok{barheight =} \KeywordTok{unit}\NormalTok{(}\DecValTok{4}\NormalTok{, }\StringTok{"cm"}\NormalTok{)))}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill =} \KeywordTok{guide_colorbar}\NormalTok{(}\DataTypeTok{reverse =} \OtherTok{TRUE}\NormalTok{))}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill =} \KeywordTok{guide_colorbar}\NormalTok{(}\DataTypeTok{barheight =} \KeywordTok{unit}\NormalTok{(}\DecValTok{4}\NormalTok{, }\StringTok{"cm"}\NormalTok{)))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -766,7 +777,8 @@ These options are illustrated below:
   \includegraphics[width=0.333\linewidth]{_figures/scales/unnamed-chunk-14-3}
 \end{figure}
 
-\subsection{Exercises}\label{exercises-2}
+\hypertarget{exercises-2}{%
+\subsection{Exercises}\label{exercises-2}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -777,8 +789,8 @@ These options are illustrated below:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{drv, }\DataTypeTok{shape =} \NormalTok{drv)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ drv, }\DataTypeTok{shape =}\NormalTok{ drv)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_colour_discrete}\NormalTok{(}\StringTok{"Drive train"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -796,7 +808,8 @@ These options are illustrated below:
   \end{figure}
 \end{enumerate}
 
-\hypertarget{sec:limits}{\section{Limits}\label{sec:limits}}
+\hypertarget{sec:limits}{%
+\section{Limits}\label{sec:limits}}
 
 The limits, or domain, of a scale are usually derived from the range of
 the data. \index{Axis!limits} \index{Scales!limits} There are two
@@ -834,13 +847,13 @@ scale:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{)}
-\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() }
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{)}
+\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() }
 
 \NormalTok{base}
-\NormalTok{base +}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\FloatTok{1.5}\NormalTok{, }\FloatTok{2.5}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\FloatTok{1.5}\NormalTok{, }\FloatTok{2.5}\NormalTok{))}
 \CommentTok{#> Warning: Removed 2 rows containing missing values (geom_point).}
-\NormalTok{base +}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -870,9 +883,9 @@ the appropriate scale, as follows: \indexf{xlim} \indexf{ylim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base +}\StringTok{ }\KeywordTok{xlim}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{xlim}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{0}\NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{lims}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{xlim}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{xlim}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{lims}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -890,13 +903,13 @@ with \texttt{geom\_raster()}: \index{Axis!expansion}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(faithfuld, }\KeywordTok{aes}\NormalTok{(waiting, eruptions)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_raster}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{density)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(faithfuld, }\KeywordTok{aes}\NormalTok{(waiting, eruptions)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_raster}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ density)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(faithfuld, }\KeywordTok{aes}\NormalTok{(waiting, eruptions)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_raster}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{density)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)) +}
+\KeywordTok{ggplot}\NormalTok{(faithfuld, }\KeywordTok{aes}\NormalTok{(waiting, eruptions)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_raster}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ density)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -922,11 +935,11 @@ range:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{:}\DecValTok{5}\NormalTok{)}
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, }\DecValTok{1}\NormalTok{)) +}\StringTok{ }\KeywordTok{geom_tile}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{x), }\DataTypeTok{colour =} \StringTok{"white"}\NormalTok{)}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{)}
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, }\DecValTok{1}\NormalTok{)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_tile}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ x), }\DataTypeTok{colour =} \StringTok{"white"}\NormalTok{)}
 \NormalTok{p}
-\NormalTok{p +}\StringTok{ }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{))}
-\NormalTok{p +}\StringTok{ }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{), }\DataTypeTok{oob =} \NormalTok{scales::squish)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{), }\DataTypeTok{oob =}\NormalTok{ scales}\OperatorTok{::}\NormalTok{squish)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -937,7 +950,8 @@ range:
   \includegraphics[width=0.33\linewidth]{_figures/scales/unnamed-chunk-20-3}
 \end{figure}
 
-\subsection{Exercises}\label{exercises-3}
+\hypertarget{exercises-3}{%
+\subsection{Exercises}\label{exercises-3}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -947,11 +961,11 @@ range:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fwd <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(mpg, drv ==}\StringTok{ "f"}\NormalTok{)}
-\NormalTok{rwd <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(mpg, drv ==}\StringTok{ "r"}\NormalTok{)}
+\NormalTok{fwd <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(mpg, drv }\OperatorTok{==}\StringTok{ "f"}\NormalTok{)}
+\NormalTok{rwd <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(mpg, drv }\OperatorTok{==}\StringTok{ "r"}\NormalTok{)}
 
-\KeywordTok{ggplot}\NormalTok{(fwd, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \NormalTok{class)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
-\KeywordTok{ggplot}\NormalTok{(rwd, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =} \NormalTok{class)) +}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\KeywordTok{ggplot}\NormalTok{(fwd, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
+\KeywordTok{ggplot}\NormalTok{(rwd, }\KeywordTok{aes}\NormalTok{(displ, hwy, }\DataTypeTok{colour =}\NormalTok{ class)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -969,8 +983,8 @@ range:
   What does \texttt{scale\_x\_continuous(limits\ =\ c(NA,\ NA))} do?
 \end{enumerate}
 
-\hypertarget{sec:scale-details}{\section{Scales
-toolbox}\label{sec:scale-details}}
+\hypertarget{sec:scale-details}{%
+\section{Scales toolbox}\label{sec:scale-details}}
 
 As well as tweaking the options of the default scales, you can also
 override them completely with new scales. Scales can be divided roughly
@@ -993,7 +1007,8 @@ into four families:
 
 The follow sections describe each family in more detail.
 
-\subsection{Continuous position scales}\label{sub:scale-position}
+\hypertarget{sub:scale-position}{%
+\subsection{Continuous position scales}\label{sub:scale-position}}
 
 Every plot has two position scales, x and y. \index{Scales!position}
 \index{Positioning!scales} The most common continuous position scales
@@ -1007,14 +1022,14 @@ variety of transformations:
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Convert from fuel economy to fuel consumption}
-\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(mpg, }\KeywordTok{aes}\NormalTok{(displ, hwy)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{trans =} \StringTok{"reciprocal"}\NormalTok{)}
 
 \CommentTok{# Log transform x and y axes}
-\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(price, carat)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{() +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{trans =} \StringTok{"log10"}\NormalTok{) +}
+\KeywordTok{ggplot}\NormalTok{(diamonds, }\KeywordTok{aes}\NormalTok{(price, carat)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{trans =} \StringTok{"log10"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{trans =} \StringTok{"log10"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1028,7 +1043,7 @@ The transformation is carried out by a ``transformer'', which describes
 the transformation, its inverse, and how to draw the labels. The
 following table lists the most common variants:
 
-\begin{longtable}[c]{@{}lll@{}}
+\begin{longtable}[]{@{}lll@{}}
 \toprule
 Name & Function \(f(x)\) & Inverse \(f^{-1}(y)\)\tabularnewline
 \midrule
@@ -1088,7 +1103,7 @@ date-friendly units:
   same formatting strings as in \texttt{strptime()} and
   \texttt{format()}:
 
-  \begin{longtable}[c]{@{}ll@{}}
+  \begin{longtable}[]{@{}ll@{}}
   \toprule
   String & Meaning\tabularnewline
   \midrule
@@ -1119,12 +1134,12 @@ The code below illustrates some of these parameters.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(date, psavert)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) +}
+\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(economics, }\KeywordTok{aes}\NormalTok{(date, psavert)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{)}
 
 \NormalTok{base }\CommentTok{# Default breaks and labels}
-\NormalTok{base +}\StringTok{ }\KeywordTok{scale_x_date}\NormalTok{(}\DataTypeTok{date_labels =} \StringTok{"%y"}\NormalTok{, }\DataTypeTok{date_breaks =} \StringTok{"5 years"}\NormalTok{)}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_date}\NormalTok{(}\DataTypeTok{date_labels =} \StringTok{"%y"}\NormalTok{, }\DataTypeTok{date_breaks =} \StringTok{"5 years"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1135,12 +1150,12 @@ The code below illustrates some of these parameters.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{base +}\StringTok{ }\KeywordTok{scale_x_date}\NormalTok{(}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_date}\NormalTok{(}
   \DataTypeTok{limits =} \KeywordTok{as.Date}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"2004-01-01"}\NormalTok{, }\StringTok{"2005-01-01"}\NormalTok{)),}
   \DataTypeTok{date_labels =} \StringTok{"%b %y"}\NormalTok{,}
   \DataTypeTok{date_minor_breaks =} \StringTok{"1 month"}
 \NormalTok{)}
-\NormalTok{base +}\StringTok{ }\KeywordTok{scale_x_date}\NormalTok{(}
+\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_date}\NormalTok{(}
   \DataTypeTok{limits =} \KeywordTok{as.Date}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"2004-01-01"}\NormalTok{, }\StringTok{"2004-06-01"}\NormalTok{)),}
   \DataTypeTok{date_labels =} \StringTok{"%m/%d"}\NormalTok{,}
   \DataTypeTok{date_minor_breaks =} \StringTok{"2 weeks"}
@@ -1153,7 +1168,8 @@ The code below illustrates some of these parameters.
   \includegraphics[width=0.5\linewidth]{_figures/scales/date-scale-2-2}
 \end{figure}
 
-\subsection{Colour}\label{sub:scale-colour}
+\hypertarget{sub:scale-colour}{%
+\subsection{Colour}\label{sub:scale-colour}}
 
 After position, the most commonly used aesthetic is colour. There are
 quite a few different ways of mapping values to colours in ggplot2: four
@@ -1223,7 +1239,8 @@ help people with colour blindness in the same way that you can help
 people with black-and-white printers: by providing redundant mappings to
 other aesthetics like size, line type or shape.
 
-\subsubsection{Continuous}\label{ssub:colour-continuous}
+\hypertarget{ssub:colour-continuous}{%
+\subsubsection{Continuous}\label{ssub:colour-continuous}}
 
 Colour gradients are often used to show the height of a 2d surface. In
 the following example we'll use the surface of a 2d density estimate of
@@ -1237,10 +1254,10 @@ with coloured lines and points.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{erupt <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(faithfuld, }\KeywordTok{aes}\NormalTok{(waiting, eruptions, }\DataTypeTok{fill =} \NormalTok{density)) +}
-\StringTok{  }\KeywordTok{geom_raster}\NormalTok{() +}
-\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\OtherTok{NULL}\NormalTok{, }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\OtherTok{NULL}\NormalTok{, }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)) +}\StringTok{ }
+\NormalTok{erupt <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(faithfuld, }\KeywordTok{aes}\NormalTok{(waiting, eruptions, }\DataTypeTok{fill =}\NormalTok{ density)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_raster}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}\OtherTok{NULL}\NormalTok{, }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\OtherTok{NULL}\NormalTok{, }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1267,11 +1284,11 @@ There are four continuous colour scales:
 \begin{Highlighting}[]
 \NormalTok{erupt}
 
-\NormalTok{erupt +}\StringTok{ }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{low =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{high =} \StringTok{"black"}\NormalTok{)}
+\NormalTok{erupt }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{low =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{high =} \StringTok{"black"}\NormalTok{)}
 
-\NormalTok{erupt +}\StringTok{ }\KeywordTok{scale_fill_gradient}\NormalTok{(}
-  \DataTypeTok{low =} \NormalTok{munsell::}\KeywordTok{mnsl}\NormalTok{(}\StringTok{"5G 9/2"}\NormalTok{), }
-  \DataTypeTok{high =} \NormalTok{munsell::}\KeywordTok{mnsl}\NormalTok{(}\StringTok{"5G 6/8"}\NormalTok{)}
+\NormalTok{erupt }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_gradient}\NormalTok{(}
+  \DataTypeTok{low =}\NormalTok{ munsell}\OperatorTok{::}\KeywordTok{mnsl}\NormalTok{(}\StringTok{"5G 9/2"}\NormalTok{), }
+  \DataTypeTok{high =}\NormalTok{ munsell}\OperatorTok{::}\KeywordTok{mnsl}\NormalTok{(}\StringTok{"5G 6/8"}\NormalTok{)}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1297,8 +1314,8 @@ There are four continuous colour scales:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mid <-}\StringTok{ }\KeywordTok{median}\NormalTok{(faithfuld$density)}
-\NormalTok{erupt +}\StringTok{ }\KeywordTok{scale_fill_gradient2}\NormalTok{(}\DataTypeTok{midpoint =} \NormalTok{mid) }
+\NormalTok{mid <-}\StringTok{ }\KeywordTok{median}\NormalTok{(faithfuld}\OperatorTok{$}\NormalTok{density)}
+\NormalTok{erupt }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_gradient2}\NormalTok{(}\DataTypeTok{midpoint =}\NormalTok{ mid) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -1319,9 +1336,9 @@ There are four continuous colour scales:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{erupt +}\StringTok{ }\KeywordTok{scale_fill_gradientn}\NormalTok{(}\DataTypeTok{colours =} \KeywordTok{terrain.colors}\NormalTok{(}\DecValTok{7}\NormalTok{))}
-\NormalTok{erupt +}\StringTok{ }\KeywordTok{scale_fill_gradientn}\NormalTok{(}\DataTypeTok{colours =} \NormalTok{colorspace::}\KeywordTok{heat_hcl}\NormalTok{(}\DecValTok{7}\NormalTok{))}
-\NormalTok{erupt +}\StringTok{ }\KeywordTok{scale_fill_gradientn}\NormalTok{(}\DataTypeTok{colours =} \NormalTok{colorspace::}\KeywordTok{diverge_hcl}\NormalTok{(}\DecValTok{7}\NormalTok{))}
+\NormalTok{erupt }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_gradientn}\NormalTok{(}\DataTypeTok{colours =} \KeywordTok{terrain.colors}\NormalTok{(}\DecValTok{7}\NormalTok{))}
+\NormalTok{erupt }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_gradientn}\NormalTok{(}\DataTypeTok{colours =}\NormalTok{ colorspace}\OperatorTok{::}\KeywordTok{heat_hcl}\NormalTok{(}\DecValTok{7}\NormalTok{))}
+\NormalTok{erupt }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_gradientn}\NormalTok{(}\DataTypeTok{colours =}\NormalTok{ colorspace}\OperatorTok{::}\KeywordTok{diverge_hcl}\NormalTok{(}\DecValTok{7}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1342,9 +1359,9 @@ There are four continuous colour scales:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{erupt +}\StringTok{ }\KeywordTok{scale_fill_distiller}\NormalTok{()}
-\NormalTok{erupt +}\StringTok{ }\KeywordTok{scale_fill_distiller}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"RdPu"}\NormalTok{)}
-\NormalTok{erupt +}\StringTok{ }\KeywordTok{scale_fill_distiller}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"YlOrBr"}\NormalTok{)}
+\NormalTok{erupt }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_distiller}\NormalTok{()}
+\NormalTok{erupt }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_distiller}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"RdPu"}\NormalTok{)}
+\NormalTok{erupt }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_distiller}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"YlOrBr"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1364,13 +1381,13 @@ more obvious. \indexc{na.value} \index{Missing values!changing colour}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\NormalTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{z =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\OtherTok{NA}\NormalTok{, }\DecValTok{5}\NormalTok{))}
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }\KeywordTok{geom_tile}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{z), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{)}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{z =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\OtherTok{NA}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_tile}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ z), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{)}
 \NormalTok{p}
 \CommentTok{# Make missing colours invisible}
-\NormalTok{p +}\StringTok{ }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{na.value =} \OtherTok{NA}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{na.value =} \OtherTok{NA}\NormalTok{)}
 \CommentTok{# Customise on a black and white scale}
-\NormalTok{p +}\StringTok{ }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{low =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{high =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{na.value =} \StringTok{"red"}\NormalTok{)}
+\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_gradient}\NormalTok{(}\DataTypeTok{low =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{high =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{na.value =} \StringTok{"red"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1380,7 +1397,8 @@ more obvious. \indexc{na.value} \index{Missing values!changing colour}
   \includegraphics[width=0.333\linewidth]{_figures/scales/unnamed-chunk-27-3}
 \end{figure}
 
-\subsubsection{Discrete}\label{ssub:colour-discrete}
+\hypertarget{ssub:colour-discrete}{%
+\subsubsection{Discrete}\label{ssub:colour-discrete}}
 
 There are four colour scales for discrete data. We illustrate them with
 a barchart that encodes both position and fill to the same variable:
@@ -1389,9 +1407,9 @@ a barchart that encodes both position and fill to the same variable:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"d"}\NormalTok{), }\DataTypeTok{y =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
-\NormalTok{bars <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{fill =} \NormalTok{x)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{) +}
+\NormalTok{bars <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y, }\DataTypeTok{fill =}\NormalTok{ x)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1408,8 +1426,8 @@ a barchart that encodes both position and fill to the same variable:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{bars}
-\NormalTok{bars +}\StringTok{ }\KeywordTok{scale_fill_hue}\NormalTok{(}\DataTypeTok{c =} \DecValTok{40}\NormalTok{)}
-\NormalTok{bars +}\StringTok{ }\KeywordTok{scale_fill_hue}\NormalTok{(}\DataTypeTok{h =} \KeywordTok{c}\NormalTok{(}\DecValTok{180}\NormalTok{, }\DecValTok{300}\NormalTok{))}
+\NormalTok{bars }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_hue}\NormalTok{(}\DataTypeTok{c =} \DecValTok{40}\NormalTok{)}
+\NormalTok{bars }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_hue}\NormalTok{(}\DataTypeTok{h =} \KeywordTok{c}\NormalTok{(}\DecValTok{180}\NormalTok{, }\DecValTok{300}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1436,9 +1454,9 @@ a barchart that encodes both position and fill to the same variable:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{bars +}\StringTok{ }\KeywordTok{scale_fill_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set1"}\NormalTok{)}
-\NormalTok{bars +}\StringTok{ }\KeywordTok{scale_fill_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set2"}\NormalTok{)}
-\NormalTok{bars +}\StringTok{ }\KeywordTok{scale_fill_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Accent"}\NormalTok{)}
+\NormalTok{bars }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set1"}\NormalTok{)}
+\NormalTok{bars }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set2"}\NormalTok{)}
+\NormalTok{bars }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Accent"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1453,9 +1471,9 @@ a barchart that encodes both position and fill to the same variable:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{bars +}\StringTok{ }\KeywordTok{scale_fill_grey}\NormalTok{()}
-\NormalTok{bars +}\StringTok{ }\KeywordTok{scale_fill_grey}\NormalTok{(}\DataTypeTok{start =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{end =} \DecValTok{1}\NormalTok{)}
-\NormalTok{bars +}\StringTok{ }\KeywordTok{scale_fill_grey}\NormalTok{(}\DataTypeTok{start =} \DecValTok{0}\NormalTok{, }\DataTypeTok{end =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{bars }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_grey}\NormalTok{()}
+\NormalTok{bars }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_grey}\NormalTok{(}\DataTypeTok{start =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{end =} \DecValTok{1}\NormalTok{)}
+\NormalTok{bars }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_grey}\NormalTok{(}\DataTypeTok{start =} \DecValTok{0}\NormalTok{, }\DataTypeTok{end =} \FloatTok{0.5}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1475,9 +1493,9 @@ a barchart that encodes both position and fill to the same variable:
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(wesanderson)}
-\NormalTok{bars +}\StringTok{ }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{wes_palette}\NormalTok{(}\StringTok{"GrandBudapest"}\NormalTok{))}
-\NormalTok{bars +}\StringTok{ }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{wes_palette}\NormalTok{(}\StringTok{"Zissou"}\NormalTok{))}
-\NormalTok{bars +}\StringTok{ }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{wes_palette}\NormalTok{(}\StringTok{"Rushmore"}\NormalTok{))}
+\NormalTok{bars }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{wes_palette}\NormalTok{(}\StringTok{"GrandBudapest"}\NormalTok{))}
+\NormalTok{bars }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{wes_palette}\NormalTok{(}\StringTok{"Zissou"}\NormalTok{))}
+\NormalTok{bars }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{wes_palette}\NormalTok{(}\StringTok{"Rushmore"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1495,14 +1513,14 @@ Subtle colours work well for bars, but are hard to see on points:
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Bright colours work best with points}
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{:}\DecValTok{3} \NormalTok{+}\StringTok{ }\KeywordTok{runif}\NormalTok{(}\DecValTok{30}\NormalTok{), }\DataTypeTok{y =} \KeywordTok{runif}\NormalTok{(}\DecValTok{30}\NormalTok{), }\DataTypeTok{z =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{))}
-\NormalTok{point <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{z))  +}\StringTok{ }
-\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{) +}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{3} \OperatorTok{+}\StringTok{ }\KeywordTok{runif}\NormalTok{(}\DecValTok{30}\NormalTok{), }\DataTypeTok{y =} \KeywordTok{runif}\NormalTok{(}\DecValTok{30}\NormalTok{), }\DataTypeTok{z =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{))}
+\NormalTok{point <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ z))  }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{)}
-\NormalTok{point +}\StringTok{ }\KeywordTok{scale_colour_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set1"}\NormalTok{)}
-\NormalTok{point +}\StringTok{ }\KeywordTok{scale_colour_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set2"}\NormalTok{)  }
-\NormalTok{point +}\StringTok{ }\KeywordTok{scale_colour_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Pastel1"}\NormalTok{)}
+\NormalTok{point }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_colour_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set1"}\NormalTok{)}
+\NormalTok{point }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_colour_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set2"}\NormalTok{)  }
+\NormalTok{point }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_colour_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Pastel1"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1515,14 +1533,14 @@ Subtle colours work well for bars, but are hard to see on points:
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Subtler colours work better with areas}
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \DecValTok{3}\NormalTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{z =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{))}
-\NormalTok{area <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =} \NormalTok{z), }\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{) +}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{y =} \DecValTok{3}\OperatorTok{:}\DecValTok{1}\NormalTok{, }\DataTypeTok{z =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{))}
+\NormalTok{area <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ z), }\DataTypeTok{stat =} \StringTok{"identity"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{"none"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \OtherTok{NULL}\NormalTok{, }\DataTypeTok{y =} \OtherTok{NULL}\NormalTok{)}
-\NormalTok{area +}\StringTok{ }\KeywordTok{scale_fill_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set1"}\NormalTok{)}
-\NormalTok{area +}\StringTok{ }\KeywordTok{scale_fill_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set2"}\NormalTok{)}
-\NormalTok{area +}\StringTok{ }\KeywordTok{scale_fill_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Pastel1"}\NormalTok{)}
+\NormalTok{area }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set1"}\NormalTok{)}
+\NormalTok{area }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Set2"}\NormalTok{)}
+\NormalTok{area }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_brewer}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"Pastel1"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1532,7 +1550,8 @@ Subtle colours work well for bars, but are hard to see on points:
   \includegraphics[width=0.333\linewidth]{_figures/scales/unnamed-chunk-33-3}
 \end{figure}
 
-\subsection{The manual discrete scale}\label{sub:scale-manual}
+\hypertarget{sub:scale-manual}{%
+\subsection{The manual discrete scale}\label{sub:scale-manual}}
 
 The discrete scales, \texttt{scale\_linetype()},
 \texttt{scale\_shape()}, and \texttt{scale\_size\_discrete()} basically
@@ -1556,15 +1575,15 @@ The following code demonstrates the use of
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(msleep, }\KeywordTok{aes}\NormalTok{(brainwt, bodywt)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_x_log10}\NormalTok{() +}\StringTok{ }
+\NormalTok{plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(msleep, }\KeywordTok{aes}\NormalTok{(brainwt, bodywt)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_x_log10}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_y_log10}\NormalTok{()}
-\NormalTok{plot +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{vore)) +}\StringTok{ }
+\NormalTok{plot }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ vore)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}
     \DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"orange"}\NormalTok{, }\StringTok{"green"}\NormalTok{, }\StringTok{"blue"}\NormalTok{), }
     \DataTypeTok{na.value =} \StringTok{"grey50"}
-  \NormalTok{)}
+\NormalTok{  )}
 \CommentTok{#> Warning: Removed 27 rows containing missing values (geom_point).}
 
 \NormalTok{colours <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}
@@ -1573,10 +1592,10 @@ The following code demonstrates the use of
   \DataTypeTok{herbi =} \StringTok{"green"}\NormalTok{, }
   \DataTypeTok{omni =} \StringTok{"blue"}
 \NormalTok{)}
-\NormalTok{plot +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{vore)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =} \NormalTok{colours)}
-\CommentTok{#> Warning: Removed 27 rows containing missing values (geom_point).}
+\NormalTok{plot }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ vore)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ colours)}
+\CommentTok{#> Warning: Removed 32 rows containing missing values (geom_point).}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1592,10 +1611,10 @@ you'd colour the lines and then add a legend: \index{Data!longitudinal}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{huron <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{year =} \DecValTok{1875}\NormalTok{:}\DecValTok{1972}\NormalTok{, }\DataTypeTok{level =} \KeywordTok{as.numeric}\NormalTok{(LakeHuron))}
-\KeywordTok{ggplot}\NormalTok{(huron, }\KeywordTok{aes}\NormalTok{(year)) +}
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \NormalTok{level +}\StringTok{ }\DecValTok{5}\NormalTok{), }\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{) +}
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \NormalTok{level -}\StringTok{ }\DecValTok{5}\NormalTok{), }\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{) }
+\NormalTok{huron <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{year =} \DecValTok{1875}\OperatorTok{:}\DecValTok{1972}\NormalTok{, }\DataTypeTok{level =} \KeywordTok{as.numeric}\NormalTok{(LakeHuron))}
+\KeywordTok{ggplot}\NormalTok{(huron, }\KeywordTok{aes}\NormalTok{(year)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ level }\OperatorTok{+}\StringTok{ }\DecValTok{5}\NormalTok{), }\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ level }\OperatorTok{-}\StringTok{ }\DecValTok{5}\NormalTok{), }\DataTypeTok{colour =} \StringTok{"blue"}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -1609,9 +1628,9 @@ manually. Instead, give the lines informative labels:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(huron, }\KeywordTok{aes}\NormalTok{(year)) +}
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \NormalTok{level +}\StringTok{ }\DecValTok{5}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"above"}\NormalTok{)) +}
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \NormalTok{level -}\StringTok{ }\DecValTok{5}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"below"}\NormalTok{)) }
+\KeywordTok{ggplot}\NormalTok{(huron, }\KeywordTok{aes}\NormalTok{(year)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ level }\OperatorTok{+}\StringTok{ }\DecValTok{5}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"above"}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ level }\OperatorTok{-}\StringTok{ }\DecValTok{5}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"below"}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
@@ -1624,12 +1643,12 @@ And then tell the scale how to map labels to colours:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(huron, }\KeywordTok{aes}\NormalTok{(year)) +}
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \NormalTok{level +}\StringTok{ }\DecValTok{5}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"above"}\NormalTok{)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \NormalTok{level -}\StringTok{ }\DecValTok{5}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"below"}\NormalTok{)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(huron, }\KeywordTok{aes}\NormalTok{(year)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ level }\OperatorTok{+}\StringTok{ }\DecValTok{5}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"above"}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ level }\OperatorTok{-}\StringTok{ }\DecValTok{5}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"below"}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\StringTok{"Direction"}\NormalTok{, }
-    \DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"above"} \NormalTok{=}\StringTok{ "red"}\NormalTok{, }\StringTok{"below"} \NormalTok{=}\StringTok{ "blue"}\NormalTok{)}
-  \NormalTok{)}
+    \DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"above"}\NormalTok{ =}\StringTok{ "red"}\NormalTok{, }\StringTok{"below"}\NormalTok{ =}\StringTok{ "blue"}\NormalTok{)}
+\NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1641,7 +1660,8 @@ And then tell the scale how to map labels to colours:
 See \protect\hyperlink{sec:spread-gather}{multiple time series} for
 another approach.
 
-\subsection{The identity scale}\label{sub:scale-identity}
+\hypertarget{sub:scale-identity}{%
+\subsection{The identity scale}\label{sub:scale-identity}}
 
 The identity scale is used when your data is already scaled, when the
 data and aesthetic spaces are the same. The code below shows an example
@@ -1662,9 +1682,9 @@ represents itself: the data and aesthetic spaces are the same.
 \CommentTok{#> 5 8452  1.01e+03 1610 antiquewhite2}
 \CommentTok{#> 6 7498  9.03e+02 1402 antiquewhite3}
 
-\KeywordTok{ggplot}\NormalTok{(luv_colours, }\KeywordTok{aes}\NormalTok{(u, v)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{col), }\DataTypeTok{size =} \DecValTok{3}\NormalTok{) +}\StringTok{ }
-\StringTok{  }\KeywordTok{scale_color_identity}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(luv_colours, }\KeywordTok{aes}\NormalTok{(u, v)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ col), }\DataTypeTok{size =} \DecValTok{3}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_color_identity}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{coord_equal}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -1674,7 +1694,8 @@ represents itself: the data and aesthetic spaces are the same.
   \includegraphics[width=0.75\linewidth]{_figures/scales/scale-identity-1}
 \end{figure}
 
-\subsection{Exercises}\label{exercises-4}
+\hypertarget{exercises-4}{%
+\subsection{Exercises}\label{exercises-4}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1686,18 +1707,19 @@ represents itself: the data and aesthetic spaces are the same.
   \texttt{luv\_colours} dataset.
 \end{enumerate}
 
-\section*{References}\label{references}
+\hypertarget{references}{%
+\section*{References}\label{references}}
 \addcontentsline{toc}{section}{References}
 
 \hypertarget{refs}{}
-\hypertarget{ref-azzalini:1990}{}
+\leavevmode\hypertarget{ref-azzalini:1990}{}%
 Azzalini, A., and A. W. Bowman. 1990. ``A Look at Some Data on the Old
-Faithful Geyser.'' \emph{Applied Statistics} 39: 357--65.
+Faithful Geyser.'' \emph{Applied Statistics} 39:357--65.
 
-\hypertarget{ref-dichromat}{}
+\leavevmode\hypertarget{ref-dichromat}{}%
 Lumley, Thomas. 2007. \emph{Dichromat: Color Schemes for Dichromats}.
 
-\hypertarget{ref-zeileis:2008}{}
+\leavevmode\hypertarget{ref-zeileis:2008}{}%
 Zeileis, Achim, Kurt Hornik, and Paul Murrell. 2008. ``Escaping RGBland:
 Selecting Colors for Statistical Graphics.'' \emph{Computational
 Statistics \& Data Analysis}.

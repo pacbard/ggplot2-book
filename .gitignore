@@ -8,3 +8,7 @@ temp.Rmd
 rsconnect
 www
 _figures
+# LaTeX
+book/tex/*
+# MacOS
+.DS_Store

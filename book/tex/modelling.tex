@@ -1,6 +1,8 @@
-\chapter{Modelling for visualisation}\label{cha:modelling}
+\hypertarget{cha:modelling}{%
+\chapter{Modelling for visualisation}\label{cha:modelling}}
 
-\section{Introduction}\label{introduction}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 Modelling is an essential tool for visualisation. There are two
 particularly strong connections between modelling and visualisation that
@@ -51,7 +53,8 @@ Unfortunately most books (like this one!) only focus on either
 visualisation or modelling, but not both. There's a lot of interesting
 work to be done.
 
-\section{Removing trend}\label{sub:trend}
+\hypertarget{sub:trend}{%
+\section{Removing trend}\label{sub:trend}}
 
 So far our analysis of the diamonds data has been plagued by the
 powerful relationship between size and price. It makes it very difficult
@@ -70,28 +73,27 @@ they produce a plot with a strong linear trend.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{diamonds2 <-}\StringTok{ }\NormalTok{diamonds %>%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(carat <=}\StringTok{ }\DecValTok{2}\NormalTok{) %>%}
+\NormalTok{diamonds2 <-}\StringTok{ }\NormalTok{diamonds }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(carat }\OperatorTok{<=}\StringTok{ }\DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}
     \DataTypeTok{lcarat =} \KeywordTok{log2}\NormalTok{(carat),}
     \DataTypeTok{lprice =} \KeywordTok{log2}\NormalTok{(price)}
-  \NormalTok{)}
+\NormalTok{  )}
 \NormalTok{diamonds2}
-\CommentTok{#> Source: local data frame [52,051 x 12]}
-\CommentTok{#> }
-\CommentTok{#>    carat       cut  color clarity depth table price     x     y}
-\CommentTok{#>    (dbl)    (fctr) (fctr)  (fctr) (dbl) (dbl) (int) (dbl) (dbl)}
-\CommentTok{#> 1   0.23     Ideal      E     SI2  61.5    55   326  3.95  3.98}
-\CommentTok{#> 2   0.21   Premium      E     SI1  59.8    61   326  3.89  3.84}
-\CommentTok{#> 3   0.23      Good      E     VS1  56.9    65   327  4.05  4.07}
-\CommentTok{#> 4   0.29   Premium      I     VS2  62.4    58   334  4.20  4.23}
-\CommentTok{#> 5   0.31      Good      J     SI2  63.3    58   335  4.34  4.35}
-\CommentTok{#> 6   0.24 Very Good      J    VVS2  62.8    57   336  3.94  3.96}
-\CommentTok{#> ..   ...       ...    ...     ...   ...   ...   ...   ...   ...}
-\CommentTok{#> Variables not shown: z (dbl), lcarat (dbl), lprice (dbl)}
+\CommentTok{#> # A tibble: 52,051 x 12}
+\CommentTok{#>   carat cut       color clari~ depth table price     x     y     z}
+\CommentTok{#>   <dbl> <ord>     <ord> <ord>  <dbl> <dbl> <int> <dbl> <dbl> <dbl>}
+\CommentTok{#> 1 0.230 Ideal     E     SI2     61.5  55.0   326  3.95  3.98  2.43}
+\CommentTok{#> 2 0.210 Premium   E     SI1     59.8  61.0   326  3.89  3.84  2.31}
+\CommentTok{#> 3 0.230 Good      E     VS1     56.9  65.0   327  4.05  4.07  2.31}
+\CommentTok{#> 4 0.290 Premium   I     VS2     62.4  58.0   334  4.20  4.23  2.63}
+\CommentTok{#> 5 0.310 Good      J     SI2     63.3  58.0   335  4.34  4.35  2.75}
+\CommentTok{#> 6 0.240 Very Good J     VVS2    62.8  57.0   336  3.94  3.96  2.48}
+\CommentTok{#> # ... with 5.204e+04 more rows, and 2 more variables: lcarat}
+\CommentTok{#> #   <dbl>, lprice <dbl>}
 
-\KeywordTok{ggplot}\NormalTok{(diamonds2, }\KeywordTok{aes}\NormalTok{(lcarat, lprice)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{() +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(diamonds2, }\KeywordTok{aes}\NormalTok{(lcarat, lprice)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{() }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{size =} \DecValTok{2}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"yellow"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -108,7 +110,7 @@ the slope and intercept of the line: \indexf{lm} \indexf{coef}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mod <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(lprice ~}\StringTok{ }\NormalTok{lcarat, }\DataTypeTok{data =} \NormalTok{diamonds2)}
+\NormalTok{mod <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(lprice }\OperatorTok{~}\StringTok{ }\NormalTok{lcarat, }\DataTypeTok{data =}\NormalTok{ diamonds2)}
 \KeywordTok{coef}\NormalTok{(}\KeywordTok{summary}\NormalTok{(mod))}
 \CommentTok{#>             Estimate Std. Error t value Pr(>|t|)}
 \CommentTok{#> (Intercept)     12.2    0.00211    5789        0}
@@ -129,8 +131,8 @@ tell us the price relative to the ``average'' diamond of that size.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{diamonds2 <-}\StringTok{ }\NormalTok{diamonds2 %>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{rel_price =} \KeywordTok{resid}\NormalTok{(mod))}
-\KeywordTok{ggplot}\NormalTok{(diamonds2, }\KeywordTok{aes}\NormalTok{(carat, rel_price)) +}\StringTok{ }
+\NormalTok{diamonds2 <-}\StringTok{ }\NormalTok{diamonds2 }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{rel_price =} \KeywordTok{resid}\NormalTok{(mod))}
+\KeywordTok{ggplot}\NormalTok{(diamonds2, }\KeywordTok{aes}\NormalTok{(carat, rel_price)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_bin2d}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -158,8 +160,8 @@ interpret the values:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{xgrid <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(-}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DataTypeTok{by =} \DecValTok{1}\NormalTok{/}\DecValTok{3}\NormalTok{)}
-\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{logx =} \NormalTok{xgrid, }\DataTypeTok{x =} \KeywordTok{round}\NormalTok{(}\DecValTok{2} \NormalTok{^}\StringTok{ }\NormalTok{xgrid, }\DecValTok{2}\NormalTok{))}
+\NormalTok{xgrid <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\OperatorTok{-}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DataTypeTok{by =} \DecValTok{1}\OperatorTok{/}\DecValTok{3}\NormalTok{)}
+\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{logx =}\NormalTok{ xgrid, }\DataTypeTok{x =} \KeywordTok{round}\NormalTok{(}\DecValTok{2} \OperatorTok{^}\StringTok{ }\NormalTok{xgrid, }\DecValTok{2}\NormalTok{))}
 \CommentTok{#>      logx    x}
 \CommentTok{#> 1  -2.000 0.25}
 \CommentTok{#> 2  -1.667 0.31}
@@ -186,25 +188,24 @@ relative price for each combination of colour and cut:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{color_cut <-}\StringTok{ }\NormalTok{diamonds2 %>%}\StringTok{ }
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(color, cut) %>%}
+\NormalTok{color_cut <-}\StringTok{ }\NormalTok{diamonds2 }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(color, cut) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{summarise}\NormalTok{(}
     \DataTypeTok{price =} \KeywordTok{mean}\NormalTok{(price), }
     \DataTypeTok{rel_price =} \KeywordTok{mean}\NormalTok{(rel_price)}
-  \NormalTok{)}
+\NormalTok{  )}
 \NormalTok{color_cut}
-\CommentTok{#> Source: local data frame [35 x 4]}
-\CommentTok{#> Groups: color [?]}
-\CommentTok{#> }
-\CommentTok{#>     color       cut price rel_price}
-\CommentTok{#>    (fctr)    (fctr) (dbl)     (dbl)}
-\CommentTok{#> 1       D      Fair  3939   -0.0755}
-\CommentTok{#> 2       D      Good  3309   -0.0472}
-\CommentTok{#> 3       D Very Good  3368    0.1038}
-\CommentTok{#> 4       D   Premium  3513    0.1093}
-\CommentTok{#> 5       D     Ideal  2595    0.2173}
-\CommentTok{#> 6       E      Fair  3516   -0.1720}
-\CommentTok{#> ..    ...       ...   ...       ...}
+\CommentTok{#> # A tibble: 35 x 4}
+\CommentTok{#> # Groups: color [?]}
+\CommentTok{#>   color cut       price rel_price}
+\CommentTok{#>   <ord> <ord>     <dbl>     <dbl>}
+\CommentTok{#> 1 D     Fair       3939   -0.0755}
+\CommentTok{#> 2 D     Good       3309   -0.0472}
+\CommentTok{#> 3 D     Very Good  3368    0.104 }
+\CommentTok{#> 4 D     Premium    3513    0.109 }
+\CommentTok{#> 5 D     Ideal      2595    0.217 }
+\CommentTok{#> 6 E     Fair       3516   -0.172 }
+\CommentTok{#> # ... with 29 more rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -215,9 +216,9 @@ to be larger: size and quality are confounded.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(color_cut, }\KeywordTok{aes}\NormalTok{(color, price)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{cut), }\DataTypeTok{colour =} \StringTok{"grey80"}\NormalTok{) +}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{cut))}
+\KeywordTok{ggplot}\NormalTok{(color_cut, }\KeywordTok{aes}\NormalTok{(color, price)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ cut), }\DataTypeTok{colour =} \StringTok{"grey80"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ cut))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -233,9 +234,9 @@ of an ``average'' diamond.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(color_cut, }\KeywordTok{aes}\NormalTok{(color, rel_price)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{cut), }\DataTypeTok{colour =} \StringTok{"grey80"}\NormalTok{) +}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =} \NormalTok{cut))}
+\KeywordTok{ggplot}\NormalTok{(color_cut, }\KeywordTok{aes}\NormalTok{(color, rel_price)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ cut), }\DataTypeTok{colour =} \StringTok{"grey80"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{colour =}\NormalTok{ cut))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -249,7 +250,8 @@ you can explicitly model a strong pattern that you see in a plot, it's
 worthwhile to use a model to remove that strong pattern so that you can
 see what interesting trends remain.
 
-\subsection{Exercises}\label{exercises}
+\hypertarget{exercises}{%
+\subsection{Exercises}\label{exercises}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -270,7 +272,8 @@ see what interesting trends remain.
   How do depth and table relate to the relative price?
 \end{enumerate}
 
-\section{Texas housing data}\label{texas-housing-data}
+\hypertarget{texas-housing-data}{%
+\section{Texas housing data}\label{texas-housing-data}}
 
 We'll continue to explore the connection between modelling and
 visualisation with the \texttt{txhousing} dataset:
@@ -278,18 +281,16 @@ visualisation with the \texttt{txhousing} dataset:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{txhousing}
-\CommentTok{#> Source: local data frame [8,034 x 9]}
-\CommentTok{#> }
-\CommentTok{#>       city  year month sales   volume median listings inventory}
-\CommentTok{#>      (chr) (int) (int) (dbl)    (dbl)  (dbl)    (dbl)     (dbl)}
-\CommentTok{#> 1  Abilene  2000     1    72  5380000  71400      701       6.3}
-\CommentTok{#> 2  Abilene  2000     2    98  6505000  58700      746       6.6}
-\CommentTok{#> 3  Abilene  2000     3   130  9285000  58100      784       6.8}
-\CommentTok{#> 4  Abilene  2000     4    98  9730000  68600      785       6.9}
-\CommentTok{#> 5  Abilene  2000     5   141 10590000  67300      794       6.8}
-\CommentTok{#> 6  Abilene  2000     6   156 13910000  66900      780       6.6}
-\CommentTok{#> ..     ...   ...   ...   ...      ...    ...      ...       ...}
-\CommentTok{#> Variables not shown: date (dbl)}
+\CommentTok{#> # A tibble: 8,034 x 9}
+\CommentTok{#>   city     year month sales   volume median listings invent~  date}
+\CommentTok{#>   <chr>   <int> <int> <dbl>    <dbl>  <dbl>    <dbl>   <dbl> <dbl>}
+\CommentTok{#> 1 Abilene  2000     1  72.0  5380000  71400      701    6.30  2000}
+\CommentTok{#> 2 Abilene  2000     2  98.0  6505000  58700      746    6.60  2000}
+\CommentTok{#> 3 Abilene  2000     3 130    9285000  58100      784    6.80  2000}
+\CommentTok{#> 4 Abilene  2000     4  98.0  9730000  68600      785    6.90  2000}
+\CommentTok{#> 5 Abilene  2000     5 141   10590000  67300      794    6.80  2000}
+\CommentTok{#> 6 Abilene  2000     6 156   13910000  66900      780    6.60  2000}
+\CommentTok{#> # ... with 8,028 more rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -310,8 +311,8 @@ Let's start with an overview: a time series of sales for each city:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(txhousing, }\KeywordTok{aes}\NormalTok{(date, sales)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{city), }\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{/}\DecValTok{2}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(txhousing, }\KeywordTok{aes}\NormalTok{(date, sales)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ city), }\DataTypeTok{alpha =} \DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -337,8 +338,8 @@ We can fix the first problem by plotting log sales:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(txhousing, }\KeywordTok{aes}\NormalTok{(date, }\KeywordTok{log}\NormalTok{(sales))) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{city), }\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{/}\DecValTok{2}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(txhousing, }\KeywordTok{aes}\NormalTok{(date, }\KeywordTok{log}\NormalTok{(sales))) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ city), }\DataTypeTok{alpha =} \DecValTok{1}\OperatorTok{/}\DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -355,13 +356,13 @@ that if something goes wrong you can more easily pinpoint the problem.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{abilene <-}\StringTok{ }\NormalTok{txhousing %>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(city ==}\StringTok{ "Abilene"}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(abilene, }\KeywordTok{aes}\NormalTok{(date, }\KeywordTok{log}\NormalTok{(sales))) +}\StringTok{ }
+\NormalTok{abilene <-}\StringTok{ }\NormalTok{txhousing }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(city }\OperatorTok{==}\StringTok{ "Abilene"}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(abilene, }\KeywordTok{aes}\NormalTok{(date, }\KeywordTok{log}\NormalTok{(sales))) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{()}
 
-\NormalTok{mod <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\KeywordTok{log}\NormalTok{(sales) ~}\StringTok{ }\KeywordTok{factor}\NormalTok{(month), }\DataTypeTok{data =} \NormalTok{abilene)}
-\NormalTok{abilene$rel_sales <-}\StringTok{ }\KeywordTok{resid}\NormalTok{(mod)}
-\KeywordTok{ggplot}\NormalTok{(abilene, }\KeywordTok{aes}\NormalTok{(date, rel_sales)) +}\StringTok{ }
+\NormalTok{mod <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(}\KeywordTok{log}\NormalTok{(sales) }\OperatorTok{~}\StringTok{ }\KeywordTok{factor}\NormalTok{(month), }\DataTypeTok{data =}\NormalTok{ abilene)}
+\NormalTok{abilene}\OperatorTok{$}\NormalTok{rel_sales <-}\StringTok{ }\KeywordTok{resid}\NormalTok{(mod)}
+\KeywordTok{ggplot}\NormalTok{(abilene, }\KeywordTok{aes}\NormalTok{(date, rel_sales)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -380,12 +381,12 @@ just dropped, and the residuals don't line up with the inputs.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{deseas <-}\StringTok{ }\NormalTok{function(x, month) \{}
-  \KeywordTok{resid}\NormalTok{(}\KeywordTok{lm}\NormalTok{(x ~}\StringTok{ }\KeywordTok{factor}\NormalTok{(month), }\DataTypeTok{na.action =} \NormalTok{na.exclude))}
+\NormalTok{deseas <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, month) \{}
+  \KeywordTok{resid}\NormalTok{(}\KeywordTok{lm}\NormalTok{(x }\OperatorTok{~}\StringTok{ }\KeywordTok{factor}\NormalTok{(month), }\DataTypeTok{na.action =}\NormalTok{ na.exclude))}
 \NormalTok{\}}
 
-\NormalTok{txhousing <-}\StringTok{ }\NormalTok{txhousing %>%}\StringTok{ }
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(city) %>%}\StringTok{ }
+\NormalTok{txhousing <-}\StringTok{ }\NormalTok{txhousing }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(city) }\OperatorTok{%>%}\StringTok{ }
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{rel_sales =} \KeywordTok{deseas}\NormalTok{(}\KeywordTok{log}\NormalTok{(sales), month))}
 \end{Highlighting}
 \end{Shaded}
@@ -399,8 +400,8 @@ the mean relative sales across all cities.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(txhousing, }\KeywordTok{aes}\NormalTok{(date, rel_sales)) +}
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{city), }\DataTypeTok{alpha =} \DecValTok{1}\NormalTok{/}\DecValTok{5}\NormalTok{) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(txhousing, }\KeywordTok{aes}\NormalTok{(date, rel_sales)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ city), }\DataTypeTok{alpha =} \DecValTok{1}\OperatorTok{/}\DecValTok{5}\NormalTok{) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{stat =} \StringTok{"summary"}\NormalTok{, }\DataTypeTok{fun.y =} \StringTok{"mean"}\NormalTok{, }\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -412,7 +413,8 @@ the mean relative sales across all cities.
 (Note that removing the seasonal effect also removed the intercept - we
 see the trend for each city relative to its average number of sales.)
 
-\subsection{Exercises}\label{exercises-1}
+\hypertarget{exercises-1}{%
+\subsection{Exercises}\label{exercises-1}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -436,7 +438,8 @@ see the trend for each city relative to its average number of sales.)
   so you can plot the data ``by hand''.
 \end{enumerate}
 
-\section{Visualising models}\label{sub:modelvis}
+\hypertarget{sub:modelvis}{%
+\section{Visualising models}\label{sub:modelvis}}
 
 The previous examples used the linear model just as a tool for removing
 trend: we fit the model and immediately threw it away. We didn't care
@@ -468,26 +471,27 @@ that linear model: \indexf{do}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{models <-}\StringTok{ }\NormalTok{txhousing %>%}\StringTok{ }
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(city) %>%}
+\NormalTok{models <-}\StringTok{ }\NormalTok{txhousing }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(city) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{do}\NormalTok{(}\DataTypeTok{mod =} \KeywordTok{lm}\NormalTok{(}
-    \KeywordTok{log2}\NormalTok{(sales) ~}\StringTok{ }\KeywordTok{factor}\NormalTok{(month), }
-    \DataTypeTok{data =} \NormalTok{., }
-    \DataTypeTok{na.action =} \NormalTok{na.exclude}
-  \NormalTok{))}
+    \KeywordTok{log2}\NormalTok{(sales) }\OperatorTok{~}\StringTok{ }\KeywordTok{factor}\NormalTok{(month), }
+    \DataTypeTok{data =}\NormalTok{ ., }
+    \DataTypeTok{na.action =}\NormalTok{ na.exclude}
+\NormalTok{  ))}
 \NormalTok{models}
 \CommentTok{#> Source: local data frame [46 x 2]}
 \CommentTok{#> Groups: <by row>}
 \CommentTok{#> }
-\CommentTok{#>         city     mod}
-\CommentTok{#>        (chr)   (chr)}
-\CommentTok{#> 1    Abilene <S3:lm>}
-\CommentTok{#> 2   Amarillo <S3:lm>}
-\CommentTok{#> 3  Arlington <S3:lm>}
-\CommentTok{#> 4     Austin <S3:lm>}
-\CommentTok{#> 5   Bay Area <S3:lm>}
-\CommentTok{#> 6   Beaumont <S3:lm>}
-\CommentTok{#> ..       ...     ...}
+\CommentTok{#> # A tibble: 46 x 2}
+\CommentTok{#>   city      mod     }
+\CommentTok{#> * <chr>     <list>  }
+\CommentTok{#> 1 Abilene   <S3: lm>}
+\CommentTok{#> 2 Amarillo  <S3: lm>}
+\CommentTok{#> 3 Arlington <S3: lm>}
+\CommentTok{#> 4 Austin    <S3: lm>}
+\CommentTok{#> 5 Bay Area  <S3: lm>}
+\CommentTok{#> 6 Beaumont  <S3: lm>}
+\CommentTok{#> # ... with 40 more rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -546,38 +550,28 @@ challenges outlined above:
 We'll learn more about each of these functions in the following three
 sections.
 
-\section{Model-level summaries}\label{model-level-summaries}
+\hypertarget{model-level-summaries}{%
+\section{Model-level summaries}\label{model-level-summaries}}
 
 We'll begin by looking at how well the model fit to each city with
 \texttt{glance()}: \indexf{glance}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{model_sum <-}\StringTok{ }\NormalTok{models %>%}\StringTok{ }\KeywordTok{glance}\NormalTok{(mod)}
+\NormalTok{model_sum <-}\StringTok{ }\NormalTok{models }\OperatorTok{%>%}\StringTok{ }\KeywordTok{glance}\NormalTok{(mod)}
 \NormalTok{model_sum}
-\CommentTok{#> Source: local data frame [46 x 12]}
-\CommentTok{#> Groups: city [46]}
-\CommentTok{#> }
-\CommentTok{#>         city r.squared adj.r.squared sigma statistic  p.value}
-\CommentTok{#>        (chr)     (dbl)         (dbl) (dbl)     (dbl)    (dbl)}
-\CommentTok{#> 1    Abilene     0.530         0.500 0.282      17.9 1.50e-23}
-\CommentTok{#> 2   Amarillo     0.449         0.415 0.302      13.0 7.41e-18}
-\CommentTok{#> 3  Arlington     0.513         0.483 0.267      16.8 2.75e-22}
-\CommentTok{#> 4     Austin     0.487         0.455 0.310      15.1 2.04e-20}
-\CommentTok{#> 5   Bay Area     0.555         0.527 0.265      19.9 1.45e-25}
-\CommentTok{#> 6   Beaumont     0.430         0.395 0.275      12.0 1.18e-16}
-\CommentTok{#> ..       ...       ...           ...   ...       ...      ...}
-\CommentTok{#>       df}
-\CommentTok{#>    (int)}
-\CommentTok{#> 1     12}
-\CommentTok{#> 2     12}
-\CommentTok{#> 3     12}
-\CommentTok{#> 4     12}
-\CommentTok{#> 5     12}
-\CommentTok{#> 6     12}
-\CommentTok{#> ..   ...}
-\CommentTok{#> Variables not shown: logLik (dbl), AIC (dbl), BIC (dbl), deviance}
-\CommentTok{#>   (dbl), df.residual (int)}
+\CommentTok{#> # A tibble: 46 x 12}
+\CommentTok{#> # Groups: city [46]}
+\CommentTok{#>   city   r.sq~ adj.~ sigma stat~   p.value    df logL~   AIC   BIC}
+\CommentTok{#>   <chr>  <dbl> <dbl> <dbl> <dbl>     <dbl> <int> <dbl> <dbl> <dbl>}
+\CommentTok{#> 1 Abile~ 0.530 0.500 0.282  17.9  1.50e-23    12 -22.2  70.5 112  }
+\CommentTok{#> 2 Amari~ 0.449 0.415 0.302  13.0  7.41e-18    12 -35.0  95.9 138  }
+\CommentTok{#> 3 Arlin~ 0.513 0.483 0.267  16.8  2.75e-22    12 -12.5  50.9  92.9}
+\CommentTok{#> 4 Austin 0.487 0.455 0.310  15.1  2.04e-20    12 -40.3 107   149  }
+\CommentTok{#> 5 Bay A~ 0.555 0.527 0.265  19.9  1.45e-25    12 -10.5  47.0  89.0}
+\CommentTok{#> 6 Beaum~ 0.430 0.395 0.275  12.0  1.18e-16    12 -18.0  62.1 104  }
+\CommentTok{#> # ... with 40 more rows, and 2 more variables: deviance <dbl>,}
+\CommentTok{#> #   df.residual <int>}
 \end{Highlighting}
 \end{Shaded}
 
@@ -591,7 +585,7 @@ variation across cities:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(model_sum, }\KeywordTok{aes}\NormalTok{(r.squared, }\KeywordTok{reorder}\NormalTok{(city, r.squared))) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(model_sum, }\KeywordTok{aes}\NormalTok{(r.squared, }\KeywordTok{reorder}\NormalTok{(city, r.squared))) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -609,13 +603,13 @@ plots out the three cities with the highest and lowest \(R^2\):
 \begin{Highlighting}[]
 \NormalTok{top3 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Bryan-College Station"}\NormalTok{, }\StringTok{"Lubbock"}\NormalTok{, }\StringTok{"NE Tarrant County"}\NormalTok{)}
 \NormalTok{bottom3 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"McAllen"}\NormalTok{, }\StringTok{"Brownsville"}\NormalTok{, }\StringTok{"Harlingen"}\NormalTok{)}
-\NormalTok{extreme <-}\StringTok{ }\NormalTok{txhousing %>%}\StringTok{ }\KeywordTok{ungroup}\NormalTok{() %>%}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(city %in%}\StringTok{ }\KeywordTok{c}\NormalTok{(top3, bottom3), !}\KeywordTok{is.na}\NormalTok{(sales)) %>%}
+\NormalTok{extreme <-}\StringTok{ }\NormalTok{txhousing }\OperatorTok{%>%}\StringTok{ }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(city }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(top3, bottom3), }\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(sales)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{city =} \KeywordTok{factor}\NormalTok{(city, }\KeywordTok{c}\NormalTok{(top3, bottom3)))}
 
-\KeywordTok{ggplot}\NormalTok{(extreme, }\KeywordTok{aes}\NormalTok{(month, }\KeywordTok{log}\NormalTok{(sales))) +}\StringTok{ }
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{year)) +}\StringTok{ }
-\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(~city)}
+\KeywordTok{ggplot}\NormalTok{(extreme, }\KeywordTok{aes}\NormalTok{(month, }\KeywordTok{log}\NormalTok{(sales))) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ year)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{city)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -628,7 +622,8 @@ The cities with low \(R^2\) have weaker seasonal patterns and more
 variation between years. The data for Harlingen seems particularly
 noisy.
 
-\subsection{Exercises}\label{exercises-2}
+\hypertarget{exercises-2}{%
+\subsection{Exercises}\label{exercises-2}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -650,7 +645,9 @@ noisy.
   Order the facets by the \(R^2\) for the city.
 \end{enumerate}
 
-\section{Coefficient-level summaries}\label{coefficient-level-summaries}
+\hypertarget{coefficient-level-summaries}{%
+\section{Coefficient-level
+summaries}\label{coefficient-level-summaries}}
 
 The model fit summaries suggest that there are some important
 differences in seasonality between the different cities. Let's dive into
@@ -659,20 +656,19 @@ individual coefficient: \indexf{tidy}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{coefs <-}\StringTok{ }\NormalTok{models %>%}\StringTok{ }\KeywordTok{tidy}\NormalTok{(mod)}
+\NormalTok{coefs <-}\StringTok{ }\NormalTok{models }\OperatorTok{%>%}\StringTok{ }\KeywordTok{tidy}\NormalTok{(mod)}
 \NormalTok{coefs}
-\CommentTok{#> Source: local data frame [552 x 6]}
-\CommentTok{#> Groups: city [46]}
-\CommentTok{#> }
-\CommentTok{#>       city           term estimate std.error statistic   p.value}
-\CommentTok{#>      (chr)          (chr)    (dbl)     (dbl)     (dbl)     (dbl)}
-\CommentTok{#> 1  Abilene    (Intercept)    6.542    0.0704     92.88 7.90e-151}
-\CommentTok{#> 2  Abilene factor(month)2    0.354    0.0996      3.55  4.91e-04}
-\CommentTok{#> 3  Abilene factor(month)3    0.675    0.0996      6.77  1.83e-10}
-\CommentTok{#> 4  Abilene factor(month)4    0.749    0.0996      7.52  2.76e-12}
-\CommentTok{#> 5  Abilene factor(month)5    0.916    0.0996      9.20  1.06e-16}
-\CommentTok{#> 6  Abilene factor(month)6    1.002    0.0996     10.06  4.37e-19}
-\CommentTok{#> ..     ...            ...      ...       ...       ...       ...}
+\CommentTok{#> # A tibble: 552 x 6}
+\CommentTok{#> # Groups: city [46]}
+\CommentTok{#>   city    term           estimate std.error statistic      p.value}
+\CommentTok{#>   <chr>   <chr>             <dbl>     <dbl>     <dbl>        <dbl>}
+\CommentTok{#> 1 Abilene (Intercept)       6.54     0.0704     92.9     7.90e-151}
+\CommentTok{#> 2 Abilene factor(month)2    0.354    0.0996      3.55    4.91e-  4}
+\CommentTok{#> 3 Abilene factor(month)3    0.675    0.0996      6.77    1.83e- 10}
+\CommentTok{#> 4 Abilene factor(month)4    0.749    0.0996      7.52    2.76e- 12}
+\CommentTok{#> 5 Abilene factor(month)5    0.916    0.0996      9.20    1.06e- 16}
+\CommentTok{#> 6 Abilene factor(month)6    1.00     0.0996     10.1     4.37e- 19}
+\CommentTok{#> # ... with 546 more rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -682,22 +678,21 @@ month value into a numeric variable:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{months <-}\StringTok{ }\NormalTok{coefs %>%}
-\StringTok{  }\KeywordTok{filter}\NormalTok{(}\KeywordTok{grepl}\NormalTok{(}\StringTok{"factor"}\NormalTok{, term)) %>%}
-\StringTok{  }\NormalTok{tidyr::}\KeywordTok{extract}\NormalTok{(term, }\StringTok{"month"}\NormalTok{, }\StringTok{"(}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{d+)"}\NormalTok{, }\DataTypeTok{convert =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{months <-}\StringTok{ }\NormalTok{coefs }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\KeywordTok{grepl}\NormalTok{(}\StringTok{"factor"}\NormalTok{, term)) }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{extract}\NormalTok{(term, }\StringTok{"month"}\NormalTok{, }\StringTok{"(}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{d+)"}\NormalTok{, }\DataTypeTok{convert =} \OtherTok{TRUE}\NormalTok{)}
 \NormalTok{months}
-\CommentTok{#> Source: local data frame [506 x 6]}
-\CommentTok{#> Groups: city [46]}
-\CommentTok{#> }
-\CommentTok{#>       city month estimate std.error statistic  p.value}
-\CommentTok{#>      (chr) (int)    (dbl)     (dbl)     (dbl)    (dbl)}
-\CommentTok{#> 1  Abilene     2    0.354    0.0996      3.55 4.91e-04}
-\CommentTok{#> 2  Abilene     3    0.675    0.0996      6.77 1.83e-10}
-\CommentTok{#> 3  Abilene     4    0.749    0.0996      7.52 2.76e-12}
-\CommentTok{#> 4  Abilene     5    0.916    0.0996      9.20 1.06e-16}
-\CommentTok{#> 5  Abilene     6    1.002    0.0996     10.06 4.37e-19}
-\CommentTok{#> 6  Abilene     7    0.954    0.0996      9.58 9.81e-18}
-\CommentTok{#> ..     ...   ...      ...       ...       ...      ...}
+\CommentTok{#> # A tibble: 506 x 6}
+\CommentTok{#> # Groups: city [46]}
+\CommentTok{#>   city    month estimate std.error statistic               p.value}
+\CommentTok{#> * <chr>   <int>    <dbl>     <dbl>     <dbl>                 <dbl>}
+\CommentTok{#> 1 Abilene     2    0.354    0.0996      3.55              4.91e- 4}
+\CommentTok{#> 2 Abilene     3    0.675    0.0996      6.77              1.83e-10}
+\CommentTok{#> 3 Abilene     4    0.749    0.0996      7.52              2.76e-12}
+\CommentTok{#> 4 Abilene     5    0.916    0.0996      9.20              1.06e-16}
+\CommentTok{#> 5 Abilene     6    1.00     0.0996     10.1               4.37e-19}
+\CommentTok{#> 6 Abilene     7    0.954    0.0996      9.58              9.81e-18}
+\CommentTok{#> # ... with 500 more rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -710,8 +705,8 @@ now ratios of sales compared to January.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(months, }\KeywordTok{aes}\NormalTok{(month, }\DecValTok{2} \NormalTok{^}\StringTok{ }\NormalTok{estimate)) +}
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =} \NormalTok{city))}
+\KeywordTok{ggplot}\NormalTok{(months, }\KeywordTok{aes}\NormalTok{(month, }\DecValTok{2} \OperatorTok{^}\StringTok{ }\NormalTok{estimate)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group =}\NormalTok{ city))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -725,10 +720,10 @@ strength of the seasonal effect. Let's pull that out and plot it:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{coef_sum <-}\StringTok{ }\NormalTok{months %>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(city) %>%}
+\NormalTok{coef_sum <-}\StringTok{ }\NormalTok{months }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(city) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{max =} \KeywordTok{max}\NormalTok{(estimate))}
-\KeywordTok{ggplot}\NormalTok{(coef_sum, }\KeywordTok{aes}\NormalTok{(}\DecValTok{2} \NormalTok{^}\StringTok{ }\NormalTok{max, }\KeywordTok{reorder}\NormalTok{(city, max))) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(coef_sum, }\KeywordTok{aes}\NormalTok{(}\DecValTok{2} \OperatorTok{^}\StringTok{ }\NormalTok{max, }\KeywordTok{reorder}\NormalTok{(city, max))) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -743,7 +738,8 @@ San Marcos (both college towns) and Galveston and South Padre Island
 (beach cities). It makes sense that these cities would have very strong
 seasonal effects.
 
-\subsection{Exercises}\label{exercises-3}
+\hypertarget{exercises-3}{%
+\subsection{Exercises}\label{exercises-3}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -764,7 +760,8 @@ seasonal effects.
   intercept vary across the groups? Answer with a plot.
 \end{enumerate}
 
-\section{Observation data}\label{observation-data}
+\hypertarget{observation-data}{%
+\section{Observation data}\label{observation-data}}
 
 Observation-level data, which include residual diagnostics, is most
 useful in the traditional model fitting scenario, because it can helps
@@ -781,21 +778,19 @@ common influence statistics (see \texttt{?augment.lm} for more details):
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{obs_sum <-}\StringTok{ }\NormalTok{models %>%}\StringTok{ }\KeywordTok{augment}\NormalTok{(mod)}
+\NormalTok{obs_sum <-}\StringTok{ }\NormalTok{models }\OperatorTok{%>%}\StringTok{ }\KeywordTok{augment}\NormalTok{(mod)}
 \NormalTok{obs_sum}
-\CommentTok{#> Source: local data frame [8,034 x 10]}
-\CommentTok{#> Groups: city [46]}
-\CommentTok{#> }
-\CommentTok{#>       city log2.sales. factor.month. .fitted .se.fit .resid   .hat}
-\CommentTok{#>      (chr)       (dbl)        (fctr)   (dbl)   (dbl)  (dbl)  (dbl)}
-\CommentTok{#> 1  Abilene        6.17             1    6.54  0.0704 -0.372 0.0625}
-\CommentTok{#> 2  Abilene        6.61             2    6.90  0.0704 -0.281 0.0625}
-\CommentTok{#> 3  Abilene        7.02             3    7.22  0.0704 -0.194 0.0625}
-\CommentTok{#> 4  Abilene        6.61             4    7.29  0.0704 -0.676 0.0625}
-\CommentTok{#> 5  Abilene        7.14             5    7.46  0.0704 -0.319 0.0625}
-\CommentTok{#> 6  Abilene        7.29             6    7.54  0.0704 -0.259 0.0625}
-\CommentTok{#> ..     ...         ...           ...     ...     ...    ...    ...}
-\CommentTok{#> Variables not shown: .sigma (dbl), .cooksd (dbl), .std.resid (dbl)}
+\CommentTok{#> # A tibble: 8,034 x 10}
+\CommentTok{#> # Groups: city [46]}
+\CommentTok{#>   city   log2.s~ factor.~ .fit~ .se.f~ .resid   .hat .sig~ .cooksd}
+\CommentTok{#>   <chr>    <dbl> <fctr>   <dbl>  <dbl>  <dbl>  <dbl> <dbl>   <dbl>}
+\CommentTok{#> 1 Abile~    6.17 1         6.54 0.0704 -0.372 0.0625 0.281 0.0103 }
+\CommentTok{#> 2 Abile~    6.61 2         6.90 0.0704 -0.281 0.0625 0.282 0.00590}
+\CommentTok{#> 3 Abile~    7.02 3         7.22 0.0704 -0.194 0.0625 0.282 0.00282}
+\CommentTok{#> 4 Abile~    6.61 4         7.29 0.0704 -0.676 0.0625 0.278 0.0341 }
+\CommentTok{#> 5 Abile~    7.14 5         7.46 0.0704 -0.319 0.0625 0.281 0.00760}
+\CommentTok{#> 6 Abile~    7.29 6         7.54 0.0704 -0.259 0.0625 0.282 0.00501}
+\CommentTok{#> # ... with 8,028 more rows, and 1 more variable: .std.resid <dbl>}
 \end{Highlighting}
 \end{Shaded}
 
@@ -806,9 +801,9 @@ looking for unusual values that might need deeper exploration:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(obs_sum, }\KeywordTok{aes}\NormalTok{(.std.resid)) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(obs_sum, }\KeywordTok{aes}\NormalTok{(.std.resid)) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{binwidth =} \FloatTok{0.1}\NormalTok{)}
-\KeywordTok{ggplot}\NormalTok{(obs_sum, }\KeywordTok{aes}\NormalTok{(}\KeywordTok{abs}\NormalTok{(.std.resid))) +}\StringTok{ }
+\KeywordTok{ggplot}\NormalTok{(obs_sum, }\KeywordTok{aes}\NormalTok{(}\KeywordTok{abs}\NormalTok{(.std.resid))) }\OperatorTok{+}\StringTok{ }
 \StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{binwidth =} \FloatTok{0.1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -823,28 +818,28 @@ individually:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{obs_sum %>%}\StringTok{ }
-\StringTok{  }\KeywordTok{filter}\NormalTok{(}\KeywordTok{abs}\NormalTok{(.std.resid) >}\StringTok{ }\DecValTok{2}\NormalTok{) %>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(city) %>%}
-\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n =} \KeywordTok{n}\NormalTok{(), }\DataTypeTok{avg =} \KeywordTok{mean}\NormalTok{(}\KeywordTok{abs}\NormalTok{(.std.resid))) %>%}
+\NormalTok{obs_sum }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\KeywordTok{abs}\NormalTok{(.std.resid) }\OperatorTok{>}\StringTok{ }\DecValTok{2}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(city) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{n =} \KeywordTok{n}\NormalTok{(), }\DataTypeTok{avg =} \KeywordTok{mean}\NormalTok{(}\KeywordTok{abs}\NormalTok{(.std.resid))) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(n))}
-\CommentTok{#> Source: local data frame [43 x 3]}
-\CommentTok{#> }
-\CommentTok{#>               city     n   avg}
-\CommentTok{#>              (chr) (int) (dbl)}
-\CommentTok{#> 1        Texarkana    12  2.43}
-\CommentTok{#> 2        Harlingen    11  2.73}
-\CommentTok{#> 3             Waco    11  2.96}
-\CommentTok{#> 4         Victoria    10  2.49}
-\CommentTok{#> 5  Brazoria County     9  2.31}
-\CommentTok{#> 6      Brownsville     9  2.48}
-\CommentTok{#> ..             ...   ...   ...}
+\CommentTok{#> # A tibble: 43 x 3}
+\CommentTok{#>   city                n   avg}
+\CommentTok{#>   <chr>           <int> <dbl>}
+\CommentTok{#> 1 Texarkana          12  2.43}
+\CommentTok{#> 2 Harlingen          11  2.73}
+\CommentTok{#> 3 Waco               11  2.96}
+\CommentTok{#> 4 Victoria           10  2.49}
+\CommentTok{#> 5 Brazoria County     9  2.31}
+\CommentTok{#> 6 Brownsville         9  2.48}
+\CommentTok{#> # ... with 37 more rows}
 \end{Highlighting}
 \end{Shaded}
 
 In a real analysis, you'd want to look into these cities in more detail.
 
-\subsection{Exercises}\label{exercises-4}
+\hypertarget{exercises-4}{%
+\subsection{Exercises}\label{exercises-4}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -857,11 +852,12 @@ In a real analysis, you'd want to look into these cities in more detail.
   that have a standardised residual of greater than 2.
 \end{enumerate}
 
-\section*{References}\label{references}
+\hypertarget{references}{%
+\section*{References}\label{references}}
 \addcontentsline{toc}{section}{References}
 
 \hypertarget{refs}{}
-\hypertarget{ref-model-vis-paper}{}
+\leavevmode\hypertarget{ref-model-vis-paper}{}%
 Wickham, Hadley, Dianne Cook, and Heike Hofmann. 2015. ``Visualizing
 Statistical Models: Removing the Blindfold.'' \emph{Statistical Analysis
-and Data Mining: The ASA Data Science Journal} 8 (4): 203--25.
+and Data Mining: The ASA Data Science Journal} 8 (4):203--25.
